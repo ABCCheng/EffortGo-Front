@@ -120,21 +120,25 @@ function activateOption(option: PaletteOption) {
         <icon-mdi-search />
         {{ $t('search.label') }}
 
-        <span hidden flex-1  px-2px py-2px sm:inline>
+        <span hidden flex-1 px-2px py-2px sm:inline>
           {{ isMac ? 'Cmd' : 'Ctrl' }}&nbsp;+&nbsp;E
         </span>
       </span>
     </n-button>
 
-    <c-modal v-model:open="isModalOpen" class="palette-modal" shadow-xl important:max-w-650px important:pa-12px @keydown="handleKeydown">
-      <c-input-text ref="inputRef" v-model:value="searchPrompt" raw-text :placeholder="$t('search.placeholder')" autofocus clearable />
-
-      <div v-for="(options, category) in filteredSearchResult" :key="category">
-        <div ml-3 mt-3 text-sm font-bold text-primary op-60>
-          {{ category }}
+    <c-modal v-model:open="isModalOpen" class="palette-modal" shadow-xl important:max-w-650px important:pa-12px
+      @keydown="handleKeydown">
+      <c-input-text ref="inputRef" v-model:value="searchPrompt" raw-text :placeholder="$t('search.placeholder')"
+        autofocus clearable />
+      <n-scrollbar class="palette-scrollbar" style="max-height: 500px; width: 100%;">
+        <div v-for="(options, category) in filteredSearchResult" :key="category">
+          <div ml-3 mt-3 text-sm font-bold text-primary op-60>
+            {{ category }}
+          </div>
+          <command-palette-option v-for="option in options" :key="option.name" :option="option"
+            :selected="selectedOptionIndex === getOptionIndex(option)" @activated="activateOption" />
         </div>
-        <command-palette-option v-for="option in options" :key="option.name" :option="option" :selected="selectedOptionIndex === getOptionIndex(option)" @activated="activateOption" />
-      </div>
+      </n-scrollbar>
     </c-modal>
   </div>
 </template>
@@ -150,7 +154,13 @@ function activateOption(option: PaletteOption) {
 }
 
 .c-modal--overlay {
+  overflow: hidden !important;
+  position: fixed !important;
   align-items: flex-start !important;
-  padding-top: 20px;
+  padding-top: 50px;
+  z-index: 20;
+}
+.palette-scrollbar {
+  overflow-y: auto; 
 }
 </style>

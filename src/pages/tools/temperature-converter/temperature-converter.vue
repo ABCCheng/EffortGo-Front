@@ -28,21 +28,21 @@ const units = reactive<
         },
         celsius: {
           title: () => t('tools.temperature-converter.celsius'),
-          unit: '°C = K - 273.15',
+          unit: '°C = K-273.15',
           ref: 0,
           toKelvin: convertCelsiusToKelvin,
           fromKelvin: convertKelvinToCelsius,
         },
         fahrenheit: {
           title: () => t('tools.temperature-converter.fahrenheit'),
-          unit: '°F = (K x 9/5) - 459.67',
+          unit: '°F = (K*9/5)-459.67',
           ref: 0,
           toKelvin: convertFahrenheitToKelvin,
           fromKelvin: convertKelvinToFahrenheit,
         },
         rankine: {
           title: () => t('tools.temperature-converter.rankine'),
-          unit: '°R = K x 9/5',
+          unit: '°R = K*9/5',
           ref: 0,
           toKelvin: convertRankineToKelvin,
           fromKelvin: convertKelvinToRankine,
@@ -68,7 +68,7 @@ update('kelvin');
 <template>
   <div>
     <n-input-group v-for="[key, { title, unit }] in Object.entries(units)" :key="key" mb-3 w-full>
-      <n-input-group-label style="width: 100px">
+      <n-input-group-label w-75px style="display: flex; justify-content: center; align-items: center;">
         {{ title() }}
       </n-input-group-label>
 
@@ -78,7 +78,7 @@ update('kelvin');
         @update:value="() => update(key as TemperatureScale)"
       />
 
-      <n-input-group-label style="width: 180px">
+      <n-input-group-label style="width: 140px" px-1>
         {{ unit }}
       </n-input-group-label>
     </n-input-group>

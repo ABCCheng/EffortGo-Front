@@ -15,7 +15,9 @@ export const i18nPlugin: Plugin = {
   },
 };
 
-export const translate = function (localeKey: string) {
-  const hasKey = i18n.global.te(localeKey, get(i18n.global.locale));
-  return hasKey ? i18n.global.t(localeKey) : localeKey;
+export const translate = (localeKey: string) => {
+  return computed(() => {
+    const hasKey = i18n.global.te(localeKey, get(i18n.global.locale));
+    return hasKey ? i18n.global.t(localeKey) : localeKey;
+  });
 };

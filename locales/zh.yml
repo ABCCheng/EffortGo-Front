@@ -4,8 +4,8 @@ home:
   effortgo-description: '专注开发极简便捷的免费在线工具，为工作与生活减负，让效率与轻松并存。'
   categories:
     favoriteTools: '我的收藏'
-    newestTools: '最新工具'
-    updateTools: '更新工具'
+    newestTools: '最近上线'
+    updateTools: '最近更新'
     allTools: '全部工具'
     favoritesDndToolTip: '拖动可重新排列'
   subtitle: '极简生活，如你所愿'
@@ -70,6 +70,8 @@ about:
 favoriteButton:
   remove: '取消收藏'
   add: '加入收藏'
+  removeSuccess: '取消收藏成功'
+  addSuccess: '添加收藏成功'
 
 search:
   label: '搜索'
@@ -79,6 +81,11 @@ tools:
   categories:
     favorite-tools: '我的收藏'
     all-tools: '全部工具'
+    tools: '工具'
+    search-engines: '搜索引擎'
+    settings: '设置'
+    external: '外部关联'
+    pages: '页面'
 
   random-tool:
     title: 随机工具

@@ -5,7 +5,7 @@ import _ from 'lodash';
 import type { Tool, ToolCategory, ToolWithCategory } from './tools.types';
 import { toolsWithCategory } from './index';
 
-export const useToolStore = defineStore('tools', () => {
+export const useToolStore = defineStore('toolStore', () => {
   const favoriteToolsPath = useStorage('favoriteToolsPath', []) as Ref<string[]>;
   const { t } = useI18n();
 
@@ -14,9 +14,9 @@ export const useToolStore = defineStore('tools', () => {
 
     return ({
       ...tool,
-      name: t(`tools.${toolI18nKey}.title`, tool.name),
-      description: t(`tools.${toolI18nKey}.description`, tool.description),
-      categoryName: t(`tools.categories.${tool.categoryId}`)
+      name: computed(() => t(`tools.${toolI18nKey}.title`, tool.name)).value,
+      description: computed(() => t(`tools.${toolI18nKey}.description`, tool.description)).value,
+      categoryName: computed(() => t(`tools.categories.${tool.categoryId}`)).value
     });
   }));
 

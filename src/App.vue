@@ -1,11 +1,13 @@
 <script setup lang="ts">
-import { RouterView, useRoute } from 'vue-router';
+import { ref } from 'vue';
+import { RouterView, useRoute, useRouter } from 'vue-router';
 import { NGlobalStyle, NMessageProvider, NNotificationProvider, darkTheme, lightTheme } from 'naive-ui';
 import { darkThemeOverrides, lightThemeOverrides } from './themes';
 import { layouts } from './layouts';
 import { useStyleStore } from './stores/style.store';
 
 const route = useRoute();
+const router = useRouter();
 const layout = computed(() => route?.meta?.layout ?? layouts.base);
 const styleStore = useStyleStore();
 
@@ -18,14 +20,25 @@ syncRef(
   locale,
   useStorage('locale', locale),
 );
+
+const isLoading = ref(false);
+router.beforeEach((to, from, next) => {
+  isLoading.value = true;
+  next();
+});
+router.afterEach(() => {
+  isLoading.value = false;
+});
+
 </script>
 
 <template>
   <n-config-provider :theme="theme" :theme-overrides="themeOverrides">
     <NGlobalStyle />
-    <NMessageProvider placement="bottom">
+    <NMessageProvider placement="top">
       <NNotificationProvider placement="bottom-right">
-        <component :is="layout">
+        <n-spin size="large" v-if="isLoading" class="fixed inset-0 flex items-center justify-center bg-white/80 z-50"/>
+        <component v-else :is="layout">
           <RouterView />
         </component>
       </NNotificationProvider>

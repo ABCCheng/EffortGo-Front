@@ -3,3 +3,9 @@
     <c-diff-editor/>
   </c-card>
 </template>
+
+<style lang="less" scoped>
+.c-card {
+  height: calc(100dvh - 220px) !important;
+}
+</style>

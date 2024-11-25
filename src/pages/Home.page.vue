@@ -7,6 +7,11 @@ import ColoredCard from '../components/ColoredCard.vue';
 import ToolCard from '../components/ToolCard.vue';
 import { useToolStore } from '@/pages/tools/tools.store';
 import { config } from '@/config';
+import { useStyleStore } from '@/stores/style.store';
+
+const styleStore = useStyleStore();
+const { isSmallScreen } = toRefs(styleStore);
+
 
 const toolStore = useToolStore();
 
@@ -71,6 +76,7 @@ function onUpdateFavoriteTools() {
             target="_blank"
           >{{$t('home.follow.xiaohongshu')}}</a>
           {{ $t('home.follow.thankYou') }}
+          <br v-show="isSmallScreen" />
           <router-link to="/about">
             <a>{{$t('home.follow.learnMore')}}</a>
           </router-link>

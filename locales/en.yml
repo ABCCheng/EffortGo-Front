@@ -74,6 +74,8 @@ about:
 favoriteButton:
   remove: 'Remove from favorites'
   add: 'Add to favorites'
+  removeSuccess: 'Remove from favorites successfully'
+  addSuccess: 'Add to favorites successfully'
 search:
   label: Search
   placeholder: Type to search a tool or a command...
@@ -81,6 +83,12 @@ tools:
   categories:
     favorite-tools: 'Your favorite tools'
     all-tools: 'All tools'
+    tools: 'Tools'
+    search-engines: 'Search Engines'
+    settings: 'Settings'
+    external: 'External'
+    pages: 'Pages'
+
 
   random-tool:
     title: Random Tool

@@ -52,11 +52,11 @@ const themeVars = useThemeVars();
   }
   .content-wrapper {
     margin-top: 15px;
-    height: calc(100vh - 130px);
+    height: calc(100dvh - 130px);
   }
 }
 
 .n-layout-sider {
-  height: 100vh;
+  height: 100dvh;
 }
 </style>
