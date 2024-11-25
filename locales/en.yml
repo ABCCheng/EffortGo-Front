@@ -1,0 +1,124 @@
+home:
+  browser-title: 'EffortGo - Your efficiency assistant'
+  prop-title: 'EffortGo - Simplify Your Day, Your Way'
+  effortgo-description: 'Focusing on developing minimal, convenient and free online tools to ease work and life, combining efficiency with simplicity.'
+  categories:
+    favoriteTools: 'Your favorite tools'
+    newestTools: Newest tools
+    updateTools: Update tools
+    allTools: 'All the tools'
+    favoritesDndToolTip: 'Drag and drop to reorder favorites'
+  subtitle: 'Simplify Your Day, Your Way'
+  toggleMenu: 'Toggle menu'
+  home: Home
+  support: 
+    supportMe: 'Support me'
+    supportTip: 'Buy me a coffee'
+    dialogTitle: 'Buy me a coffee'
+    
+  follow:
+    title: 'You like EffortGo?'
+    p1: 'Give me a star on'
+    p2: 'or follow me on'
+    xiaohongshu: 'Xiaohongshu'
+    thankYou: '. Thank you! ❥(^_-) '
+    learnMore: ' Click to learn more...'
+  nav:
+    github: 'GitHub repository'
+    githubRepository: 'EffortGo GitHub repository'
+    twitterX: 'X account'
+    twitterXAccount: 'EffortGo X account'
+    xiaohongshu: 'Xiaohongshu account'
+    xiaohongshuAccount: 'EffortGo Xiaohongshu account'
+    about: 'About EffortGo'
+    aboutLabel: 'About'
+    darkMode: 'Dark'
+    lightMode: 'Light'
+    mode: 'Toggle dark/light mode'
+about:
+  content: >
+    # About EffortGo
+
+    EffortGo is a personal project developed by ABCCheng, based on open-source projects from Github. 
+    It brings together tools commonly used across various industries in daily life and work. 
+    If you find EffortGo helpful, you can add it to your favorites, export it as a desktop application through your browser, 
+    or share it with your friends.  
+    
+    EffortGo will remain free and open-source. 
+    However, funding is required for server operation and domain renewal. 
+    In the future, ads may be introduced to sustain operations. 
+    If you would like to support my work and encourage me to add more tools, 
+    you are welcome to contribute through the <span style="color: #FF7F50; font-weight: bold;">Support Me</span> button.
+
+    ## Technologies
+
+    EffortGo’s front-end is developed using Vue 3 and the Naive UI component library. Backend development is still underway.  
+    
+    Follow me on <a href="https://x.com/EffortGo2024" style="text-decoration: underline; color: #FF7F50"><strong>X</strong></a> 
+    and <a href="https://www.xiaohongshu.com/user/profile/5fa36065000000000101ffa5" style="text-decoration: underline; color: #FF7F50"><strong>Xiaohongshu</strong></a>  
+    for the latest updates.
+
+    ## Communication
+
+    Feel free to follow my social media accounts and leave a message. You can also contact me via email at 
+    <a href="mailto:effortgo2024{'@'}gmail.com" style="text-decoration: underline; color: #FF7F50"><strong>effortgo2024{'@'}gmail.com</strong></a> .
+    In the future, EffortGo will include a feedback feature—stay tuned!  
+    
+    Thank you for your attention; your support will shape EffortGo's future.
+
+404:
+  notFound: '404 Not Found'
+  sorry: 'Sorry, this page does not seem to exist'
+  maybe: 'Maybe the cache is doing tricky things, try force-refreshing?'
+  backHome: 'Back home'
+favoriteButton:
+  remove: 'Remove from favorites'
+  add: 'Add to favorites'
+search:
+  label: Search
+  placeholder: Type to search a tool or a command...
+tools:
+  categories:
+    favorite-tools: 'Your favorite tools'
+    all-tools: 'All tools'
+
+  random-tool:
+    title: Random Tool
+    description: Get a random tool from the list.
+
+  dark-mode:
+    title: 'Toggle Dark Mode'
+    description: 'Toggle dark mode on or off.'
+
+  github:
+    title: Github Repository
+    description: View the source code of EffortGo on Github.
+
+  about:
+    title: About EffortGo
+    description: Learn more about EffortGo.
+  
+  google:
+    title: Google Search
+    description: Google one-click search content.
+  
+  bing:
+    title: Bing Search
+    description: Bing one-click search content.
+
+  baidu:
+    title: Baidu Search
+    description: Baidu one-click search content.
+
+  temperature-converter:
+    title: Temp Convert
+    description: Degrees temperature conversions for Celsius, Fahrenheit, Kelvin and Rankine.
+    kelvin: Kelvin
+    celsius: Celsius
+    fahrenheit: Fahrenheit
+    rankine: Rankine
+
+  text-diff:
+    title: Text Diff
+    description: Compare two texts and see the differences between them.
+
