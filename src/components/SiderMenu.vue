@@ -73,7 +73,7 @@ const siderMenuToolsByCategoty = computed<ToolCategory[]>(() => [
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 100dvh;
+  height: 100%;
 }
 .sider-menu-head {
   display: block;

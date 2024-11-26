@@ -6,6 +6,6 @@
 
 <style lang="less" scoped>
 .c-card {
-  height: calc(100dvh - 220px) !important;
+  height: calc(var(--vh, 1vh) * 100 - 220px) !important;
 }
 </style>

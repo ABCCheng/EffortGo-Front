@@ -21,6 +21,7 @@ const baseUrl = process.env.BASE_URL ?? '/';
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
+    host: '127.0.0.1',
     port: 3000,  // 你想要的端口号
   },
   plugins: [
