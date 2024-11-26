@@ -35,6 +35,7 @@ home:
     darkMode: 'Dark'
     lightMode: 'Light'
     mode: 'Toggle dark/light mode'
+
 about:
   content: >
     # About EffortGo
@@ -71,14 +72,20 @@ about:
   sorry: 'Sorry, this page does not seem to exist'
   maybe: 'Maybe the cache is doing tricky things, try force-refreshing?'
   backHome: 'Back home'
+
 favoriteButton:
   remove: 'Remove from favorites'
   add: 'Add to favorites'
   removeSuccess: 'Remove from favorites successfully'
   addSuccess: 'Add to favorites successfully'
+
 search:
   label: Search
   placeholder: Type to search a tool or a command...
+
+message:
+  copy: 'copied to the clipboard'
+
 tools:
   categories:
     favorite-tools: 'Your favorite tools'
@@ -88,7 +95,6 @@ tools:
     settings: 'Settings'
     external: 'External'
     pages: 'Pages'
-
 
   random-tool:
     title: Random Tool
@@ -117,6 +123,11 @@ tools:
   baidu:
     title: Baidu Search
     description: Baidu one-click search content.
+  
+  chinese-color-picker:
+    title: Chinese Colors
+    description: Display the most complete list of traditional Chinese color names and color values.
+    searchPlaceHolder: Search colors (e.g. 'haitanghong')...
 
   temperature-converter:
     title: Temp Convert

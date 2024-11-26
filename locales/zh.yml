@@ -77,6 +77,9 @@ search:
   label: '搜索'
   placeholder: '输入以搜索工具或命令...'
 
+message:
+  copy: '复制到剪贴板'
+
 tools:
   categories:
     favorite-tools: '我的收藏'
@@ -114,6 +117,11 @@ tools:
   baidu:
     title: 百度搜索
     description: 百度一键搜索内容。
+
+  chinese-color-picker:
+    title: 中国色彩
+    description: 展示最全中国传统色彩名称及色值列表。
+    searchPlaceHolder: 搜索颜色 (例如 '海棠红')...
 
   temperature-converter:
     title: 温度转换器
