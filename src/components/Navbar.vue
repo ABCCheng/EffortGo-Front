@@ -24,7 +24,7 @@ const openSupportMeDialog = () => {
 <template>
   <div class="navbar">
     <div class="header w-full flex items-center justify-center gap-2">
-      <n-h1 class="top-title" @click="goToHome" style="user-select: none;">
+      <n-h1 class="top-title" @click="goToHome" style="user-select: none;" font-bold>
         <span>EffortGo</span>
       </n-h1>
       

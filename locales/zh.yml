@@ -4,7 +4,7 @@ home:
   effortgo-description: '专注开发极简便捷的免费在线工具，为工作与生活减负，让效率与轻松并存。'
   categories:
     favoriteTools: '我的收藏'
-    newestTools: '最近上线'
+    newestTools: '最新上线'
     updateTools: '最近更新'
     allTools: '全部工具'
     favoritesDndToolTip: '拖动可重新排列'
@@ -78,7 +78,7 @@ search:
   placeholder: '输入以搜索工具或命令...'
 
 message:
-  copy: '复制到剪贴板'
+  copy: '已复制到剪贴板'
 
 tools:
   categories:

@@ -7,6 +7,8 @@ const props = defineProps<{ colorInfo: ColorInfo }>();
 const { colorInfo } = toRefs(props);
 
 const { copy } = useCopy();
+const { t } = useI18n();
+
 </script>
 
 <template>
@@ -22,13 +24,13 @@ const { copy } = useCopy();
       </div>
       <div flex flex-col gap-0 text-sm font-mono font-semibold text-primary>
         <span cursor-pointer transition hover:text-orange-600 
-          @click="copy(colorInfo.RGB.join(','), { notificationMessage: `RGB '${colorInfo.RGB.join(',')}' copied to the clipboard` })"
+          @click="copy(colorInfo.RGB.join(','), { notificationMessage: `RGB '${colorInfo.RGB.join(',')}' ${t('message.copy')}` })"
         > RGB:{{ colorInfo.RGB.join(',') }} </span>
         <span cursor-pointer transition hover:text-orange-600
-          @click="copy(colorInfo.hex, { notificationMessage: `HEX '${colorInfo.hex}' copied to the clipboard` })"
+          @click="copy(colorInfo.hex, { notificationMessage: `HEX '${colorInfo.hex}' ${t('message.copy')}` })"
         >HEX:{{ colorInfo.hex}}</span>
         <span cursor-pointer transition hover:text-orange-600
-          @click="copy(colorInfo.CMYK.join(','), { notificationMessage: `CMYK '${colorInfo.CMYK.join(',')}' copied to the clipboard` })"
+          @click="copy(colorInfo.CMYK.join(','), { notificationMessage: `CMYK '${colorInfo.CMYK.join(',')}' ${t('message.copy')}` })"
         >CMYK:{{ colorInfo.CMYK.join(',') }}</span>
       </div>
     </div>
