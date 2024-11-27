@@ -21,7 +21,15 @@ const baseUrl = process.env.BASE_URL ?? '/';
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
-    port: 3000,  // 你想要的端口号
+    host: '127.0.0.1',
+    port: 3000,
+    proxy: {
+      '/togetherai-api': {
+        target: '',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/togetherai-api/, '/api'),
+      },
+    },
   },
   plugins: [
     VueI18n({

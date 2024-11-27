@@ -18,14 +18,16 @@ const openSupportMeDialog = () => {
   supportMeVisible.value = true;  // 打开对话框
 };
 
+
 </script>
 
 <template>
   <div class="navbar">
     <div class="header w-full flex items-center justify-center gap-2">
-      <n-h1 class="top-title" @click="goToHome">
+      <n-h1 class="top-title" @click="goToHome" style="user-select: none;" font-bold>
         <span>EffortGo</span>
       </n-h1>
+      
     </div>
     <div flex items-center justify-center gap-2>
       <n-button circle variant="text" :aria-label="$t('home.toggleMenu')"

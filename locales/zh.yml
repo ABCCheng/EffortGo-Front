@@ -4,8 +4,8 @@ home:
   effortgo-description: '专注开发极简便捷的免费在线工具，为工作与生活减负，让效率与轻松并存。'
   categories:
     favoriteTools: '我的收藏'
-    newestTools: '最新工具'
-    updateTools: '更新工具'
+    newestTools: '最新上线'
+    updateTools: '最近更新'
     allTools: '全部工具'
     favoritesDndToolTip: '拖动可重新排列'
   subtitle: '极简生活，如你所愿'
@@ -70,15 +70,25 @@ about:
 favoriteButton:
   remove: '取消收藏'
   add: '加入收藏'
+  removeSuccess: '取消收藏成功'
+  addSuccess: '添加收藏成功'
 
 search:
   label: '搜索'
   placeholder: '输入以搜索工具或命令...'
 
+message:
+  copy: '已复制到剪贴板'
+
 tools:
   categories:
     favorite-tools: '我的收藏'
     all-tools: '全部工具'
+    tools: '工具'
+    search-engines: '搜索引擎'
+    settings: '设置'
+    external: '外部关联'
+    pages: '页面'
 
   random-tool:
     title: 随机工具
@@ -107,6 +117,21 @@ tools:
   baidu:
     title: 百度搜索
     description: 百度一键搜索内容。
+
+  ai-painting:
+    title: AI 绘画
+    description: 输入文字描述实时生成图片。AI模型由Together AI支持。
+    inputPlaceHolder: 描述图片（仅支持英文，如'A running dog'）...
+    inputEmpty: 请先输入描述内容
+    consistency: Consistency
+    generate: 生成
+    generateError: '生成失败，请稍后重试 '
+    
+
+  chinese-color-picker:
+    title: 中国色彩
+    description: 展示最全中国传统色彩名称及色值列表。
+    searchPlaceHolder: 搜索颜色 (例如 '海棠红')...
 
   temperature-converter:
     title: 温度转换器

@@ -10,6 +10,12 @@ const toolsRoutes = tools.map(({ path, name, component, ...config }) => ({
   meta: { isTool: true, layout: layouts.toolLayout, name, ...config },
 }));
 
+const toolsRedirectRoutes = tools
+  .filter(({ redirectFrom }) => redirectFrom && redirectFrom.length > 0)
+  .flatMap(
+    ({ path, redirectFrom }) => redirectFrom?.map(redirectSource => ({ path: redirectSource, redirect: path })) ?? [],
+  );
+
 const router = createRouter({
   history: createWebHistory(config.app.baseUrl),
   routes: [
@@ -24,6 +30,7 @@ const router = createRouter({
       component: () => import('./pages/About.vue'),
     },
     ...toolsRoutes,
+    ...toolsRedirectRoutes,
     { path: '/:pathMatch(.*)*', name: 'NotFound', component: () => import('./pages/404.page.vue') },
   ],
 });

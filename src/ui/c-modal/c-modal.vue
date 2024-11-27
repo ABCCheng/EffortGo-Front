@@ -18,14 +18,17 @@ const { centered } = toRefs(props);
 
 function close() {
   isOpen.value = false;
+  document.body.classList.remove('no-scroll');
 }
 
 function open() {
   isOpen.value = true;
+  document.body.classList.add('no-scroll');
 }
 
 function toggle() {
   isOpen.value = !isOpen.value;
+  document.body.classList.remove('no-scroll');
 }
 
 defineExpose({
@@ -58,6 +61,7 @@ onClickOutside(modal, () => {
 <style scoped lang="less">
 .c-modal--overlay {
   background-color: rgba(0, 0, 0, 0.5);
+  overflow: hidden !important;
 }
 
 .c-modal--container {
@@ -72,5 +76,9 @@ onClickOutside(modal, () => {
 .v-enter-from,
 .v-leave-to {
   opacity: 0;
+}
+
+body.no-scroll {
+  overflow: hidden !important;
 }
 </style>

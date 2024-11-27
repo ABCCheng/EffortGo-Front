@@ -85,7 +85,7 @@ useHead(head);
   gap: 16px;
 
   ::v-deep(& > *) {
-    flex: 0 1 600px;
+    flex: 0 1 1000px;
   }
 }
 

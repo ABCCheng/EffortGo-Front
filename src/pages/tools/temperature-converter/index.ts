@@ -4,10 +4,11 @@ import { translate } from '@/plugins/i18n.plugin';
 
 import {IconTemperature} from '@tabler/icons-vue';
 
+
 export const tool = defineTool({
-  name: translate('tools.temperature-converter.title'),
+  name: translate('tools.temperature-converter.title').value,
   path: '/temperature-converter',
-  description: translate('tools.temperature-converter.description'),
+  description: translate('tools.temperature-converter.description').value,
   keywords: [
     'temperature',
     'converter',
@@ -16,6 +17,12 @@ export const tool = defineTool({
     'Celsius',
     'Fahrenheit',
     'Rankine',
+    '温度',
+    '转换',
+    '开尔文',
+    '华氏度',
+    '摄氏度',
+    '兰氏度'
   ],
   component: () => import('./temperature-converter.vue'),
   icon: IconTemperature,
