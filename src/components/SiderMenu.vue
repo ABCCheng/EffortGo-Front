@@ -30,7 +30,7 @@ const siderMenuToolsByCategoty = computed<ToolCategory[]>(() => [
 
 <template>
   <n-layout class="sider-menu">
-    <RouterLink to="/" class="sider-menu-head">
+    <RouterLink data-track-label="Link_SiderMenuLogoHome" to="/" class="sider-menu-head">
       <HeroGradient class="head-gradient" />
       <div class="head-text">
         <div class="title">
@@ -43,9 +43,10 @@ const siderMenuToolsByCategoty = computed<ToolCategory[]>(() => [
     </RouterLink>
 
     <div class="sider-menu-setting">
-      <locale-selector w="70%" />
+      <locale-selector data-track-label="DropSelect_LocaleSelector" w="70%" />
       <c-tooltip :tooltip="isDarkTheme ? $t('home.nav.lightMode') : $t('home.nav.darkMode')" position="bottom">
-        <n-button circle variant="text" :aria-label="$t('home.nav.mode')" @click="() => styleStore.toggleDark()"
+        <!-- data-track-label not valid -->
+        <n-button data-track-label="Button_ToggleDarkTheme" circle variant="text" @click="() => styleStore.toggleDark()"
           class="theme-button" :bordered="false">
           <n-icon v-if="isDarkTheme" size="25" :component="IconSun" />
           <n-icon v-else size="25" :component="IconMoon" />

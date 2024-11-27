@@ -79,10 +79,10 @@ const selectImage = (index: number) => {
             :placeholder="$t('tools.ai-painting.inputPlaceHolder')" rows="3" autofocus />
         <div flex flex-col items-start gap-2>
             <div flex flex-row items-center gap-2>
-                <n-switch size="small" v-model:value="iterativeMode" />
+                <n-switch data-track-label="Button_AIPaintingSwitch" size="small" v-model:value="iterativeMode" />
                 <div>{{$t('tools.ai-painting.consistency')}}</div>
             </div>
-            <n-button :disabled="loading" @click="fetchAIImage">{{$t('tools.ai-painting.generate')}}</n-button>
+            <n-button data-track-label="Button_AIPaintingGenerate" :disabled="loading" @click="fetchAIImage">{{$t('tools.ai-painting.generate')}}</n-button>
         </div>
     </div>
 

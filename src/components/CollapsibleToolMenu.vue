@@ -48,7 +48,7 @@ const themeVars = useThemeVars();
 
 <template>
   <div v-for="{ categoryId, categoryName, tools, isCollapsed } of menuOptions" :key="categoryId">
-    <div ml-6px mt-12px flex cursor-pointer items-center op-60 @click="toggleCategoryCollapse({ categoryId })">
+    <div data-track-label="TreeMenu_CategoryItem" ml-6px mt-12px flex cursor-pointer items-center op-60 @click="toggleCategoryCollapse({ categoryId })">
       <span :class="{ 'rotate-0': isCollapsed, 'rotate-90': !isCollapsed }" text-16px lh-1 op-50 transition-transform>
         <icon-mdi-chevron-right />
       </span>
@@ -60,9 +60,10 @@ const themeVars = useThemeVars();
 
     <n-collapse-transition :show="!isCollapsed">
       <div class="menu-wrapper">
-        <div class="toggle-bar" @click="toggleCategoryCollapse({ categoryId })" />
+        <div data-track-label="TreeMenu_CategoryBar" class="toggle-bar" @click="toggleCategoryCollapse({ categoryId })" />
 
         <n-menu
+          data-track-label="TreeMenu_ToolItem"
           class="menu"
           :value="route.path"
           :collapsed-width="64"

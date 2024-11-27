@@ -59,18 +59,18 @@ function onUpdateFavoriteTools() {
        
         <ColoredCard v-if="config.showBanner" :title="$t('home.follow.title')" :icon="IconStar">
           {{ $t('home.follow.p1') }}
-          <a
+          <a data-track-label="Link_ShowBarGithub"
             href="https://github.com/ABCCheng/EffortGo-Front"
             rel="noopener"
             target="_blank"
           >Github</a>
           {{ $t('home.follow.p2') }}
-          <a
+          <a data-track-label="Link_ShowBarX"
             href="https://x.com/EffortGo2024"
             rel="noopener"
             target="_blank"
           >X</a>, 
-          <a
+          <a data-track-label="Link_ShowBarXiaohongshu"
             href="https://www.xiaohongshu.com/user/profile/5fa36065000000000101ffa5"
             rel="noopener"
             target="_blank"
@@ -78,7 +78,7 @@ function onUpdateFavoriteTools() {
           {{ $t('home.follow.thankYou') }}
           <br v-show="isSmallScreen" />
           <router-link to="/about">
-            <a>{{$t('home.follow.learnMore')}}</a>
+            <a data-track-label="Link_ShowBarAbout">{{$t('home.follow.learnMore')}}</a>
           </router-link>
         </ColoredCard>
       </div>
