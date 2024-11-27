@@ -3,7 +3,7 @@
   "version": "2024.11.21-2.0.0",
   "description": "Focusing on developing minimal and convenient online tools to ease work and life, combining efficiency with simplicity.",
   "author": "ABCCheng",
-  "license": "MIT",
+  "license": "GNU GPLv3",
   "repository": {
     "type": "git",
     "url": "https://github.com/ABCCheng/effortgo"
