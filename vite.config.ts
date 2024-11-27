@@ -27,7 +27,7 @@ export default defineConfig({
       '/togetherai-api': {
         target: '',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/togetherai-api/, '/api/'),
+        rewrite: (path) => path.replace(/^\/togetherai-api/, '/api'),
       },
     },
   },

@@ -125,7 +125,7 @@ tools:
     inputEmpty: 请先输入描述内容
     consistency: Consistency
     generate: 生成
-    errorGenerate: 生成失败，请稍后重试
+    generateError: '生成失败，请稍后重试 '
     
 
   chinese-color-picker:

@@ -131,7 +131,7 @@ tools:
     inputEmpty: Please enter a prompt
     consistency: Consistency
     generate: Generate
-    errorGenerate: Failed to generate, please try again later
+    generateError: 'Failed to generate, please try again later. '
   
   chinese-color-picker:
     title: Chinese Colors

@@ -60,8 +60,7 @@ const fetchAIImage = async () => {
             message.error(t('tools.ai-painting.generateError'));
         }
     } catch (error) {
-        console.error(error);
-        message.error(t('tools.ai-painting.generateError') + error);
+        message.error(t('tools.ai-painting.generateError'));
     } finally {
         loading.value = false;
     }
