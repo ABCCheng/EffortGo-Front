@@ -1,6 +1,5 @@
 import { resolve } from 'node:path';
 import { URL, fileURLToPath } from 'node:url';
-
 import VueI18n from '@intlify/unplugin-vue-i18n/vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
@@ -15,8 +14,12 @@ import { VitePWA } from 'vite-plugin-pwa';
 import markdown from 'vite-plugin-vue-markdown';
 import svgLoader from 'vite-svg-loader';
 import { configDefaults } from 'vitest/config';
+import Sitemap from 'vite-plugin-sitemap';
+import { sitemappages } from './sitemappages.js';
 
+const hostname = 'https://www.effortgo.com/';
 const baseUrl = process.env.BASE_URL ?? '/';
+const dynamicRoutes = sitemappages.map(page => `/${page}`);
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -32,6 +35,10 @@ export default defineConfig({
     },
   },
   plugins: [
+    Sitemap({ 
+      hostname: `${hostname}`,
+      dynamicRoutes,
+     }),
     VueI18n({
       runtimeOnly: true,
       jitCompilation: true,
@@ -67,6 +74,9 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       strategies: 'generateSW',
+      workbox: {
+        maximumFileSizeToCacheInBytes: 10 * 1024 * 1024,
+      },
       manifest: {
         name: 'EffortGo',
         description: 'Focusing on developing minimal and convenient online tools to ease work and life, combining efficiency with simplicity.',
@@ -123,5 +133,6 @@ export default defineConfig({
   },
   build: {
     target: 'esnext',
+    chunkSizeWarningLimit: 10000,
   },
 });
