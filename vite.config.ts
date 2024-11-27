@@ -22,7 +22,14 @@ const baseUrl = process.env.BASE_URL ?? '/';
 export default defineConfig({
   server: {
     host: '127.0.0.1',
-    port: 3000,  // 你想要的端口号
+    port: 3000,
+    proxy: {
+      '/togetherai-api': {
+        target: '',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/togetherai-api/, '/api/'),
+      },
+    },
   },
   plugins: [
     VueI18n({

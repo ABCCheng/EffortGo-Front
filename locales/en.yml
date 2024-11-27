@@ -124,6 +124,15 @@ tools:
     title: Baidu Search
     description: Baidu one-click search content.
   
+  ai-painting:
+    title: AI Painting
+    description: Enter a prompt and generate images in real-time. Powered by Together AI.
+    inputPlaceHolder: Describe your image（Only English, e.g. 'A running dog'）...
+    inputEmpty: Please enter a prompt
+    consistency: Consistency
+    generate: Generate
+    errorGenerate: Failed to generate, please try again later
+  
   chinese-color-picker:
     title: Chinese Colors
     description: Display the most complete list of traditional Chinese color names and color values.
