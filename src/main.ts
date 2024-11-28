@@ -16,9 +16,9 @@ import { updateVhVariable } from './utils/setVH';
 
 import { trackUserInteractions } from './plugins/gtag.plugin';
 
-updateVhVariable();
-window.addEventListener('resize', updateVhVariable);
-window.addEventListener('DOMContentLoaded', updateVhVariable);
+// updateVhVariable();
+// window.addEventListener('resize', updateVhVariable);
+// window.addEventListener('DOMContentLoaded', updateVhVariable);
 
 
 trackUserInteractions();

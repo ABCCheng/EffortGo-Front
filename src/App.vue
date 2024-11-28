@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
 import { RouterView, useRoute, useRouter } from 'vue-router';
 import { NGlobalStyle, NMessageProvider, NNotificationProvider, darkTheme, lightTheme } from 'naive-ui';
 import { darkThemeOverrides, lightThemeOverrides } from './themes';
@@ -30,6 +30,30 @@ router.afterEach(() => {
   isLoading.value = false;
 });
 
+onMounted(() => {
+  const isMobile = window.innerWidth <= 500;
+  
+  const handleResize = () => {
+    // adapt to dvh vh 
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+
+    // try to hide addressbar, but not work
+    if (isMobile) {
+      document.documentElement.style.setProperty('--height', `calc(var(--vh) * 100)`);
+    } else {
+      document.documentElement.style.setProperty('--height', `calc(var(--vh) * 100)`);
+    }
+    setTimeout(() => {
+        window.scrollTo(0, 1);
+    }, 2000);
+  }
+
+  window.addEventListener('resize', handleResize);
+  window.addEventListener('DOMContentLoaded', handleResize);
+  handleResize();
+});
+
 </script>
 
 <template>
@@ -48,15 +72,16 @@ router.afterEach(() => {
 
 <style lang="less">
 body {
-  height: 100%;
   width: 1200px;
+  height: var(--height);
   margin: 0 auto;
   padding: 0;
+  overflow-x: hidden;
 }
 
 html {
   width: 100%;
-  height: 100%;
+  height: var(--height);
   margin: 0;
   padding: 0;
   display: flex;

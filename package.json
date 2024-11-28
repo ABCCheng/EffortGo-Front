@@ -7,7 +7,7 @@
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ABCCheng/effortgo"
+    "url": "https://github.com/ABCCheng/EffortGo-Front"
   },
   "keywords": [
     "website",
@@ -15,7 +15,11 @@
     "free tools",
     "online tools",
     "efficiency",
-    "simplicity"
+    "simplicity",
+    "在线工具",
+    "免费工具",
+    "效率",
+    "助手"
   ],
   "scripts": {
     "dev": "vite",

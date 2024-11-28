@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import { useStyleStore } from '@/stores/style.store';
-import { useThemeVars } from 'naive-ui';
 
 const styleStore = useStyleStore();
 const { isMenuCollapsed } = toRefs(styleStore);
 const siderPosition = computed(() => ('absolute'));
-const themeVars = useThemeVars();
+
 </script>
 
 <template>
@@ -45,14 +44,18 @@ const themeVars = useThemeVars();
 }
 
 .body {
-  padding: 15px 15px 20px 20px;
+  width: 100%;
+  height: 100%;
+  padding: 15px 15px 10px 25px;
+  
   .header {
     padding-top: 10px;
     padding-right: 5px;
   }
   .content-wrapper {
-    margin-top: 15px;
-    height: calc(var(--vh, 1vh) * 100 - 130px);
+    margin-top: 10px;
+    height: calc(var(--vh, 1vh) * 100 - 115px);
+    overflow-x: hidden;
   }
 }
 </style>

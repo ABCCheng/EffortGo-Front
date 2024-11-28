@@ -41,7 +41,6 @@ export default defineConfig({
      }),
     VueI18n({
       runtimeOnly: true,
-      jitCompilation: true,
       compositionOnly: true,
       fullInstall: true,
       strictMessage: false,
@@ -79,10 +78,11 @@ export default defineConfig({
       },
       manifest: {
         name: 'EffortGo',
+        short_name: 'EffortGo',
         description: 'Focusing on developing minimal and convenient online tools to ease work and life, combining efficiency with simplicity.',
         display: 'standalone',
         lang: 'en-US',
-        start_url: `${baseUrl}?utm_source=pwa&utm_medium=pwa`,
+        start_url: `${baseUrl}`,
         orientation: 'any',
         theme_color: '#C28C70',
         background_color: '#FAF4F0',
