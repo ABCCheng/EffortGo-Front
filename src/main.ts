@@ -12,7 +12,6 @@ import { naive } from './plugins/naive.plugin';
 import App from './App.vue';
 import router from './router';
 import { i18nPlugin } from './plugins/i18n.plugin';
-import { updateVhVariable } from './utils/setVH';
 
 import { trackUserInteractions } from './plugins/gtag.plugin';
 

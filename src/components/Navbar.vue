@@ -3,6 +3,11 @@ import { useRouter } from 'vue-router';
 import { useStyleStore } from '@/stores/style.store';
 import {Home, Menu2, Coffee} from '@vicons/tabler';
 import { ref } from 'vue';
+import { checkForUpdates } from '@/utils/swupdate';
+
+const checkForUpdatesHandler = () => {
+  checkForUpdates();
+};
 
 const router = useRouter();
 const styleStore = useStyleStore();
@@ -10,6 +15,7 @@ const styleStore = useStyleStore();
 const { t } = useI18n();
 
 const goToHome = () => {
+  checkForUpdatesHandler();
   router.push('/');
 };
 

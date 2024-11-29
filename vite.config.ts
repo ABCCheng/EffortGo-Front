@@ -75,6 +75,8 @@ export default defineConfig({
       strategies: 'generateSW',
       workbox: {
         maximumFileSizeToCacheInBytes: 10 * 1024 * 1024,
+        skipWaiting: true,
+        clientsClaim: true,
       },
       manifest: {
         name: 'EffortGo',
