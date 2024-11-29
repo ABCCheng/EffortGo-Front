@@ -86,10 +86,6 @@ useHead(head);
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 16px;
-
-  ::v-deep(& > *) {
-    flex: 0 1 1000px;
-  }
 }
 
 .tool-layout {

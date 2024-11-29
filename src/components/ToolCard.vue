@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { useThemeVars } from 'naive-ui';
-import FavoriteButton from './FavoriteButton.vue';
-import type { Tool } from '@/pages/tools/tools.types';
-import { ref } from 'vue';
+import { ref, toRefs } from 'vue';
+import type { Tool } from '@/pages/tools/tools.types'; // 导入 Tool 类型
 
 const trackLabel = ref('Button_CardFavorite');
 

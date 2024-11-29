@@ -1,7 +1,5 @@
 <script lang="ts" setup>
 
-import MenuLayout from './MenuLayout.vue';
-
 </script>
 
 <template>

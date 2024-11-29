@@ -23,11 +23,10 @@ const openSupportMeDialog = () => {
 
 <template>
   <div class="navbar">
-    <div class="header w-full flex items-center justify-center gap-2">
+    <div class="header flex items-center justify-center">
       <n-h1 class="top-title" @click="goToHome" style="user-select: none;" font-bold>
         <span data-track-label="Link_LogoHome">EffortGo</span>
       </n-h1>
-      
     </div>
     <div flex items-center justify-center gap-2>
       <n-button data-track-label="Button_HomeMenu" circle variant="text"
@@ -35,7 +34,7 @@ const openSupportMeDialog = () => {
         <n-icon size="25" :component="Menu2" />
       </n-button>
 
-      <c-tooltip :tooltip="$t('home.home')" position="bottom">
+      <c-tooltip :tooltip="$t('home.home')" position="top">
         <n-button data-track-label="Button_Home" @click="goToHome" circle variant="text" class="theme-button"
           :bordered="false">
           <n-icon size="25" :component="Home" />
@@ -44,7 +43,7 @@ const openSupportMeDialog = () => {
 
       <command-palette />
 
-      <c-tooltip position="bottom" :tooltip="$t('home.support.supportTip')">
+      <c-tooltip position="top" :tooltip="$t('home.support.supportTip')">
         <n-button data-track-label="Button_SupportMe" round class="support-button" :bordered="false" @click="openSupportMeDialog">
           {{ $t('home.support.supportMe') }}
           <n-icon :component="Coffee" ml-2 size="25" />
@@ -103,11 +102,10 @@ const openSupportMeDialog = () => {
   box-sizing: border-box;
 
   .header {
-    margin-bottom: -15px;
-    margin-top: -20px;
+    margin-bottom: -20px;
+    margin-top: 10px;
     cursor: pointer;
     .top-title {
-      padding: 0;
       font-family: 'Marcellus', sans-serif; 
       text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
     }

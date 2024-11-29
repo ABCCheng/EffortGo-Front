@@ -3,6 +3,8 @@ import { useMessage } from 'naive-ui'
 import { useToolStore } from '@/pages/tools/tools.store';
 import type { Tool } from '@/pages/tools/tools.types';
 import {IconHeart, IconHeartFilled} from '@tabler/icons-vue';
+import { useI18n } from 'vue-i18n';
+import { PropType, toRefs, computed } from 'vue';
 
 const message = useMessage()
 

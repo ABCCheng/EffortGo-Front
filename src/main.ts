@@ -16,11 +16,6 @@ import { updateVhVariable } from './utils/setVH';
 
 import { trackUserInteractions } from './plugins/gtag.plugin';
 
-// updateVhVariable();
-// window.addEventListener('resize', updateVhVariable);
-// window.addEventListener('DOMContentLoaded', updateVhVariable);
-
-
 trackUserInteractions();
 
 const app = createApp(App);
@@ -32,4 +27,6 @@ app.use(naive);
 app.use(shadow);
 app.mount('#app');
 
-registerSW();
+registerSW({
+    immediate: true,
+});

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, watch, computed, toRefs } from 'vue';
 import { RouterView, useRoute, useRouter } from 'vue-router';
 import { NGlobalStyle, NMessageProvider, NNotificationProvider, darkTheme, lightTheme } from 'naive-ui';
 import { darkThemeOverrides, lightThemeOverrides } from './themes';
@@ -13,6 +13,8 @@ const styleStore = useStyleStore();
 
 const theme = computed(() => (styleStore.isDarkTheme ? darkTheme : lightTheme));
 const themeOverrides = computed(() => (styleStore.isDarkTheme ? darkThemeOverrides : lightThemeOverrides));
+
+const { isDarkTheme } = toRefs(styleStore);
 
 const { locale } = useI18n();
 
@@ -31,28 +33,40 @@ router.afterEach(() => {
 });
 
 onMounted(() => {
-  const isMobile = window.innerWidth <= 500;
-  
   const handleResize = () => {
     // adapt to dvh vh 
     const vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
-
-    // try to hide addressbar, but not work
-    if (isMobile) {
-      document.documentElement.style.setProperty('--height', `calc(var(--vh) * 100)`);
-    } else {
-      document.documentElement.style.setProperty('--height', `calc(var(--vh) * 100)`);
-    }
-    setTimeout(() => {
-        window.scrollTo(0, 1);
-    }, 2000);
+    document.documentElement.style.setProperty('--vheight', `calc(var(--vh) * 100)`);
   }
+  // max-width
+  document.documentElement.style.setProperty('--max-width', `1200px`);
 
   window.addEventListener('resize', handleResize);
-  window.addEventListener('DOMContentLoaded', handleResize);
   handleResize();
 });
+
+// update the statusbar
+const updateStatusBarStyle = () => {
+  console.log("updateStatusBarStyle", isDarkTheme.value);
+  const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+  if (themeColorMeta) {
+    themeColorMeta.setAttribute('content', isDarkTheme.value ? '#1C1C1CFF' : '#FAF4F0FF');
+  }
+
+  const appleStatusBarMeta = document.querySelector('meta[name="apple-mobile-web-app-status-bar-style"]');
+  if (appleStatusBarMeta) {
+    appleStatusBarMeta.setAttribute('content', isDarkTheme.value ? 'black' : 'default');
+  }
+
+  const statusBarMeta = document.querySelector('meta[name="mobile-web-app-status-bar-style"]');
+  if (statusBarMeta) {
+    statusBarMeta.setAttribute('content', isDarkTheme.value ? 'black' : 'default');
+  }
+};
+
+// listen the theme set
+watch(isDarkTheme, updateStatusBarStyle, { immediate: true });
 
 </script>
 
@@ -72,16 +86,15 @@ onMounted(() => {
 
 <style lang="less">
 body {
-  width: 1200px;
-  height: var(--height);
+  width: 100%;
+  max-width: var(--max-width);
   margin: 0 auto;
   padding: 0;
   overflow-x: hidden;
 }
 
 html {
-  width: 100%;
-  height: var(--height);
+  width: 100vw;
   margin: 0;
   padding: 0;
   display: flex;

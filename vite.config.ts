@@ -84,7 +84,7 @@ export default defineConfig({
         lang: 'en-US',
         start_url: `${baseUrl}`,
         orientation: 'any',
-        theme_color: '#C28C70',
+        theme_color: '#FAF4F0',
         background_color: '#FAF4F0',
         icons: [
           {
