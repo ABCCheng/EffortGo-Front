@@ -23,7 +23,7 @@ const { searchResult } = useFuzzySearch({
 </script>
 
 <template>
-  <div mx-auto max-w-1200px important:flex-1>
+  <div mx-auto max-w-full important:flex-1>
     <div flex items-center gap-3  mb-3>
       <c-input-text
         v-model:value="searchQuery"

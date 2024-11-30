@@ -6,6 +6,9 @@ import type { HeadObject } from '@vueuse/head';
 import BaseLayout from './base.layout.vue';
 import FavoriteButton from '@/components/FavoriteButton.vue';
 import type { Tool } from '@/pages/tools/tools.types';
+import { ref } from 'vue';
+
+const trackLabel = ref('Button_ToolFavorite');
 
 const route = useRoute();
 
@@ -57,7 +60,7 @@ useHead(head);
             {{ toolTitle }}
           </n-h2>
           <div>
-            <FavoriteButton :tool="{ name: route.meta.name, path: route.path } as Tool" />
+            <FavoriteButton :data-track-label="trackLabel" :tool="{ name: route.meta.name, path: route.path } as Tool" />
           </div>
         </div>
 
@@ -83,10 +86,6 @@ useHead(head);
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 16px;
-
-  ::v-deep(& > *) {
-    flex: 0 1 1000px;
-  }
 }
 
 .tool-layout {

@@ -1,8 +1,13 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
 import { useStyleStore } from '@/stores/style.store';
-import {Home, Menu2, Coffee} from '@vicons/tabler';
+import {IconHome, IconMenu2, IconCoffee} from '@tabler/icons-vue';
 import { ref } from 'vue';
+import { checkForUpdates } from '@/utils/swupdate';
+
+const checkForUpdatesHandler = () => {
+  checkForUpdates();
+};
 
 const router = useRouter();
 const styleStore = useStyleStore();
@@ -10,6 +15,7 @@ const styleStore = useStyleStore();
 const { t } = useI18n();
 
 const goToHome = () => {
+  checkForUpdatesHandler();
   router.push('/');
 };
 
@@ -23,32 +29,30 @@ const openSupportMeDialog = () => {
 
 <template>
   <div class="navbar">
-    <div class="header w-full flex items-center justify-center gap-2">
+    <div class="header flex items-center justify-center">
       <n-h1 class="top-title" @click="goToHome" style="user-select: none;" font-bold>
-        <span>EffortGo</span>
+        <span data-track-label="Link_LogoHome">EffortGo</span>
       </n-h1>
-      
     </div>
     <div flex items-center justify-center gap-2>
-      <n-button circle variant="text" :aria-label="$t('home.toggleMenu')"
+      <n-button data-track-label="Button_HomeMenu" circle variant="text"
         @click="styleStore.isMenuCollapsed = !styleStore.isMenuCollapsed" class="theme-button" :bordered="false">
-        <n-icon size="25" :component="Menu2" />
+        <n-icon size="25" :component="IconMenu2" />
       </n-button>
 
-      <c-tooltip :tooltip="$t('home.home')" position="bottom">
-        <n-button @click="goToHome" circle variant="text" :aria-label="$t('home.home')" class="theme-button"
+      <c-tooltip :tooltip="$t('home.home')" position="top">
+        <n-button data-track-label="Button_Home" @click="goToHome" circle variant="text" class="theme-button"
           :bordered="false">
-          <n-icon size="25" :component="Home" />
+          <n-icon size="25" :component="IconHome" />
         </n-button>
       </c-tooltip>
 
       <command-palette />
 
-      <c-tooltip position="bottom" :tooltip="$t('home.support.supportTip')">
-        <n-button round href="https://www.buymeacoffee.com/effortgo" rel="noopener" target="_blank"
-          class="support-button" :bordered="false" @click="openSupportMeDialog">
+      <c-tooltip position="top" :tooltip="$t('home.support.supportTip')">
+        <n-button data-track-label="Button_SupportMe" round class="support-button" :bordered="false" @click="openSupportMeDialog">
           {{ $t('home.support.supportMe') }}
-          <n-icon :component="Coffee" ml-2 size="25" />
+          <n-icon :component="IconCoffee" ml-2 size="25" />
         </n-button>
       </c-tooltip>
     </div>
@@ -57,7 +61,7 @@ const openSupportMeDialog = () => {
       <div style="display: flex; flex-direction: row; justify-content: center; align-items: center;" gap-6>
         <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;" gap-1>
           <n-image src="/bmc_qr.png" alt="buy me a coffee" width="120" height="120" />
-          <a href="https://buymeacoffee.com/effortgo" target="_blank" rel="noopener noreferrer">Buy me a coffee</a>
+          <a data-track-label="Link_BuyMeACoffee" href="https://buymeacoffee.com/effortgo" target="_blank" rel="noopener noreferrer">Buy me a coffee</a>
         </div>
         <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;" gap-1>
           <n-image src="/wx_qr.jpg" alt="wechat" width="120" height="120" />
@@ -104,11 +108,10 @@ const openSupportMeDialog = () => {
   box-sizing: border-box;
 
   .header {
-    margin-bottom: -15px;
-    margin-top: -20px;
+    margin-bottom: -20px;
+    margin-top: 10px;
     cursor: pointer;
     .top-title {
-      padding: 0;
       font-family: 'Marcellus', sans-serif; 
       text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
     }

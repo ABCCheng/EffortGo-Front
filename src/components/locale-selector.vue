@@ -15,7 +15,9 @@ const localeOptions = computed(() =>
 </script>
 
 <template>
+  <!-- data-track-label not valid -->
   <n-select
+    data-track-label="DropSelect_LocaleItem"
     v-model:value="locale"
     :options="localeOptions"
     w-100px

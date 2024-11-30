@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { useThemeVars } from 'naive-ui';
-import FavoriteButton from './FavoriteButton.vue';
-import type { Tool } from '@/pages/tools/tools.types';
+import { ref, toRefs } from 'vue';
+import type { Tool } from '@/pages/tools/tools.types'; // 导入 Tool 类型
+
+const trackLabel = ref('Button_CardFavorite');
 
 const props = defineProps<{ tool: Tool & { category: string } }>();
 const { tool } = toRefs(props);
@@ -9,7 +11,7 @@ const theme = useThemeVars();
 </script>
 
 <template>
-  <router-link :to="tool.path" class="decoration-none">
+  <router-link data-track-label="ToolCard_Card" :to="tool.path" class="decoration-none">
     <c-card class="tool-card h-full transition transition-duration-0.5s !border-2px !hover:border-primary" >
       <div :class="['badge', tool.badge]"></div>
       
@@ -30,7 +32,7 @@ const theme = useThemeVars();
             :style="{'background-color': theme.primaryColor}"
           >Update</div>
 
-          <FavoriteButton :tool="tool"/>
+          <FavoriteButton :data-track-label="trackLabel" :tool="tool"/>
         </div>
       </div>
 

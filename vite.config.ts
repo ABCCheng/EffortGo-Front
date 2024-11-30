@@ -1,6 +1,5 @@
 import { resolve } from 'node:path';
 import { URL, fileURLToPath } from 'node:url';
-
 import VueI18n from '@intlify/unplugin-vue-i18n/vite';
 import vue from '@vitejs/plugin-vue';
 import vueJsx from '@vitejs/plugin-vue-jsx';
@@ -15,8 +14,12 @@ import { VitePWA } from 'vite-plugin-pwa';
 import markdown from 'vite-plugin-vue-markdown';
 import svgLoader from 'vite-svg-loader';
 import { configDefaults } from 'vitest/config';
+import Sitemap from 'vite-plugin-sitemap';
+import { sitemappages } from './sitemappages.js';
 
+const hostname = 'https://www.effortgo.com/';
 const baseUrl = process.env.BASE_URL ?? '/';
+const dynamicRoutes = sitemappages.map(page => `/${page}`);
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -32,9 +35,12 @@ export default defineConfig({
     },
   },
   plugins: [
+    Sitemap({ 
+      hostname: `${hostname}`,
+      dynamicRoutes,
+     }),
     VueI18n({
       runtimeOnly: true,
-      jitCompilation: true,
       compositionOnly: true,
       fullInstall: true,
       strictMessage: false,
@@ -67,14 +73,20 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       strategies: 'generateSW',
+      workbox: {
+        maximumFileSizeToCacheInBytes: 10 * 1024 * 1024,
+        skipWaiting: true,
+        clientsClaim: true,
+      },
       manifest: {
         name: 'EffortGo',
+        short_name: 'EffortGo',
         description: 'Focusing on developing minimal and convenient online tools to ease work and life, combining efficiency with simplicity.',
         display: 'standalone',
         lang: 'en-US',
-        start_url: `${baseUrl}?utm_source=pwa&utm_medium=pwa`,
+        start_url: `${baseUrl}`,
         orientation: 'any',
-        theme_color: '#C28C70',
+        theme_color: '#FAF4F0',
         background_color: '#FAF4F0',
         icons: [
           {
@@ -123,5 +135,6 @@ export default defineConfig({
   },
   build: {
     target: 'esnext',
+    chunkSizeWarningLimit: 10000,
   },
 });
