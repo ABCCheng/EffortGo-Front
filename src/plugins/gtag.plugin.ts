@@ -7,8 +7,6 @@ export function trackUserInteractions() {
   
     function handleInteraction(event) {
       const target = event.target.closest('[data-track-label]');
-      // console.log(`1111111111111----------event :`, event);
-      // console.log(`2222222222222----------target :`, target);
       if (!target) {
         return;
       }
@@ -24,7 +22,6 @@ export function trackUserInteractions() {
             event_label: label,
             value: target.value || undefined,
           });
-          console.log(`gtagevent----------eventType : ${eventType}, label: ${label}`);
         }
       }
     }

@@ -48,7 +48,6 @@ export const useToolStore = defineStore('toolStore', () => {
     updateTools,
 
     findToolByPath({ path }: { path: string }) {
-      console.log("path:", path);
       return tools.value.find(tool => tool.path === path);
     },
 

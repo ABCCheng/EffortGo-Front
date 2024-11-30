@@ -126,7 +126,7 @@ tools:
   
   ai-painting:
     title: AI Painting
-    description: Enter a prompt and generate images in real-time. Powered by Together AI. The latest 5 images will be cached. Click "Clear" to clear the cache.
+    description: Enter a prompt and generate images in real-time. Powered by Together AI. The latest 10 images will be cached. Click "Clear" to clear the cache.
     inputPlaceHolder: Describe your image（Only English, e.g. 'A running dog'）...
     inputEmpty: Please enter a prompt
     consistency: Consistency

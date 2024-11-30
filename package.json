@@ -1,6 +1,6 @@
 {
   "name": "effortgo",
-  "version": "2024.11.21-2.0.1",
+  "version": "2024.11.29-2.0.1",
   "description": "Focusing on developing minimal and convenient online tools to ease work and life, combining efficiency with simplicity.",
   "author": "ABCCheng",
   "license": "GPL-3.0",
@@ -34,14 +34,12 @@
   "dependencies": {
     "@regexper/render": "^1.0.0",
     "@sindresorhus/slugify": "^2.2.1",
-    "@tabler/icons-vue": "^3.22.0",
+    "@tabler/icons-vue": "^3.23.0",
     "@tiptap/pm": "2.10.3",
     "@tiptap/starter-kit": "2.10.3",
     "@tiptap/vue-3": "2.10.3",
     "@types/figlet": "^1.7.0",
     "@types/markdown-it": "^14.1.2",
-    "@vicons/material": "^0.12.0",
-    "@vicons/tabler": "^0.12.0",
     "@vueuse/core": "^12.0.0",
     "@vueuse/head": "^2.0.0",
     "@vueuse/router": "^12.0.0",

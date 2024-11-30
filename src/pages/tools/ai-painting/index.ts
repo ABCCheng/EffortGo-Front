@@ -11,5 +11,6 @@ export const tool = defineTool({
   component: () => import('./ai-painting.vue'),
   icon: IconBrush,
   createdAt: new Date('2024-11-26'),
+  updatedAt: new Date('2024-11-29'),
   badge: 'default',
 });

@@ -38,9 +38,17 @@ onMounted(() => {
     const vh = window.innerHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
     document.documentElement.style.setProperty('--vheight', `calc(var(--vh) * 100)`);
+
+    // bodyleft to leftside
+    const bodyleft = document.body.getBoundingClientRect().left;
+    // bodyright to rightside
+    const bodyright = window.innerWidth - document.body.getBoundingClientRect().right;
+    document.documentElement.style.setProperty('--bodyleft', `${bodyleft}px`);
+    document.documentElement.style.setProperty('--bodyright', `${bodyright}px`);
   }
   // max-width
   document.documentElement.style.setProperty('--max-width', `1200px`);
+  
 
   window.addEventListener('resize', handleResize);
   handleResize();
@@ -48,7 +56,6 @@ onMounted(() => {
 
 // update the statusbar
 const updateStatusBarStyle = () => {
-  console.log("updateStatusBarStyle", isDarkTheme.value);
   const themeColorMeta = document.querySelector('meta[name="theme-color"]');
   if (themeColorMeta) {
     themeColorMeta.setAttribute('content', isDarkTheme.value ? '#1C1C1CFF' : '#FAF4F0FF');

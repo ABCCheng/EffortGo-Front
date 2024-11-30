@@ -54,8 +54,8 @@ const updatePersistedImages = async () => {
     await openDatabase();
     await clearAllData();
     
-    // only save the latest 5 images
-    const lastFiveImages = previewImages.value.slice(-5);
+    // only save the latest 10 images
+    const lastFiveImages = previewImages.value.slice(-10);
     for (const [index, image] of lastFiveImages.entries()) {
       await addData({ id: index, image });
     }

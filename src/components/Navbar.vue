@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
 import { useStyleStore } from '@/stores/style.store';
-import {Home, Menu2, Coffee} from '@vicons/tabler';
+import {IconHome, IconMenu2, IconCoffee} from '@tabler/icons-vue';
 import { ref } from 'vue';
 import { checkForUpdates } from '@/utils/swupdate';
 
@@ -37,13 +37,13 @@ const openSupportMeDialog = () => {
     <div flex items-center justify-center gap-2>
       <n-button data-track-label="Button_HomeMenu" circle variant="text"
         @click="styleStore.isMenuCollapsed = !styleStore.isMenuCollapsed" class="theme-button" :bordered="false">
-        <n-icon size="25" :component="Menu2" />
+        <n-icon size="25" :component="IconMenu2" />
       </n-button>
 
       <c-tooltip :tooltip="$t('home.home')" position="top">
         <n-button data-track-label="Button_Home" @click="goToHome" circle variant="text" class="theme-button"
           :bordered="false">
-          <n-icon size="25" :component="Home" />
+          <n-icon size="25" :component="IconHome" />
         </n-button>
       </c-tooltip>
 
@@ -52,7 +52,7 @@ const openSupportMeDialog = () => {
       <c-tooltip position="top" :tooltip="$t('home.support.supportTip')">
         <n-button data-track-label="Button_SupportMe" round class="support-button" :bordered="false" @click="openSupportMeDialog">
           {{ $t('home.support.supportMe') }}
-          <n-icon :component="Coffee" ml-2 size="25" />
+          <n-icon :component="IconCoffee" ml-2 size="25" />
         </n-button>
       </c-tooltip>
     </div>

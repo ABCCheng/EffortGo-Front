@@ -120,7 +120,7 @@ tools:
 
   ai-painting:
     title: AI 绘画
-    description: 输入文字描述实时生成图片，AI模型由Together AI支持。缓存最新的5张图片，点击"清空"可清空缓存。
+    description: 输入文字描述实时生成图片，AI模型由Together AI支持。缓存最新的10张图片，点击"清空"可清空缓存。
     inputPlaceHolder: 描述图片（仅支持英文，如'A running dog'）...
     inputEmpty: 请先输入描述内容
     consistency: Consistency
