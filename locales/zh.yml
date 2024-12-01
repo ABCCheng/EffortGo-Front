@@ -128,7 +128,6 @@ tools:
     generateError: '生成失败，请稍后重试 '
     clear: 清空
     
-
   chinese-color-picker:
     title: 中国色彩
     description: 展示最全中国传统色彩名称及色值列表。
@@ -145,4 +144,8 @@ tools:
   text-diff:
     title: 文本比较
     description: 比较两个文本并查看它们之间的差异。
+
+  webvm:
+    title: Web 虚拟机
+    description: Web 虚拟机是运行在浏览器中的虚拟Linux环境，由CheerpX支持，免安装学习Linux环境.
 

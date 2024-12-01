@@ -84,5 +84,6 @@ declare module 'vue' {
     TextDiff: typeof import('./src/pages/tools/text-diff/text-diff.vue')['default']
     'Tool.layout': typeof import('./src/layouts/tool.layout.vue')['default']
     ToolCard: typeof import('./src/components/ToolCard.vue')['default']
+    Webvm: typeof import('./src/pages/tools/webvm/webvm.vue')['default']
   }
 }

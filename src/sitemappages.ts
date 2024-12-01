@@ -4,5 +4,6 @@ export const sitemappages: string[] = [
     'ai-painting',
     'chinese-color-picker',
     'temperature-converter',
-    'text-diff'
+    'text-diff',
+    'webvm'
   ];

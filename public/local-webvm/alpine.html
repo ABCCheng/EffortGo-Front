@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>WebVM - Linux virtualization in WebAssembly</title>
+
+		<meta name="description" content="Linux virtual machine, running in the browser via HTML5/WebAssembly. Networking and graphics supported.">
+		<meta name="keywords" content="WebVM, Virtual Machine, CheerpX, x86 virtualization, WebAssembly, Tailscale, JIT">
+		<meta property="og:title" content="WebVM - Linux virtualization in WebAssembly" />
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="WebVM"/>
+		<meta property="og:image" content="" />
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:site" content="@leaningtech" />
+		<meta name="twitter:title" content="WebVM - Linux virtualization in WebAssembly" />
+		<meta name="twitter:description" content="Linux virtual machine, running in the browser via HTML5/WebAssembly. Networking and graphics supported.">
+		<meta name="twitter:image" content="" />
+
+		<!-- Apple iOS web clip compatibility tags -->
+		<meta name="application-name" content="WebVM" />
+		<meta name="apple-mobile-web-app-title" content="WebVM" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel='stylesheet' href='scrollbar.css'>
+		 
+		
+		<link href="./_app/immutable/assets/WebVM.BZGodZsQ.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.aSF0NH5B.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/entry.CafWvjMb.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/scheduler.CwEHxsS1.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.D7Vl5fqP.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.CvPH-9qc.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/preload-helper.CmsKOCeN.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.U-iAEmo-.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/0.DMIl4-Yc.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/3.BEYA9cqn.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/WebVM.hdj6ans0.js">
+	</head>
+	<body data-sveltekit-preload-data="hover">
+		<div style="display: contents">  <main class="relative w-full h-full"><div class="absolute top-0 bottom-0 left-0 right-0"><div class="flex flex-row w-14 h-full bg-neutral-700"><div class="flex flex-col shrink-0 w-14 text-gray-300"><div class="p-3 cursor-pointer text-center hover:bg-neutral-600 hover:text-gray-100" style="animation-duration: 0.5s"><i class="fas fa-info-circle fa-xl"></i></div><div class="p-3 cursor-pointer text-center hover:bg-neutral-600 hover:text-gray-100" style="animation-duration: 0.5s"><i class="fas fa-wifi fa-xl"></i></div><div class="p-3 cursor-pointer text-center hover:bg-neutral-600 hover:text-gray-100" style="animation-duration: 0.5s"><i class="fas fa-microchip fa-xl"></i></div><div class="p-3 cursor-pointer text-center hover:bg-neutral-600 hover:text-gray-100" style="animation-duration: 0.5s"><i class="fas fa-compact-disc fa-xl"></i></div></div> <div class="flex flex-col gap-5 shrink-0 w-60 h-full z-10 p-2 bg-neutral-600 text-gray-100 hidden"></div></div> <div class="absolute top-0 bottom-0 left-14 right-0" data-svelte-h="svelte-vfw3jl"><canvas class="w-full h-full cursor-none" id="display"></canvas></div> <div class="absolute top-0 bottom-0 left-14 right-0 p-1 scrollbar" id="console" data-svelte-h="svelte-1qy7za7"></div></div></main> 
+			
+			<script>
+				{
+					__sveltekit_1szair9 = {
+						base: new URL(".", location).pathname.slice(0, -1)
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null];
+
+					Promise.all([
+						import("./_app/immutable/entry/start.aSF0NH5B.js"),
+						import("./_app/immutable/entry/app.CvPH-9qc.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 3],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
+	</body>
+</html>

@@ -150,4 +150,8 @@ tools:
   text-diff:
     title: Text Diff
     description: Compare two texts and see the differences between them.
+  
+  webvm:
+    title: WebVM
+    description: WebVM is a virtual Linux environment running in the browser. Powered by the CheerpX.
 

@@ -1,3 +1,7 @@
+interface Window {
+  gtag: (...args: any[]) => void;
+}
+
 declare module '*.vue' {
   import type {  ComponentOptions } from 'vue';
   const Component: ComponentOptions;
