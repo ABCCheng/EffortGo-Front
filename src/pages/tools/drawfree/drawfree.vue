@@ -1,57 +1,79 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import { IconArrowsMaximize } from '@tabler/icons-vue';
+import { IconArrowsMaximize, IconArrowsMinimize } from '@tabler/icons-vue';
 
 const fullscreenElement = ref<HTMLDivElement | null>(null);
+const isFullscreen = ref(false);
 
 const enterFullscreen = () => {
-  const element = fullscreenElement.value;
-  if (element) {
-    if (element.requestFullscreen) {
-      element.requestFullscreen();
-    } else if ((element as any).webkitRequestFullscreen) {
-      (element as any).webkitRequestFullscreen(); // Safari
-    } else if ((element as any).msRequestFullscreen) {
-      (element as any).msRequestFullscreen(); // IE/Edge
+  const container = fullscreenElement.value;
+  if (container) {
+    if (!isFullscreen.value) {
+      isFullscreen.value = true;
+      if (container.requestFullscreen) {
+        container.requestFullscreen();
+      } else if ((container as any).webkitRequestFullscreen) {
+        (container as any).webkitRequestFullscreen();
+      } else if ((container as any).msRequestFullscreen) {
+        (container as any).msRequestFullscreen();
+      }
+    } else {
+      document.exitFullscreen?.();
+      isFullscreen.value = false;
     }
   }
 };
 </script>
 
 <template>
-    <div class="drawfree-container">
-        <n-button class="fullscreen_button" data-track-label="Button_ToggleFullScree" @click="enterFullscreen"
-          circle variant="text" :bordered="false">
-            <n-icon size="25" :component="IconArrowsMaximize" />
+    <div ref="fullscreenElement" class="drawfree-container" :class="{ fullscreen: isFullscreen }">
+        <n-button class="fullscreen_button" data-track-label="Button_ToggleFullScreen" @click="enterFullscreen" circle
+            variant="text" :bordered="false">
+            <n-icon v-if="!isFullscreen" size="25" :component="IconArrowsMaximize" />
+            <n-icon v-else size="25" :component="IconArrowsMinimize" />
         </n-button>
-        <iframe ref="fullscreenElement" src="/local-drawfree/index.html" width="100%" height="100%" frameborder="1" allowfullscreen></iframe>
+        <iframe src="/local-drawfree/index.html" width="100%" height="100%" frameborder="0" allowfullscreen
+            webkitAllowFullScreen mozAllowFullScreen>
+        </iframe>
     </div>
 </template>
 
 <style lang="less" scoped>
 .drawfree-container {
-    position: relative;
-    width: 100%;
-    height: calc(var(--vheight) - 240px) !important;
-    border: 4px solid transparent;
-    border-color: #FF7F50;
-    padding-top: 0px;
-    margin-bottom: 10px;
+  position: relative;
+  width: 100%;
+  height: calc(var(--vheight) - 240px) !important;
+  border: 4px solid transparent;
+  border-color: #FF7F50;
+  padding-top: 0px;
+  margin-bottom: 10px;
+
+  &.fullscreen {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: var(--vheight) !important;
+    z-index: 9999;
+    border: 2px solid transparent;
+  }
 }
 
 .fullscreen_button {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-    background: rgb(111, 76, 62);
-    background: linear-gradient(48deg, rgba(111, 76, 62, 1) 0%, rgba(133, 92, 78, 1) 60%, rgba(165, 122, 106, 1) 100%);
-    color: #fff !important;
-    transition: padding ease 0.2s !important;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background: rgb(111, 76, 62);
+  background: linear-gradient(48deg, rgba(111, 76, 62, 1) 0%, rgba(133, 92, 78, 1) 60%, rgba(165, 122, 106, 1) 100%);
+  color: #fff !important;
+  transition: all ease 0.2s !important;
+  opacity: 50%;
 
-    &:hover {
-        color: #fff;
-        background: linear-gradient(48deg, rgba(133, 92, 78, 1) 0%, rgba(165, 122, 106, 1) 60%, rgba(111, 76, 62, 1) 100%);
-    }
+  &:hover {
+    color: #fff;
+    background: linear-gradient(48deg, rgba(133, 92, 78, 1) 0%, rgba(165, 122, 106, 1) 60%, rgba(111, 76, 62, 1) 100%);
+    opacity: 100%;
+}
 }
 </style>
-  
+
