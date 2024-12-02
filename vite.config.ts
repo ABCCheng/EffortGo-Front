@@ -20,6 +20,8 @@ import { sitemappages } from './src/sitemappages.js';
 const hostname = 'https://www.effortgo.com/';
 const baseUrl = process.env.BASE_URL ?? '/';
 const dynamicRoutes = sitemappages.map(page => `/${page}`);
+const exclude = ['/local-webvm', '/local-webvm/alpine', '/local-webvm/login',
+   '/baidu_verify_codeva-KH0nUU2Pmr', '/local-drawfree'];
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -41,6 +43,7 @@ export default defineConfig({
     Sitemap({ 
       hostname: `${hostname}`,
       dynamicRoutes,
+      exclude,
      }),
     VueI18n({
       runtimeOnly: true,

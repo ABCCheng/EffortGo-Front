@@ -50,8 +50,8 @@ about:
 
     EffortGo 前端采用 Vue 3 和 Naive UI 组件库开发，后端技术仍在逐步进行中。  
     
-    欢迎关注我的 <a href="https://x.com/EffortGo2024" style="text-decoration: underline; color: #FF7F50"><strong>X</strong></a> 
-    和 <a href="https://www.xiaohongshu.com/user/profile/5fa36065000000000101ffa5" style="text-decoration: underline; color: #FF7F50"><strong>小红书</strong></a> ，了解最新进展。
+    欢迎关注我的 <a href="https://x.com/EffortGo2024" target='_blank' style="text-decoration: underline; color: #FF7F50"><strong>X</strong></a> 
+    和 <a href="https://www.xiaohongshu.com/user/profile/5fa36065000000000101ffa5" target='_blank' style="text-decoration: underline; color: #FF7F50"><strong>小红书</strong></a> ，了解最新进展。
 
     ## 交流
 
@@ -120,7 +120,8 @@ tools:
 
   ai-painting:
     title: AI 绘画
-    description: 输入文字描述实时生成图片，AI模型由Together AI支持。缓存最新的10张图片，点击"清空"可清空缓存。
+    description: 输入文字描述实时生成图片，AI模型由Together AI支持。
+    innerDescription: 输入文字描述实时生成图片，AI模型由Together AI支持。缓存最新的10张图片，点击"清空"可清空缓存。
     inputPlaceHolder: 描述图片（仅支持英文，如'A running dog'）...
     inputEmpty: 请先输入描述内容
     consistency: Consistency
@@ -132,6 +133,11 @@ tools:
     title: 中国色彩
     description: 展示最全中国传统色彩名称及色值列表。
     searchPlaceHolder: 搜索颜色 (例如 '海棠红')...
+
+  drawfree:
+    title: Draw Free
+    description: 一款强大的白板工具，集成思维导图、流程图等功能。
+    innerDescription: "一款强大的白板工具，集成思维导图、流程图等功能。参考 <a href='https://github.com/plait-board/drawnix' target='_blank' style='text-decoration: underline; color: #FF7F50'><strong>drawnix</strong></a> 项目源码设计." 
 
   temperature-converter:
     title: 温度转换器

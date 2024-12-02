@@ -19,17 +19,17 @@ const enterFullscreen = () => {
 </script>
 
 <template>
-    <div class="webvm-container">
+    <div class="drawfree-container">
         <n-button class="fullscreen_button" data-track-label="Button_ToggleFullScree" @click="enterFullscreen"
           circle variant="text" :bordered="false">
             <n-icon size="25" :component="IconArrowsMaximize" />
         </n-button>
-        <iframe ref="fullscreenElement"  src="/local-webvm/index.html" width="100%" height="100%" frameborder="0" allowfullscreen></iframe>
+        <iframe ref="fullscreenElement" src="/local-drawfree/index.html" width="100%" height="100%" frameborder="1" allowfullscreen></iframe>
     </div>
 </template>
 
 <style lang="less" scoped>
-.webvm-container {
+.drawfree-container {
     position: relative;
     width: 100%;
     height: calc(var(--vheight) - 240px) !important;
@@ -38,6 +38,7 @@ const enterFullscreen = () => {
     padding-top: 0px;
     margin-bottom: 10px;
 }
+
 .fullscreen_button {
     position: absolute;
     top: 5px;
