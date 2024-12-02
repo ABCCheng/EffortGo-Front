@@ -16,7 +16,11 @@ const { t } = useI18n();
 
 const i18nKey = computed<string>(() => route.path.trim().replace('/', ''));
 const toolTitle = computed<string>(() => t(`tools.${i18nKey.value}.title`, String(route.meta.name)));
-const toolDescription = computed<string>(() => t(`tools.${i18nKey.value}.description`, String(route.meta.description)));
+const toolDescription = computed<string>(() => t(`tools.${i18nKey.description}.title`, String(route.meta.description)));;
+const toolInnerDescription = computed<string>(() => {
+  const innerDesc = t(`tools.${i18nKey.value}.innerDescription`);
+  return innerDesc !== `tools.${i18nKey.value}.innerDescription` ? innerDesc : t(`tools.${i18nKey.value}.description`);
+});
 
 const head = computed<HeadObject>(() => ({
   title: `EffortGo - ${toolTitle.value}`,
@@ -66,9 +70,7 @@ useHead(head);
 
         <div class="separator" />
 
-        <div class="description">
-          {{ toolDescription }}
-        </div>
+        <div v-html="toolInnerDescription" class="innerdescription" />
       </div>
     </div>
 
@@ -113,7 +115,7 @@ useHead(head);
       margin: 5px 0;
     }
 
-    .description {
+    .innerdescription {
       margin: 0 0 10px 0;
       opacity: 0.8;
     }

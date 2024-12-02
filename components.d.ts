@@ -41,6 +41,7 @@ declare module 'vue' {
     'CTextCopyable.demo': typeof import('./src/ui/c-text-copyable/c-text-copyable.demo.vue')['default']
     CTooltip: typeof import('./src/ui/c-tooltip/c-tooltip.vue')['default']
     'CTooltip.demo': typeof import('./src/ui/c-tooltip/c-tooltip.demo.vue')['default']
+    Drawfree: typeof import('./src/pages/tools/drawfree/drawfree.vue')['default']
     FavoriteButton: typeof import('./src/components/FavoriteButton.vue')['default']
     FooterButtons: typeof import('./src/components/FooterButtons.vue')['default']
     FormatTransformer: typeof import('./src/components/FormatTransformer.vue')['default']
@@ -84,5 +85,6 @@ declare module 'vue' {
     TextDiff: typeof import('./src/pages/tools/text-diff/text-diff.vue')['default']
     'Tool.layout': typeof import('./src/layouts/tool.layout.vue')['default']
     ToolCard: typeof import('./src/components/ToolCard.vue')['default']
+    Webvm: typeof import('./src/pages/tools/webvm/webvm.vue')['default']
   }
 }

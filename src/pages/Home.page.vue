@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { IconDragDrop, IconHeart, IconStar, IconNewSection, IconRefresh, IconSelectAll} from '@tabler/icons-vue';
 import { useHead } from '@vueuse/head';
-import { computed } from 'vue';
+import { ref, toRefs, computed } from 'vue';
 import Draggable from 'vuedraggable';
 import ColoredCard from '../components/ColoredCard.vue';
 import ToolCard from '../components/ToolCard.vue';
