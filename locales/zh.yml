@@ -139,6 +139,11 @@ tools:
     description: 一款强大的白板工具，集成思维导图、流程图等功能。
     innerDescription: "一款强大的白板工具，集成思维导图、流程图等功能。参考 <a href='https://github.com/plait-board/drawnix' target='_blank' style='text-decoration: underline; color: #FF7F50'><strong>drawnix</strong></a> 项目源码设计." 
 
+  global-weather:
+    title: 全球天气
+    description: 查询全球城市的实时天气、未来天气，由OpenWeather提供数据支持。
+    searchPlaceHolder: 输入城市名称 (如'beijing')...
+  
   temperature-converter:
     title: 温度转换器
     description: 摄氏度、华氏度、开尔文、兰氏度温度度数转换。

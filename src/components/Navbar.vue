@@ -3,11 +3,6 @@ import { useRouter } from 'vue-router';
 import { useStyleStore } from '@/stores/style.store';
 import {IconHome, IconMenu2, IconCoffee} from '@tabler/icons-vue';
 import { ref } from 'vue';
-import { checkForUpdates } from '@/utils/swupdate';
-
-const checkForUpdatesHandler = () => {
-  checkForUpdates();
-};
 
 const router = useRouter();
 const styleStore = useStyleStore();
@@ -15,7 +10,6 @@ const styleStore = useStyleStore();
 const { t } = useI18n();
 
 const goToHome = () => {
-  checkForUpdatesHandler();
   router.push('/');
 };
 
@@ -23,7 +17,6 @@ const supportMeVisible = ref(false);  // 控制弹出框的显示
 const openSupportMeDialog = () => {
   supportMeVisible.value = true;  // 打开对话框
 };
-
 
 </script>
 

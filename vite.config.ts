@@ -27,15 +27,25 @@ const exclude = ['/local-webvm', '/local-webvm/alpine', '/local-webvm/login',
 export default defineConfig({
   server: {
     port: 3000,
+    cors: true,
     headers: {
       'Cross-Origin-Opener-Policy': 'same-origin',
       'Cross-Origin-Embedder-Policy': 'require-corp',
+      'Cross-Origin-Resource-Policy': 'cross-origin'
     },
     proxy: {
       '/togetherai-api': {
         target: '',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/togetherai-api/, '/api'),
+      },
+      '/openweathermap-api': {
+        target: 'https://api.openweathermap.org',
+        changeOrigin: true,
+        rewrite: (path) => {
+          const newPath = path.replace(/^\/openweathermap-api/, '/');
+          return `${newPath}&appid=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`;
+        },
       },
     },
   },

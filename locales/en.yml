@@ -145,6 +145,11 @@ tools:
     description: A powerful whiteboard tool featuring mind mapping and flowchart capabilities. 
     innerDescription: "A powerful whiteboard tool featuring mind mapping and flowchart capabilities. Designed according to the <a href='https://github.com/plait-board/drawnix' target='_blank' style='text-decoration: underline; color: #FF7F50'><strong>drawnix</strong></a> project source code." 
 
+  global-weather:
+    title: Global Weather
+    description: Check out the real-time and future weather for cities around the world, powered by OpenWeather.
+    searchPlaceHolder: Search cities (e.g. 'new york')...
+  
   temperature-converter:
     title: Temp Converter
     description: Degrees temperature conversions for Celsius, Fahrenheit, Kelvin and Rankine.
