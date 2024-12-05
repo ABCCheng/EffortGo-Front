@@ -42,6 +42,7 @@ declare module 'vue' {
     CTooltip: typeof import('./src/ui/c-tooltip/c-tooltip.vue')['default']
     'CTooltip.demo': typeof import('./src/ui/c-tooltip/c-tooltip.demo.vue')['default']
     Drawfree: typeof import('./src/pages/tools/drawfree/drawfree.vue')['default']
+    Exchangerates: typeof import('./src/pages/tools/exchangerates/exchangerates.vue')['default']
     FavoriteButton: typeof import('./src/components/FavoriteButton.vue')['default']
     FooterButtons: typeof import('./src/components/FooterButtons.vue')['default']
     FormatTransformer: typeof import('./src/components/FormatTransformer.vue')['default']

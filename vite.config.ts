@@ -47,6 +47,11 @@ export default defineConfig({
           return `${newPath}&appid=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`;
         },
       },
+      '/europa-xml': {
+        target: 'https://www.ecb.europa.eu',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/europa-xml/, '/'),
+      },
     },
   },
   plugins: [
@@ -148,6 +153,8 @@ export default defineConfig({
   },
   define: {
     'import.meta.env.PACKAGE_VERSION': JSON.stringify(process.env.npm_package_version),
+    'process.env.IS_PREACT': JSON.stringify("true"),
+    'window.EXCALIDRAW_ASSET_PATH': JSON.stringify("./src/assets/")
   },
   test: {
     exclude: [...configDefaults.exclude, '**/*.e2e.spec.ts'],

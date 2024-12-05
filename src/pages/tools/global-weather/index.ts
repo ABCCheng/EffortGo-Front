@@ -10,6 +10,6 @@ export const tool = defineTool({
   keywords: ['weather', 'global weather', 'weather forecast', '', '天气查询', '全球天气', '未来天气'],
   component: () => import('./global-weather.vue'),
   icon: IconHaze,
-  createdAt: new Date('2024-12-04'),
+  createdAt: new Date('2024-12-07'),
   badge: 'default',
 });

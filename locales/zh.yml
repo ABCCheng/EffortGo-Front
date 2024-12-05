@@ -139,6 +139,13 @@ tools:
     description: 一款强大的白板工具，集成思维导图、流程图等功能。
     innerDescription: "一款强大的白板工具，集成思维导图、流程图等功能。参考 <a href='https://github.com/plait-board/drawnix' target='_blank' style='text-decoration: underline; color: #FF7F50'><strong>drawnix</strong></a> 项目源码设计." 
 
+  exchangerates:
+    title: 实时汇率
+    description: 货币实时汇率查询. 
+    innerDescription: 实时查询汇率，数据来源欧洲央行。
+    dataUpdateTime: "数据更新时间："
+    dataUpdateFailed: "数据更新失败，请刷新重试!"
+
   global-weather:
     title: 全球天气
     description: 查询全球城市的实时天气、未来天气，由OpenWeather提供数据支持。

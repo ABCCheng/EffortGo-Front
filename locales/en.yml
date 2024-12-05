@@ -145,6 +145,14 @@ tools:
     description: A powerful whiteboard tool featuring mind mapping and flowchart capabilities. 
     innerDescription: "A powerful whiteboard tool featuring mind mapping and flowchart capabilities. Designed according to the <a href='https://github.com/plait-board/drawnix' target='_blank' style='text-decoration: underline; color: #FF7F50'><strong>drawnix</strong></a> project source code." 
 
+  exchangerates:
+    title: Exchange Rates
+    description: Check the real-time exchange rates of currencies. 
+    innerDescription: "Check the real-time exchange rate of currencies. Data source: European Central Bank."
+    dataUpdateTime: "Data update time:"
+    dataUpdateFailed: "Data update failed, click to refresh!"
+
+
   global-weather:
     title: Global Weather
     description: Check out the real-time and future weather for cities around the world, powered by OpenWeather.

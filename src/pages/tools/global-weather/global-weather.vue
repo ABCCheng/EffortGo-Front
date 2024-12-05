@@ -41,10 +41,6 @@ const paginatedForecast = computed(() => {
   return forecastData.value.slice(startIndex, startIndex + itemsPerPage);
 });
 
-const changePage = (page: number) => {
-  currentPage.value = page;
-};
-
 const fetchCities = debounce(async () => {
     citySuggestions.value = [];
     if (city.value.length <= 2) {
