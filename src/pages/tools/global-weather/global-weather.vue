@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
+import { useI18n } from 'vue-i18n';
 import { debounce } from "lodash";
 
 const { locale } = useI18n();
@@ -46,7 +47,7 @@ const fetchCities = debounce(async () => {
     if (city.value.length <= 2) {
         return;
     }
-    console.log("aaaaaaaaaaaaaaa", locale.value);
+    
     const response = await fetch(`/openweathermap-api/geo/1.0/direct?q=${city.value}&limit=10&lang=${locale.value}`);
     const data = await response.json();
     if (Array.isArray(data)) {
@@ -72,8 +73,9 @@ const fetchWeather = async (selectedCity: CitySuggestion) => {
         data.timezone / 3600
       }`,
       currentTime: formatFullTime(data.dt + data.timezone),
-      sunrise: formatHHMMSSTime(data.sys.sunrise + data.timezone),
-      sunset: formatHHMMSSTime(data.sys.sunset + data.timezone),
+      sunrise: (locale.value==='en' ? 'Sunrise: ' : '日出: ') + formatHHMMSSTime(data.sys.sunrise + data.timezone),
+      sunset: (locale.value==='en' ? 'Sunset: ' : '日落: ') + formatHHMMSSTime(data.sys.sunset + data.timezone),
+      description: locale.value==='en' ? data.weather[0].main : data.weather[0].description,
       weather: data.weather,
       main: data.main,
       wind: data.wind,
@@ -120,7 +122,8 @@ const formatFullTime = (timestamp: number) => {
   const seconds = isoString.slice(17, 19);
   
   const weekDays = ['Sun.', 'Mon.', 'Tue.', 'Wed.', 'Thu.', 'Fri.', 'Sat.'];
-  const week = weekDays[date.getUTCDay()];
+  const weekDays_zh = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
+  const week = locale.value==='en' ? weekDays[date.getUTCDay()] : weekDays_zh[date.getUTCDay()];
 
   // yyyy-mm-dd HH:MM:SS week
   return `${year}-${month}-${day} ${hours}:${minutes}:${seconds} ${week}`;
@@ -148,7 +151,8 @@ const formatForecastTime = (timestamp: number) => {
   const hours = isoString.slice(11, 13);
   
   const weekDays = ['Sun.', 'Mon.', 'Tue.', 'Wed.', 'Thu.', 'Fri.', 'Sat.'];
-  const week = weekDays[date.getUTCDay()];
+  const weekDays_zh = ['周日', '周一', '周二', '周三', '周四', '周五', '周六'];
+  const week = locale.value==='en' ? weekDays[date.getUTCDay()] : weekDays_zh[date.getUTCDay()];
 
   // mm-dd(week) HH:MM:SS week
   return `${month}-${day}(${week}) ${hours}h`;
@@ -156,7 +160,7 @@ const formatForecastTime = (timestamp: number) => {
 
 
 
-const weatherIconUrl = (icon: string) =>`src/assets/icons/${icon}@2x.png`;
+const weatherIconUrl = (icon: string) =>`/icons-weather/${icon}@2x.png`;
 </script>
 
 <style scoped>
@@ -182,14 +186,14 @@ const weatherIconUrl = (icon: string) =>`src/assets/icons/${icon}@2x.png`;
                 <div flex flex-col items-center justify-center>
                     <img :src="weatherIconUrl(weatherData.weather[0].icon)" alt="Weather Icon" class="weather-icon"
                         style="width: 100px; height: 100px; margin: -25px; padding: 0;" />
-                    <p style="margin: 0; padding: 0;">{{ locale.value === 'zh' ?  weatherData.weather[0].description : weatherData.weather[0].main}}</p>
+                    <p style="margin: 0; padding: 0;">{{ weatherData.description}}</p>
                     <p style="margin: 0; padding: 0;">{{ Math.round(weatherData.wind.speed) }}m/s {{ Math.round(weatherData.main.temp) }}°C</p>
                 </div>
                 <div flex-1 flex-col>
                     <h3 style="margin: 0; padding: 0;">{{ weatherData.cityname }}</h3>
                     <p style="margin: 0; padding: 0;">{{ weatherData.timezone }}: {{ weatherData.currentTime }}</p>
-                    <p style="margin: 0; padding: 0;">Sunrise: {{ weatherData.sunrise }} </p>
-                    <p style="margin: 0; padding: 0;">Sunset: {{ weatherData.sunset }} </p>
+                    <p style="margin: 0; padding: 0;">{{ weatherData.sunrise }} </p>
+                    <p style="margin: 0; padding: 0;">{{ weatherData.sunset }} </p>
                 </div>
             </div>
         </n-card>
