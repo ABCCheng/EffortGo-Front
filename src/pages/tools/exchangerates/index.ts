@@ -10,6 +10,6 @@ export const tool = defineTool({
   keywords: ['exchange rate', 'currency', '实时汇率', '汇率'],
   component: () => import('./exchangerates.vue'),
   icon: IconCoin,
-  createdAt: new Date('2024-12-07'),
+  createdAt: new Date('2024-12-05'),
   badge: 'default',
 });

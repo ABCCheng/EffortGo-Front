@@ -60,7 +60,6 @@ declare module 'vue' {
     NAutoComplete: typeof import('naive-ui')['NAutoComplete']
     Navbar: typeof import('./src/components/Navbar.vue')['default']
     NButton: typeof import('naive-ui')['NButton']
-    NCard: typeof import('naive-ui')['NCard']
     NCollapseTransition: typeof import('naive-ui')['NCollapseTransition']
     NConfigProvider: typeof import('naive-ui')['NConfigProvider']
     NEllipsis: typeof import('naive-ui')['NEllipsis']
@@ -91,6 +90,7 @@ declare module 'vue' {
     TextDiff: typeof import('./src/pages/tools/text-diff/text-diff.vue')['default']
     'Tool.layout': typeof import('./src/layouts/tool.layout.vue')['default']
     ToolCard: typeof import('./src/components/ToolCard.vue')['default']
+    Watermark: typeof import('./src/pages/tools/watermark/watermark.vue')['default']
     Webvm: typeof import('./src/pages/tools/webvm/webvm.vue')['default']
   }
 }

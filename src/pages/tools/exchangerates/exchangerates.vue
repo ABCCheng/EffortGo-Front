@@ -154,7 +154,7 @@ onMounted(fetchExchangeRates);
       <n-input :value="convertedAmount" readonly style="width: 130px;" class="currency-item" />
     </div>
 
-    <n-card style="margin: 0; padding: 0;">
+    <c-card style="margin: 0; padding: 0;">
       <ul style="margin: 0; padding: 0;">
         <li v-for="rate in exchangeRates" :key="rate.to" class="flex p-2 rate-item">
           <div class="w-3/5 text-left hide-on-small">{{ rate.from }}</div>
@@ -162,7 +162,7 @@ onMounted(fetchExchangeRates);
           <div class="w-1/5 text-left show-on-small sm:w-1/4">{{ rate.rate }}</div>
         </li>
       </ul>
-    </n-card>
+    </c-card>
   </div>
 </template>
 

@@ -5,6 +5,7 @@ import { tool as exchangerates } from './exchangerates';
 import { tool as globalWeather } from './global-weather';
 import { tool as temperatureConverter } from './temperature-converter';
 import { tool as textDiff } from './text-diff';
+import { tool as watermark } from './watermark';
 import { tool as webvm } from './webvm';
 
 import type { ToolCategory } from './tools.types';

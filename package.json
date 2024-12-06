@@ -1,6 +1,6 @@
 {
   "name": "effortgo",
-  "version": "2024.12.07-2.3.0",
+  "version": "2024.12.05-2.3.2",
   "description": "Focusing on developing minimal and convenient online tools to ease work and life, combining efficiency with simplicity.",
   "author": "ABCCheng",
   "license": "GPL-3.0",
@@ -52,6 +52,7 @@
     "cronstrue": "^2.26.0",
     "crypto-js": "^4.1.1",
     "date-fns": "^2.29.3",
+    "dom-to-image": "^2.6.0",
     "dompurify": "^3.0.6",
     "email-normalizer": "^1.0.0",
     "emojilib": "^3.0.10",

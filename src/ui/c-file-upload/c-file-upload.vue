@@ -8,7 +8,7 @@ const props = withDefaults(defineProps<{
 }>(), {
   multiple: false,
   accept: undefined,
-  title: 'Drag and drop files here, or click to select files',
+  title: 'Drag and drop, or click to select',
 });
 
 const emit = defineEmits<{
@@ -55,7 +55,7 @@ function handleUpload(files: FileList | null | undefined) {
 
 <template>
   <div
-    class="flex flex-col cursor-pointer items-center justify-center border-2px border-gray-300 border-opacity-50 rounded-lg border-dashed p-8 transition-colors"
+    class="flex flex-col cursor-pointer items-center justify-center border-2px border-gray-300 border-opacity-50 rounded-lg border-dashed px-0 transition-colors"
     :class="{
       'border-primary border-opacity-100': isOverDropZone,
     }"
@@ -74,22 +74,9 @@ function handleUpload(files: FileList | null | undefined) {
       @change="handleFileInput"
     >
     <slot>
-      <span op-70>
+      <span>
         {{ title }}
       </span>
-
-      <!-- separator -->
-      <div my-4 w-full flex items-center justify-center op-70>
-        <div class="h-1px max-w-100px flex-1 bg-gray-300 op-50" />
-        <div class="mx-2 text-gray-400">
-          or
-        </div>
-        <div class="h-1px max-w-100px flex-1 bg-gray-300 op-50" />
-      </div>
-
-      <n-button>
-        Browse files
-      </n-button>
     </slot>
   </div>
 </template>

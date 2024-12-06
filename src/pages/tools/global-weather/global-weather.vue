@@ -170,7 +170,7 @@ const weatherIconUrl = (icon: string) =>`/icons-weather/${icon}@2x.png`;
 </style>
 
 <template>
-    <div mx-auto max-w-full important:flex-1>
+    <div mx-auto max-w-600px important:flex-1>
         <div flex items-center gap-3 mb-3>
             <n-auto-complete v-model:value="city" clearable
                 :options="citySuggestions.map((suggestion) => ({label: `${suggestion.fullname}`,value: `${suggestion.fullname}`}))"
@@ -181,7 +181,7 @@ const weatherIconUrl = (icon: string) =>`/icons-weather/${icon}@2x.png`;
             </n-auto-complete>
         </div>
         
-        <n-card v-if="weatherData" mx-auto max-w-600px>
+        <c-card v-if="weatherData" style="margin: 0; padding: 5px 15px;">
             <div flex flex-row items-center justify-center gap-5>
                 <div flex flex-col items-center justify-center>
                     <img :src="weatherIconUrl(weatherData.weather[0].icon)" alt="Weather Icon" class="weather-icon"
@@ -196,9 +196,9 @@ const weatherIconUrl = (icon: string) =>`/icons-weather/${icon}@2x.png`;
                     <p style="margin: 0; padding: 0;">{{ weatherData.sunset }} </p>
                 </div>
             </div>
-        </n-card>
+        </c-card>
 
-        <n-card v-if="forecastData.length" mx-auto max-w-600px>
+        <c-card v-if="forecastData.length" style="margin: 0; padding: 5px;">
             <div flex flex-col items-center justify-center>
                 <ul class="w-full" style="margin: 0; padding: 0;">
                     <li v-for="(forecast, index) in paginatedForecast" :key="index" class="w-full flex items-center p-1">
@@ -212,7 +212,7 @@ const weatherIconUrl = (icon: string) =>`/icons-weather/${icon}@2x.png`;
                     :page-count="Math.ceil(forecastData.length / itemsPerPage)" :show-size-picker="false"
                     style="margin-top: 16px; text-align: center;" />
             </div>
-        </n-card>
+        </c-card>
 
     </div>
 </template>
