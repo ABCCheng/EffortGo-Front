@@ -7,5 +7,6 @@ export const sitemappages: string[] = [
     'global-weather',
     'temperature-converter',
     'text-diff',
+    'tui-editor',
     'webvm'
   ];

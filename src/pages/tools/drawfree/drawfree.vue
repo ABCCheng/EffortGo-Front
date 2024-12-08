@@ -38,14 +38,13 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-    <div ref="fullscreenElementRef" class="drawfree-container" allowfullscreen webkitAllowFullScreen mozAllowFullScreen>
+    <div ref="fullscreenElementRef" class="drawfree-container" :class="{ fullscreen: isFullscreen }">
         <n-button class="fullscreen_button" data-track-label="Button_ToggleFullScreen" @click="enterFullscreen" circle
             variant="text" :bordered="false">
             <n-icon v-if="!isFullscreen" size="25" :component="IconArrowsMaximize" />
             <n-icon v-else size="25" :component="IconArrowsMinimize" />
         </n-button>
-        <iframe src="/local-drawfree/index.html" width="100%" height="100%" frameborder="0">
-        </iframe>
+        <iframe src="/local-drawfree/index.html" width="100%" height="100%" frameborder="0"></iframe>
     </div>
 </template>
 
@@ -58,6 +57,16 @@ onBeforeUnmount(() => {
   border-color: #FF7F50;
   padding-top: 0px;
   margin-bottom: 10px;
+
+  &.fullscreen {
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: var(--vheight) !important;
+    z-index: 9999;
+    border: 2px solid transparent;
+  }
 }
 
 .fullscreen_button {

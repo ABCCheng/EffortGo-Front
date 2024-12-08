@@ -38,7 +38,7 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-    <div ref="fullscreenElementRef" class="webvm-container" allowfullscreen webkitAllowFullScreen mozAllowFullScreen>
+    <div ref="fullscreenElementRef" class="webvm-container" :class="{ fullscreen: isFullscreen }">
       <n-button class="fullscreen_button" data-track-label="Button_ToggleFullScreen" @click="enterFullscreen"
         circle variant="text" :bordered="false">
         <n-icon v-if="!isFullscreen" size="25" :component="IconArrowsMaximize" />
@@ -57,6 +57,16 @@ onBeforeUnmount(() => {
     border-color: #FF7F50;
     padding-top: 0px;
     margin-bottom: 10px;
+
+    &.fullscreen {
+      position: fixed !important;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: var(--vheight) !important;
+      border: 2px solid transparent;
+      z-index: 9999;
+    }
 }
 .fullscreen_button {
     position: absolute;

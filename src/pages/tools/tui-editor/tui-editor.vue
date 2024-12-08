@@ -43,6 +43,40 @@ onBeforeUnmount(() => {
   document.removeEventListener('fullscreenchange', handleFullscreenChange);
 });
 
+
+const initializeEditor = (filePath: string, fileName: string) => {
+  const editorRect = editorRef.value.getBoundingClientRect();
+  const width = editorRect.width;
+  const height = editorRect.height;
+
+  if (editorInstance) {
+    editorInstance.destroy();
+    editorInstance = null;
+  }
+
+  editorInstance = new ImageEditor(editorRef.value, {
+    includeUI: {
+      loadImage: {
+        path: filePath,
+        name: fileName,
+      },
+      theme: {
+        'common.bi.image': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4/wcAAwAB/LeJzVYAAAAASUVORK5CYII=',
+      },
+      menu: ['resize', 'crop', 'flip', 'rotate', 'draw', 'shape', 'icon', 'text', 'mask', 'filter'],
+      initMenu: '',
+      uiSize: {
+        width: `${width - 30}px`,
+        height: `${height}px`,
+      },
+      menuBarPosition: 'bottom',
+    },
+    cssMaxWidth: width - 30,
+    cssMaxHeight: height - 140,
+    usageStatistics: false,
+  });
+};
+
 const loadFileInput = () => {
   fileInput.value?.click();
 };
@@ -56,9 +90,7 @@ const loadImage = async (event: Event) => {
 
     reader.onload = (e) => {
       const imageData = e.target?.result as string;
-
-      // 加载图片到 tui-image-editor
-      editorInstance.loadImageFromURL(imageData, file.name);
+      initializeEditor(imageData, file.name);
     };
 
     reader.readAsDataURL(file);
@@ -100,38 +132,10 @@ const resizeEditor = () => {
 onMounted(() => {
   if (editorRef.value) {
     editorRef.value.addEventListener('contextmenu', (event) => {
-      event.preventDefault(); // 阻止默认右键菜单
+      event.preventDefault();
     });
 
-    const initializeEditor = () => {
-      const editorRect = editorRef.value.getBoundingClientRect();
-      const width = editorRect.width;
-      const height = editorRect.height;
-
-      editorInstance = new ImageEditor(editorRef.value, {
-        includeUI: {
-          loadImage: {
-            path: '/local-tui-editor/assets/sample.png',
-            name: 'SampleImage',
-          },
-          theme: {
-            'common.bi.image': 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHElEQVQI12P4/wcAAwAB/LeJzVYAAAAASUVORK5CYII=',
-          },
-          menu: ['crop', 'flip', 'rotate', 'draw', 'shape', 'icon', 'text', 'filter'],
-          initMenu: '',
-          uiSize: {
-            width: `${width - 30}px`,
-            height: `${height}px`,
-          },
-          menuBarPosition: 'bottom',
-        },
-        cssMaxWidth: width - 30,
-        cssMaxHeight: height - 140,
-        usageStatistics: false,
-      });
-    };
-
-    initializeEditor();
+    initializeEditor('/local-tui-editor/assets/sample.png', 'SampleImage');
 
     window.addEventListener('resize', resizeEditor);
 
@@ -143,7 +147,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div w-full ref="fullscreenElementRef" class="editor-container" allowfullscreen webkitAllowFullScreen mozAllowFullScreen>
+  <div w-full ref="fullscreenElementRef" class="editor-container" :class="{ fullscreen: isFullscreen }">
     <n-button class="fullscreen_button" data-track-label="Button_ToggleFullScreen" @click="enterFullscreen" circle variant="text" :bordered="false">
       <n-icon v-if="!isFullscreen" size="25" :component="IconArrowsMaximize" />
       <n-icon v-else size="25" :component="IconArrowsMinimize" />
@@ -170,6 +174,16 @@ onMounted(() => {
   border-color: #FF7F50;
   padding-top: 0px;
   margin-bottom: 10px;
+
+  &.fullscreen {
+      position: fixed !important;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: var(--vheight) !important;
+      border: 2px solid transparent;
+      z-index: 9999;
+    }
 }
 
 .editor {

@@ -80,7 +80,7 @@ onUnmounted(() => {
   max-width: var(--max-width);
   height: 100px;
   padding: 0px 20px;
-  z-index: 10000;
+  z-index: 10;
   overflow: hidden;
 }
 
