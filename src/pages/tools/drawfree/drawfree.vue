@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, onMounted, onBeforeUnmount} from 'vue';
 import { IconArrowsMaximize, IconArrowsMinimize } from '@tabler/icons-vue';
 
-const fullscreenElement = ref<HTMLDivElement | null>(null);
+const fullscreenElementRef = ref<HTMLDivElement | null>(null);
 const isFullscreen = ref(false);
 
 const enterFullscreen = () => {
-  const container = fullscreenElement.value;
+  const container = fullscreenElementRef.value;
   if (container) {
     if (!isFullscreen.value) {
       isFullscreen.value = true;
@@ -23,17 +23,28 @@ const enterFullscreen = () => {
     }
   }
 };
+
+const handleFullscreenChange = () => {
+  isFullscreen.value = document.fullscreenElement === fullscreenElementRef.value;
+};
+onMounted(() => {
+  document.addEventListener('fullscreenchange', handleFullscreenChange);
+});
+
+onBeforeUnmount(() => {
+  document.removeEventListener('fullscreenchange', handleFullscreenChange);
+});
+
 </script>
 
 <template>
-    <div ref="fullscreenElement" class="drawfree-container" :class="{ fullscreen: isFullscreen }">
+    <div ref="fullscreenElementRef" class="drawfree-container" allowfullscreen webkitAllowFullScreen mozAllowFullScreen>
         <n-button class="fullscreen_button" data-track-label="Button_ToggleFullScreen" @click="enterFullscreen" circle
             variant="text" :bordered="false">
             <n-icon v-if="!isFullscreen" size="25" :component="IconArrowsMaximize" />
             <n-icon v-else size="25" :component="IconArrowsMinimize" />
         </n-button>
-        <iframe src="/local-drawfree/index.html" width="100%" height="100%" frameborder="0" allowfullscreen
-            webkitAllowFullScreen mozAllowFullScreen>
+        <iframe src="/local-drawfree/index.html" width="100%" height="100%" frameborder="0">
         </iframe>
     </div>
 </template>
@@ -43,20 +54,10 @@ const enterFullscreen = () => {
   position: relative;
   width: 100%;
   height: calc(var(--vheight) - 240px) !important;
-  border: 4px solid transparent;
+  border: 2px solid transparent;
   border-color: #FF7F50;
   padding-top: 0px;
   margin-bottom: 10px;
-
-  &.fullscreen {
-    position: fixed !important;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: var(--vheight) !important;
-    z-index: 9999;
-    border: 2px solid transparent;
-  }
 }
 
 .fullscreen_button {
@@ -73,7 +74,7 @@ const enterFullscreen = () => {
     color: #fff;
     background: linear-gradient(48deg, rgba(133, 92, 78, 1) 0%, rgba(165, 122, 106, 1) 60%, rgba(111, 76, 62, 1) 100%);
     opacity: 100%;
-}
+  }
 }
 </style>
 

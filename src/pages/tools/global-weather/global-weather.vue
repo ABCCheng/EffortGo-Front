@@ -160,7 +160,7 @@ const formatForecastTime = (timestamp: number) => {
 
 
 
-const weatherIconUrl = (icon: string) =>`/icons-weather/${icon}@2x.png`;
+const weatherIconUrl = (icon: string) =>`/local-global-weather/icons/${icon}@2x.png`;
 </script>
 
 <style scoped>
@@ -174,6 +174,7 @@ const weatherIconUrl = (icon: string) =>`/icons-weather/${icon}@2x.png`;
         <div flex items-center gap-3 mb-3>
             <n-auto-complete v-model:value="city" clearable
                 :options="citySuggestions.map((suggestion) => ({label: `${suggestion.fullname}`,value: `${suggestion.fullname}`}))"
+                blur-after-select
                 @update:value="onInputChange" @select="onCitySelect" :placeholder="$t('tools.global-weather.searchPlaceHolder')" mx-auto max-w-600px>
                 <template #prefix>
                     <icon-mdi-search mr-6px color-black op-70 dark:color-white />

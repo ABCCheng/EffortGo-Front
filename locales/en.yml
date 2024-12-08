@@ -170,6 +170,10 @@ tools:
     title: Text Diff
     description: Compare two texts and see the differences between them.
   
+  tui-editor:
+    title: Image Editor
+    description: A simple image editor that supports cropping, resizing, flipping, editing and so on, based on tui-image-editor.
+  
   webvm:
     title: WebVM
     description: WebVM is a virtual Linux environment running in the browser. Powered by the CheerpX.

@@ -61,7 +61,7 @@ export default defineConfig({
       exclude,
      }),
     VueI18n({
-      runtimeOnly: true,
+      runtimeOnly: false,
       compositionOnly: true,
       fullInstall: true,
       strictMessage: false,
