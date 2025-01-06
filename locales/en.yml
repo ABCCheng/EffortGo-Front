@@ -126,7 +126,7 @@ tools:
   
   ai-painting:
     title: AI Painting
-    description: Enter a prompt and generate images in real-time. Powered by Together AI. 
+    description: Enter a prompt and generate images in real-time.
     innerDescription: Enter a prompt and generate images in real-time. Powered by Together AI. The latest 10 images will be cached. Click "Clear" to clear the cache.
     inputPlaceHolder: Describe your image（Only English, e.g. 'A running dog'）...
     inputEmpty: Please enter a prompt
@@ -143,7 +143,7 @@ tools:
   drawfree:
     title: Draw Free
     description: A powerful whiteboard tool featuring mind mapping and flowchart capabilities. 
-    innerDescription: "A powerful whiteboard tool featuring mind mapping and flowchart capabilities. Designed according to the <a href='https://github.com/plait-board/drawnix' target='_blank' style='text-decoration: underline; color: #FF7F50'><strong>drawnix</strong></a> project source code." 
+    innerDescription: "A powerful whiteboard tool featuring mind mapping and flowchart capabilities. Designed according to the <a href='https://github.com/plait-board/drawnix' target='_blank' style='text-decoration: underline; color: #FF7F50'><strong>drawnix</strong></a> project source code. Best on wide-screen PCs." 
 
   exchangerates:
     title: Exchange Rates
@@ -155,7 +155,8 @@ tools:
 
   global-weather:
     title: Global Weather
-    description: Check out the real-time and future weather for cities around the world, powered by OpenWeather.
+    description: Check out the real-time and future weather for cities around the world.
+    innerDescription: Check out the real-time and future weather for cities around the world, powered by OpenWeather.
     searchPlaceHolder: Search cities (e.g. 'new york')...
   
   temperature-converter:
@@ -169,12 +170,15 @@ tools:
   text-diff:
     title: Text Diff
     description: Compare two texts and see the differences between them.
+    innerDescription: Compare two texts and see the differences between them. Best on wide-screen PCs.
   
   tui-editor:
     title: Image Editor
-    description: A simple image editor that supports cropping, resizing, flipping, editing and so on, based on tui-image-editor.
+    description: A simple image editor that supports cropping, resizing, flipping, editing and more.
+    innerDescription: A simple image editor that supports cropping, resizing, flipping, editing and more. Based on tui-image-editor, all actions are processed locally, ensuring privacy. Best on wide-screen PCs.
   
   webvm:
     title: WebVM
-    description: WebVM is a virtual Linux environment running in the browser. Powered by the CheerpX.
+    description: WebVM is a virtual Linux environment running in the browser.
+    innerDescription: WebVM is a virtual Linux environment running in the browser. Powered by the CheerpX. Best on wide-screen PCs.
 
