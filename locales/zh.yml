@@ -120,7 +120,7 @@ tools:
 
   ai-painting:
     title: AI 绘画
-    description: 输入文字描述实时生成图片，AI模型由Together AI支持。
+    description: 输入文字描述实时生成图片。
     innerDescription: 输入文字描述实时生成图片，AI模型由Together AI支持。缓存最新的10张图片，点击"清空"可清空缓存。
     inputPlaceHolder: 描述图片（仅支持英文，如'A running dog'）...
     inputEmpty: 请先输入描述内容
@@ -137,8 +137,21 @@ tools:
   drawfree:
     title: Draw Free
     description: 一款强大的白板工具，集成思维导图、流程图等功能。
-    innerDescription: "一款强大的白板工具，集成思维导图、流程图等功能。参考 <a href='https://github.com/plait-board/drawnix' target='_blank' style='text-decoration: underline; color: #FF7F50'><strong>drawnix</strong></a> 项目源码设计." 
+    innerDescription: "一款强大的白板工具，集成思维导图、流程图等功能。参考 <a href='https://github.com/plait-board/drawnix' target='_blank' style='text-decoration: underline; color: #FF7F50'><strong>drawnix</strong></a> 项目源码设计，PC宽屏效果更佳。" 
 
+  exchangerates:
+    title: 实时汇率
+    description: 货币实时汇率查询. 
+    innerDescription: 实时查询汇率，数据来源欧洲央行。
+    dataUpdateTime: "数据更新时间："
+    dataUpdateFailed: "数据更新失败，请刷新重试!"
+
+  global-weather:
+    title: 全球天气
+    description: 查询全球城市的实时天气、未来天气。
+    innerDescription: 查询全球城市的实时天气、未来天气，由OpenWeather提供数据支持。
+    searchPlaceHolder: 输入城市名称 (如'beijing')...
+  
   temperature-converter:
     title: 温度转换器
     description: 摄氏度、华氏度、开尔文、兰氏度温度度数转换。
@@ -150,8 +163,15 @@ tools:
   text-diff:
     title: 文本比较
     description: 比较两个文本并查看它们之间的差异。
+    innerDescription: 比较两个文本并查看它们之间的差异，PC宽屏效果更佳。
+  
+  tui-editor:
+    title: 图片编辑
+    description: 简单的图片编辑器，支持裁剪、调整大小、翻转、编辑等操作。
+    innerDescription: 简单的图片编辑器，支持裁剪、调整大小、翻转、编辑等操作。基于tui-image-editor实现，所有操作均在本地执行，保证图片隐私。PC宽屏使用效果更佳。
 
   webvm:
     title: Web 虚拟机
-    description: Web 虚拟机是运行在浏览器中的虚拟Linux环境，由CheerpX支持，免安装学习Linux环境.
+    description: Web 虚拟机是运行在浏览器中的虚拟Linux环境，免安装学习Linux环境。
+    innerDescription: Web 虚拟机是运行在浏览器中的虚拟Linux环境，免安装学习Linux环境。由CheerpX支持，PC宽屏使用效果更佳。
 

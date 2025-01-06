@@ -50,6 +50,7 @@ useHead(head);
 function onUpdateFavoriteTools() {
   toolStore.updateFavoriteTools(favoriteTools.value); // Update the store with the new order
 }
+
 </script>
 
 <template>

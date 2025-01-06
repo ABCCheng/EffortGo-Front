@@ -27,15 +27,30 @@ const exclude = ['/local-webvm', '/local-webvm/alpine', '/local-webvm/login',
 export default defineConfig({
   server: {
     port: 3000,
+    cors: true,
     headers: {
       'Cross-Origin-Opener-Policy': 'same-origin',
       'Cross-Origin-Embedder-Policy': 'require-corp',
+      'Cross-Origin-Resource-Policy': 'cross-origin'
     },
     proxy: {
       '/togetherai-api': {
         target: '',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/togetherai-api/, '/api'),
+      },
+      '/openweathermap-api': {
+        target: 'https://api.openweathermap.org',
+        changeOrigin: true,
+        rewrite: (path) => {
+          const newPath = path.replace(/^\/openweathermap-api/, '/');
+          return `${newPath}&appid=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`;
+        },
+      },
+      '/europa-xml': {
+        target: 'https://www.ecb.europa.eu',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/europa-xml/, '/'),
       },
     },
   },
@@ -46,7 +61,7 @@ export default defineConfig({
       exclude,
      }),
     VueI18n({
-      runtimeOnly: true,
+      runtimeOnly: false,
       compositionOnly: true,
       fullInstall: true,
       strictMessage: false,
@@ -138,6 +153,8 @@ export default defineConfig({
   },
   define: {
     'import.meta.env.PACKAGE_VERSION': JSON.stringify(process.env.npm_package_version),
+    'process.env.IS_PREACT': JSON.stringify("true"),
+    'window.EXCALIDRAW_ASSET_PATH': JSON.stringify("./src/assets/")
   },
   test: {
     exclude: [...configDefaults.exclude, '**/*.e2e.spec.ts'],
