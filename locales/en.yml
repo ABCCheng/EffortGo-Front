@@ -46,7 +46,6 @@ about:
     or share it with your friends.  
     
     EffortGo will remain free and open-source. 
-    However, funding is required for server operation and domain renewal. 
     In the future, ads may be introduced to sustain operations. 
     If you would like to support my work and encourage me to add more tools, 
     you are welcome to contribute through the <span style="color: #FF7F50; font-weight: bold;">Support Me</span> button.
@@ -152,12 +151,16 @@ tools:
     dataUpdateTime: "Data update time:"
     dataUpdateFailed: "Data update failed, click to refresh!"
 
-
   global-weather:
     title: Global Weather
     description: Check out the real-time and future weather for cities around the world.
     innerDescription: Check out the real-time and future weather for cities around the world, powered by OpenWeather.
     searchPlaceHolder: Search cities (e.g. 'new york')...
+  
+  json-editor:
+    title: Json Editor
+    description: A web-based tool to view, validate, edit, format, and compress JSON.
+    innerDescription: A web-based tool to validate, view, edit, format, and compress JSON, powered by vue3-ts-jsoneditor.
   
   temperature-converter:
     title: Temp Converter

@@ -95,6 +95,7 @@
     "vue-router": "^4.5.0",
     "vue-shadow-dom": "^4.2.0",
     "vue-tsc": "^1.8.1",
+    "vue3-ts-jsoneditor": "^2.11.3",
     "vuedraggable": "^4.1.0",
     "xml-formatter": "^3.6.3",
     "xml-js": "^1.6.11",

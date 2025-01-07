@@ -54,6 +54,7 @@ declare module 'vue' {
     IconMdiEyeOff: typeof import('~icons/mdi/eye-off')['default']
     IconMdiSearch: typeof import('~icons/mdi/search')['default']
     InputCopyable: typeof import('./src/components/InputCopyable.vue')['default']
+    JsonEditor: typeof import('./src/pages/tools/json-editor/json-editor.vue')['default']
     LocaleSelector: typeof import('./src/components/locale-selector.vue')['default']
     MenuIconItem: typeof import('./src/components/MenuIconItem.vue')['default']
     MenuLayout: typeof import('./src/layouts/MenuLayout.vue')['default']
