@@ -157,6 +157,10 @@ tools:
     description: 在线查看、验证、编辑、格式化和压缩JSON代码。
     innerDescription: 在线查看、验证、编辑、格式化和压缩JSON代码，基于vue3-ts-jsoneditor实现.
   
+  qrcode-generator:
+    title: 二维码生成器
+    description: 生成带有logo的文本、链接和WiFi联网的二维码。
+  
   temperature-converter:
     title: 温度转换器
     description: 摄氏度、华氏度、开尔文、兰氏度温度度数转换。

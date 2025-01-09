@@ -162,6 +162,10 @@ tools:
     description: A web-based tool to view, validate, edit, format, and compress JSON.
     innerDescription: A web-based tool to validate, view, edit, format, and compress JSON, powered by vue3-ts-jsoneditor.
   
+  qrcode-generator:
+    title: QRCode Generator
+    description: Generate a QR code with a logo for texts, links and WiFi networks.
+  
   temperature-converter:
     title: Temp Converter
     description: Degrees temperature conversions for Celsius, Fahrenheit, Kelvin and Rankine.

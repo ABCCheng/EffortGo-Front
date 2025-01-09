@@ -5,6 +5,8 @@ export const sitemappages: string[] = [
     'drawfree',
     'exchangerates',
     'global-weather',
+    'json-editor',
+    'qrcode-generator',
     'temperature-converter',
     'text-diff',
     'tui-editor',

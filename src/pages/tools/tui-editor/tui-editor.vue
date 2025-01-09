@@ -235,13 +235,14 @@ onMounted(() => {
     </n-button>
 
     <input type="file" ref="fileInput" @change="loadImage" style="display: none" />
+    <n-button class="load_button" data-track-label="Button_TuiEditorLoad" @click="loadFileInput" circle variant="text" :bordered="false">
+      <n-icon size="25" :component="IconFileDots" />
+    </n-button>
+    
     <n-button class="download_button" data-track-label="Button_TuiEditorDownload" @click="exportImage" circle variant="text" :bordered="false">
       <n-icon size="25" :component="IconDownload" />
     </n-button>
 
-    <n-button class="load_button" data-track-label="Button_TuiEditorLoad" @click="loadFileInput" circle variant="text" :bordered="false">
-      <n-icon size="25" :component="IconFileDots" />
-    </n-button>
     <div ref="editorRef" class="editor"></div>
   </div>
 </template>
