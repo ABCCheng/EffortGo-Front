@@ -84,6 +84,10 @@ tools:
   categories:
     favorite-tools: '我的收藏'
     all-tools: '全部工具'
+    image-color-tools: '图片色彩'
+    daily-utilities-tools: '实用生活'
+    data-conversion-tools: '数据转换'
+    tech-development-tools: '技术开发'
     tools: '工具'
     search-engines: '搜索引擎'
     settings: '设置'
@@ -184,3 +188,7 @@ tools:
     description: Web 虚拟机是运行在浏览器中的虚拟Linux环境，免安装学习Linux环境。
     innerDescription: Web 虚拟机是运行在浏览器中的虚拟Linux环境，免安装学习Linux环境。由CheerpX支持，PC宽屏使用效果更佳。
 
+  weight-converter:
+    title: 重量转换器
+    description: 千克、磅等重量单位转换。
+  

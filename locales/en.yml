@@ -88,6 +88,10 @@ message:
 tools:
   categories:
     favorite-tools: 'Your favorite tools'
+    image-color-tools: 'Image & Color'
+    daily-utilities-tools: 'Daily Utilities'
+    data-conversion-tools: 'Data Conversion'
+    tech-development-tools: 'Tech Development'
     all-tools: 'All tools'
     tools: 'Tools'
     search-engines: 'Search Engines'
@@ -188,4 +192,8 @@ tools:
     title: WebVM
     description: WebVM is a virtual Linux environment running in the browser.
     innerDescription: WebVM is a virtual Linux environment running in the browser. Powered by the CheerpX. Best on wide-screen PCs.
+
+  weight-converter:
+    title: Weight Converter
+    description: Weight unit conversions, including kilograms, pounds, and other common units.
 

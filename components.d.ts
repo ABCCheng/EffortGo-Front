@@ -111,5 +111,6 @@ declare module 'vue' {
     TuiEditor: typeof import('./src/pages/tools/tui-editor/tui-editor.vue')['default']
     Watermark: typeof import('./src/pages/tools/watermark/watermark.vue')['default']
     Webvm: typeof import('./src/pages/tools/webvm/webvm.vue')['default']
+    WeightConverter: typeof import('./src/pages/tools/weight-converter/weight-converter.vue')['default']
   }
 }

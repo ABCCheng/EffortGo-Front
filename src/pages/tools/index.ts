@@ -10,13 +10,14 @@ import { tool as textDiff } from './text-diff';
 import { tool as tuiEditor } from './tui-editor';
 import { tool as watermark } from './watermark';
 import { tool as webvm } from './webvm';
+import { tool as weightConverter } from './weight-converter';
 
 import type { ToolCategory } from './tools.types';
 
 export const toolsByCategory: ToolCategory[] = [
   {
     categoryId: 'all-tools',
-    components: [aiPainting, chineseColorPicker, drawfree, exchangerates, globalWeather, jsonEditor, QRCodeGenerator, temperatureConverter, textDiff, tuiEditor, webvm],
+    components: [aiPainting, chineseColorPicker, drawfree, exchangerates, globalWeather, jsonEditor, QRCodeGenerator, temperatureConverter, textDiff, tuiEditor, webvm, weightConverter],
   }
 ];
 
