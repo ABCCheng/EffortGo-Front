@@ -92,7 +92,6 @@ tools:
     daily-utilities-tools: 'Daily Utilities'
     data-conversion-tools: 'Data Conversion'
     tech-development-tools: 'Tech Development'
-    all-tools: 'All tools'
     tools: 'Tools'
     search-engines: 'Search Engines'
     settings: 'Settings'
@@ -145,8 +144,13 @@ tools:
   
   drawfree:
     title: Draw Free
-    description: A powerful whiteboard tool featuring mind mapping and flowchart capabilities. 
-    innerDescription: "A powerful whiteboard tool featuring mind mapping and flowchart capabilities. Designed according to the <a href='https://github.com/plait-board/drawnix' target='_blank' style='text-decoration: underline; color: #FF7F50'><strong>drawnix</strong></a> project source code. Best on wide-screen PCs." 
+    description: A powerful whiteboard tool featuring mind mapping and flowchart. 
+    innerDescription: "A powerful whiteboard tool featuring mind mapping and flowchart. Designed according to the <a href='https://github.com/plait-board/drawnix' target='_blank' style='text-decoration: underline; color: #FF7F50'><strong>Drawnix</strong></a>. Best on wide-screen PCs." 
+
+  excalidraw:
+    title: Excalidraw
+    description: A virtual hand-drawn style whiteboard.
+    innerDescription: "A virtual hand-drawn style whiteboard. Designed according to <a href='https://github.com/excalidraw/excalidraw' target='_blank' style='text-decoration: underline; color: #FF7F50'><strong>Excalidraw</strong></a>. " 
 
   exchangerates:
     title: Exchange Rates

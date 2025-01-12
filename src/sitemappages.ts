@@ -3,6 +3,7 @@ export const sitemappages: string[] = [
     'ai-painting',
     'chinese-color-picker',
     'drawfree',
+    'excalidraw',
     'exchangerates',
     'global-weather',
     'json-editor',
@@ -10,5 +11,6 @@ export const sitemappages: string[] = [
     'temperature-converter',
     'text-diff',
     'tui-editor',
-    'webvm'
+    'webvm',
+    'weight-converter',
   ];

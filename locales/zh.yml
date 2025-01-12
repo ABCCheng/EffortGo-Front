@@ -83,7 +83,6 @@ message:
 tools:
   categories:
     favorite-tools: '我的收藏'
-    all-tools: '全部工具'
     image-color-tools: '图片色彩'
     daily-utilities-tools: '实用生活'
     data-conversion-tools: '数据转换'
@@ -142,6 +141,11 @@ tools:
     title: Draw Free
     description: 一款强大的白板工具，集成思维导图、流程图等功能。
     innerDescription: "一款强大的白板工具，集成思维导图、流程图等功能。参考 <a href='https://github.com/plait-board/drawnix' target='_blank' style='text-decoration: underline; color: #FF7F50'><strong>drawnix</strong></a> 项目源码设计，PC宽屏效果更佳。" 
+
+  excalidraw:
+    title: Excalidraw
+    description: 虚拟手绘风格的白板绘图工具。
+    innerDescription: "虚拟手绘风格的白板绘图工具。 参考 <a href='https://github.com/excalidraw/excalidraw' target='_blank' style='text-decoration: underline; color: #FF7F50'><strong>Excalidraw</strong></a> 设计。" 
 
   exchangerates:
     title: 实时汇率

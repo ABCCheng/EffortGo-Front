@@ -153,14 +153,13 @@ export default defineConfig({
   },
   define: {
     'import.meta.env.PACKAGE_VERSION': JSON.stringify(process.env.npm_package_version),
-    'process.env.IS_PREACT': JSON.stringify("true"),
-    'window.EXCALIDRAW_ASSET_PATH': JSON.stringify("./src/assets/")
+    'process.env': process.env,
   },
   test: {
     exclude: [...configDefaults.exclude, '**/*.e2e.spec.ts'],
   },
   build: {
     target: 'esnext',
-    chunkSizeWarningLimit: 10000,
+    chunkSizeWarningLimit: 10000
   },
 });

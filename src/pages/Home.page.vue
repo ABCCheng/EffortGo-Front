@@ -9,6 +9,9 @@ import { useToolStore } from '@/pages/tools/tools.store';
 import { config } from '@/config';
 import { useStyleStore } from '@/stores/style.store';
 
+
+const { t, locale } = useI18n();
+
 const styleStore = useStyleStore();
 const { isSmallScreen } = toRefs(styleStore);
 
@@ -16,8 +19,9 @@ const { isSmallScreen } = toRefs(styleStore);
 const toolStore = useToolStore();
 
 const favoriteTools = computed(() => toolStore.favoriteTools);
-
-const { t } = useI18n();
+const allTools = computed(() => {
+  return toolStore.tools.slice().sort((a, b) => a.name.localeCompare(b.name, 'en', { numeric: true }));
+});
 
 const head = computed<HeadObject>(() => ({
   title: t('home.browser-title'),
@@ -140,7 +144,7 @@ function onUpdateFavoriteTools() {
           </h3>
       </div>
       <div class="grid grid-cols-1 gap-12px lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 xl:grid-cols-4">
-        <ToolCard v-for="tool in toolStore.tools" :key="tool.name" :tool="tool" />
+        <ToolCard v-for="tool in allTools" :key="tool.name" :tool="tool" />
       </div>
     </div>
   </div>

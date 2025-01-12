@@ -2,6 +2,48 @@
 import { ref, onMounted, onBeforeUnmount} from 'vue';
 import { IconArrowsMaximize, IconArrowsMinimize } from '@tabler/icons-vue';
 
+const excalidrawContainer = ref(null);
+const isLoading = ref(true);
+
+onMounted(async () => {
+  try {
+    const React = (await import('react')).default;
+    const ReactDOM = (await import('react-dom/client')).default;
+    const { Excalidraw, MainMenu } = await import('@excalidraw/excalidraw');
+    const root = ReactDOM.createRoot(excalidrawContainer.value);
+
+    const CustomMainMenu = () => {
+      return React.createElement(
+        MainMenu,
+        null,
+        React.createElement(MainMenu.DefaultItems.LoadScene),
+        React.createElement(MainMenu.DefaultItems.Export),
+        React.createElement(MainMenu.DefaultItems.SaveAsImage),
+        React.createElement(MainMenu.DefaultItems.Help),
+        React.createElement(MainMenu.DefaultItems.ClearCanvas),
+
+        React.createElement(MainMenu.Separator),
+
+        React.createElement(MainMenu.DefaultItems.ToggleTheme),
+        React.createElement(MainMenu.DefaultItems.ChangeCanvasBackground),
+      );
+    };
+
+    root.render(
+      React.createElement(Excalidraw, {
+        children: React.createElement(CustomMainMenu)
+      })
+    );
+
+  } catch (error) {
+    console.error('Failed to load Excalidraw:', error);
+  }
+
+  isLoading.value = false;
+});
+
+
+
 const fullscreenElementRef = ref<HTMLDivElement | null>(null);
 const isFullscreen = ref(false);
 
@@ -38,14 +80,18 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-    <div ref="fullscreenElementRef" class="drawfree-container" :class="{ fullscreen: isFullscreen }">
-        <n-button class="fullscreen_button" data-track-label="Button_ToggleFullScreen" @click="enterFullscreen" size="small" circle
-            variant="text" :bordered="false">
-            <n-icon v-if="!isFullscreen" size="20" :component="IconArrowsMaximize" />
-            <n-icon v-else size="20" :component="IconArrowsMinimize" />
-        </n-button>
-        <iframe src="/local-drawfree/index.html" width="100%" height="100%" frameborder="0"></iframe>
+  <div ref="fullscreenElementRef" class="drawfree-container" :class="{ fullscreen: isFullscreen }">
+    <n-button class="fullscreen_button" data-track-label="Button_ToggleFullScreen" @click="enterFullscreen" size="small"
+      circle variant="text" :bordered="false">
+      <n-icon v-if="!isFullscreen" size="20" :component="IconArrowsMaximize" />
+      <n-icon v-else size="20" :component="IconArrowsMinimize" />
+    </n-button>
+
+    <div v-if="isLoading" class="loading-state">
+      <n-spin size="small" />
     </div>
+    <div ref="excalidrawContainer" style="height: 100%;"></div>
+  </div>
 </template>
 
 <style lang="less" scoped>
@@ -67,6 +113,15 @@ onBeforeUnmount(() => {
     z-index: 9999;
     border: 2px solid transparent;
   }
+}
+
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #666;
 }
 
 .fullscreen_button {

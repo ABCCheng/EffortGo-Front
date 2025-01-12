@@ -1,6 +1,7 @@
 import { tool as aiPainting } from './ai-painting';
 import { tool as chineseColorPicker } from './chinese-color-picker';
 import { tool as drawfree } from './drawfree';
+import { tool as excalidraw } from './excalidraw';
 import { tool as exchangerates } from './exchangerates';
 import { tool as globalWeather } from './global-weather';
 import { tool as jsonEditor } from './json-editor';
@@ -16,8 +17,20 @@ import type { ToolCategory } from './tools.types';
 
 export const toolsByCategory: ToolCategory[] = [
   {
-    categoryId: 'all-tools',
-    components: [aiPainting, chineseColorPicker, drawfree, exchangerates, globalWeather, jsonEditor, QRCodeGenerator, temperatureConverter, textDiff, tuiEditor, webvm, weightConverter],
+    categoryId: 'daily-utilities-tools',
+    components: [exchangerates, globalWeather],
+  },
+  {
+    categoryId: 'image-color-tools',
+    components: [aiPainting, chineseColorPicker, drawfree, excalidraw, QRCodeGenerator, tuiEditor],
+  },
+  {
+    categoryId: 'data-conversion-tools',
+    components: [temperatureConverter, weightConverter],
+  },
+  {
+    categoryId: 'tech-development-tools',
+    components: [jsonEditor, textDiff, webvm],
   }
 ];
 
