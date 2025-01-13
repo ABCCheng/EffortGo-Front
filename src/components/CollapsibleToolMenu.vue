@@ -54,7 +54,7 @@ const themeVars = useThemeVars();
       </span>
 
       <span ml-8px text-13px>
-        {{ categoryName }}
+        {{ categoryName + ` [${tools.length}]` }}
       </span>
     </div>
 

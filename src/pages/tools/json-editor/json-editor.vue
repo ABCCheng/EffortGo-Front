@@ -25,7 +25,7 @@ const theme = useThemeVars();
 .editor-container {
   position: relative;
   width: 100%;
-  height: calc(var(--vheight) - 240px);
+  height: calc(var(--vheight) - 130px);
   border: 2px solid transparent;
   border-color: #FF7F50;
   padding-top: 0px;

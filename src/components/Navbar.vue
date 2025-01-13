@@ -1,66 +1,73 @@
 <script setup lang="ts">
-import { useRouter } from 'vue-router';
+import { useThemeVars } from 'naive-ui';
+import { useRouter, useRoute } from 'vue-router';
 import { useStyleStore } from '@/stores/style.store';
+import { useParamStore } from '@/stores/param.store';
 import {IconHome, IconMenu2, IconCoffee} from '@tabler/icons-vue';
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
+
+const theme = useThemeVars();
 
 const router = useRouter();
+const route = useRoute();
 const styleStore = useStyleStore();
+const paramStore = useParamStore();
 
 const { t } = useI18n();
+
+const isHomePage = route.path === '/';
 
 const goToHome = () => {
   router.push('/');
 };
 
-const supportMeVisible = ref(false);  // 控制弹出框的显示
+const supportMeVisible = ref(false);
 const openSupportMeDialog = () => {
-  supportMeVisible.value = true;  // 打开对话框
+  supportMeVisible.value = true;
 };
-
 </script>
 
 <template>
   <div class="navbar">
-    <div class="header flex items-center justify-center">
-      <n-h1 class="top-title" @click="goToHome" style="user-select: none;" font-bold>
-        <span data-track-label="Link_LogoHome">EffortGo</span>
-      </n-h1>
-    </div>
-    <div flex items-center justify-center gap-2>
+    <n-h1 class="header-title flex items-center justify-center gap-1" style="user-select: none;" font-bold>
+      <n-icon class="title-icon" size="30" :component="IconHome" v-show="!isHomePage" @click="goToHome" />
+      <span class="title-text" @click="goToHome">{{ paramStore.pageTitle }}</span>
+    </n-h1>
+
+    <div class="header-operation flex items-center justify-center gap-2">
       <n-button data-track-label="Button_HomeMenu" circle variant="text"
         @click="styleStore.isMenuCollapsed = !styleStore.isMenuCollapsed" class="theme-button" :bordered="false">
         <n-icon size="25" :component="IconMenu2" />
       </n-button>
 
-      <c-tooltip :tooltip="$t('home.home')" position="top">
-        <n-button data-track-label="Button_Home" @click="goToHome" circle variant="text" class="theme-button"
-          :bordered="false">
-          <n-icon size="25" :component="IconHome" />
-        </n-button>
-      </c-tooltip>
-
       <command-palette />
 
-      <c-tooltip position="top" :tooltip="$t('home.support.supportTip')">
-        <n-button data-track-label="Button_SupportMe" round class="support-button" :bordered="false" @click="openSupportMeDialog">
-          {{ $t('home.support.supportMe') }}
-          <n-icon :component="IconCoffee" ml-2 size="25" />
-        </n-button>
-      </c-tooltip>
+      <n-button data-track-label="Button_SupportMeFloat" @click="openSupportMeDialog" circle variant="text"
+        class="mobile theme-button" :bordered="false">
+        <n-icon size="25" :component="IconCoffee" />
+      </n-button>
+
+      <n-button data-track-label="Button_SupportMe" round class="desktop support-button" :bordered="false"
+        @click="openSupportMeDialog">
+        {{ $t('home.support.supportMe') }}
+        <n-icon :component="IconCoffee" ml-2 size="25" />
+      </n-button>
+
     </div>
+
     <!-- SupportMeComponent -->
     <n-modal v-model:show="supportMeVisible" preset="dialog" :title="$t('home.support.dialogTitle')">
       <div style="display: flex; flex-direction: row; justify-content: center; align-items: center;" gap-6>
         <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;" gap-1>
           <n-image src="/bmc_qr.png" alt="buy me a coffee" width="120" height="120" />
-          <a data-track-label="Link_BuyMeACoffee" href="https://buymeacoffee.com/effortgo" target="_blank" rel="noopener noreferrer">Buy me a coffee</a>
+          <a data-track-label="Link_BuyMeACoffee" href="https://buymeacoffee.com/effortgo" target="_blank"
+            rel="noopener noreferrer">Buy me a coffee</a>
         </div>
         <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;" gap-1>
           <n-image src="/wx_qr.jpg" alt="wechat" width="120" height="120" />
           <a>WeChat 微信</a>
         </div>
-      </div>  
+      </div>
     </n-modal>
   </div>
 </template>
@@ -71,9 +78,26 @@ const openSupportMeDialog = () => {
   src: url('../assets/fonts/Marcellus-Regular.ttf') format('truetype');
 }
 
+.desktop {
+  display: flex;
+}
+
+.mobile {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .desktop {
+    display: none;
+  }
+
+  .mobile {
+    display: flex;
+  }
+}
 
 .theme-button {
-  background: rgb(111, 76, 62); /* 深咖啡色 */
+  background: rgb(111, 76, 62); 
   background: linear-gradient(48deg, rgba(111, 76, 62, 1) 0%, rgba(133, 92, 78, 1) 60%, rgba(165, 122, 106, 1) 100%);
   color: #fff !important;
   transition: padding ease 0.2s !important;
@@ -85,7 +109,7 @@ const openSupportMeDialog = () => {
 }
 
 .support-button {
-  background: rgb(111, 76, 62); /* 深咖啡色 */
+  background: rgb(111, 76, 62); 
   background: linear-gradient(48deg, rgba(111, 76, 62, 1) 0%, rgba(133, 92, 78, 1) 60%, rgba(165, 122, 106, 1) 100%);
   color: #fff !important;
   transition: padding ease 0.2s !important;
@@ -97,17 +121,25 @@ const openSupportMeDialog = () => {
     background: linear-gradient(48deg, rgba(133, 92, 78, 1) 0%, rgba(165, 122, 106, 1) 60%, rgba(111, 76, 62, 1) 100%);
   }
 }
+
 .navbar {
   box-sizing: border-box;
 
-  .header {
-    margin-bottom: -20px;
+  .header-title {
+    margin-bottom: -10px;
     margin-top: 10px;
-    cursor: pointer;
-    .top-title {
-      font-family: 'Marcellus', sans-serif; 
-      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
+    font-family: 'Marcellus', sans-serif; 
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.15);
+    .title-icon {
+      cursor: pointer;
     }
+    .title-text {
+      cursor: pointer;
+    }
+  }
+
+  .header-operation {
+    margin-top: 10px;
   }
 }
 

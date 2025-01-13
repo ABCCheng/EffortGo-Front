@@ -49,7 +49,6 @@ onUnmounted(() => {
           circle variant="text" :bordered="false">
           <n-icon size="25" :component="IconCircleArrowUp" />
         </n-button>
-
         <slot name="content" />
       </n-layout-content>
     </n-layout>
@@ -102,7 +101,7 @@ onUnmounted(() => {
   bottom: 40px;
   right: calc(var(--bodyright) + 40px);
   z-index: 50;
-  background: rgb(111, 76, 62); /* 深咖啡色 */
+  background: rgb(111, 76, 62); 
   background: linear-gradient(48deg, rgba(111, 76, 62, 1) 0%, rgba(133, 92, 78, 1) 60%, rgba(165, 122, 106, 1) 100%);
   color: #fff !important;
   transition: padding ease 0.2s !important;

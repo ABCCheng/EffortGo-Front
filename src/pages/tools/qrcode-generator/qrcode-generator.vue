@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import { ref, computed, onMounted } from 'vue';
 import QRCode from 'qrcode-svg';
 import { saveAs } from 'file-saver';
 
@@ -47,6 +47,10 @@ const loadLogoImage = async (event: Event) => {
     };
     reader.readAsDataURL(file);
   }
+};
+
+const clearLogo = () => {
+  logoPreview.value = "";
 };
 
 const preview = computed(() => {
@@ -147,6 +151,24 @@ function exportImage() {
 
   tempImg.src = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svgContainer.value?.innerHTML || '')}`;
 }
+
+onMounted(async () => {
+  try {
+    const response = await fetch(`${import.meta.env.BASE_URL}logo.png`);
+    if (response.ok) {
+      const blob = await response.blob();
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        logoPreview.value = reader.result as string;
+      };
+      reader.readAsDataURL(blob);
+    } else {
+      console.error('Failed to load the logo image');
+    }
+  } catch (error) {
+    console.error('Error loading logo image:', error);
+  }
+});
 </script>
 
 <template>
@@ -191,6 +213,8 @@ function exportImage() {
       <n-form-item label="Center logo:">
         <n-button size="small" @click="loadFileInput">Upload ···</n-button>
         <input ref="fileInput" type="file" accept="image/*" style="display: none" @change="loadLogoImage" />
+        <n-divider vertical />
+        <n-button size="small" @click="clearLogo">Clear</n-button>
       </n-form-item>
 
       <!-- Options -->

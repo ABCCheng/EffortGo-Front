@@ -229,17 +229,17 @@ onMounted(() => {
 
 <template>
   <div w-full ref="fullscreenElementRef" class="editor-container" :class="{ fullscreen: isFullscreen }">
-    <n-button class="fullscreen_button" data-track-label="Button_ToggleFullScreen" @click="enterFullscreen" circle variant="text" :bordered="false">
+    <n-button class="fullscreen_button" data-track-label="Button_ToggleFullScreen" @click="enterFullscreen" circle variant="text" size="small" :bordered="false">
       <n-icon v-if="!isFullscreen" size="25" :component="IconArrowsMaximize" />
       <n-icon v-else size="25" :component="IconArrowsMinimize" />
     </n-button>
 
     <input type="file" ref="fileInput" @change="loadImage" style="display: none" />
-    <n-button class="load_button" data-track-label="Button_TuiEditorLoad" @click="loadFileInput" circle variant="text" :bordered="false">
+    <n-button class="load_button" data-track-label="Button_TuiEditorLoad" @click="loadFileInput" circle variant="text" size="small" :bordered="false">
       <n-icon size="25" :component="IconFileDots" />
     </n-button>
     
-    <n-button class="download_button" data-track-label="Button_TuiEditorDownload" @click="exportImage" circle variant="text" :bordered="false">
+    <n-button class="download_button" data-track-label="Button_TuiEditorDownload" @click="exportImage" circle variant="text" size="small" :bordered="false">
       <n-icon size="25" :component="IconDownload" />
     </n-button>
 
@@ -251,7 +251,7 @@ onMounted(() => {
 .editor-container {
   position: relative;
   width: 100%;
-  height: calc(var(--vheight) - 240px) !important;
+  height: calc(var(--vheight) - 130px) !important;
   border: 2px solid transparent;
   border-color: #FF7F50;
   padding-top: 0px;
@@ -287,8 +287,8 @@ onMounted(() => {
 
 .fullscreen_button {
   position: absolute;
-  top: 5px;
-  right: 5px;
+  top: 0;
+  right: 0;
   background: rgb(111, 76, 62);
   background: linear-gradient(48deg, rgba(111, 76, 62, 1) 0%, rgba(133, 92, 78, 1) 60%, rgba(165, 122, 106, 1) 100%);
   color: #fff !important;
@@ -305,8 +305,8 @@ onMounted(() => {
 
 .download_button {
   position: absolute;
-  top: 5px;
-  right: 45px;
+  top: 0;
+  right: 35px;
   background: rgb(111, 76, 62);
   background: linear-gradient(48deg, rgba(111, 76, 62, 1) 0%, rgba(133, 92, 78, 1) 60%, rgba(165, 122, 106, 1) 100%);
   color: #fff !important;
@@ -323,8 +323,8 @@ onMounted(() => {
 
 .load_button {
   position: absolute;
-  top: 5px;
-  right: 85px;
+  top: 0px;
+  right: 70px;
   background: rgb(111, 76, 62);
   background: linear-gradient(48deg, rgba(111, 76, 62, 1) 0%, rgba(133, 92, 78, 1) 60%, rgba(165, 122, 106, 1) 100%);
   color: #fff !important;

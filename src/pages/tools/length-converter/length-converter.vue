@@ -2,34 +2,29 @@
 import { ref, computed, watch, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { IconRefresh, IconArrowsRightLeft } from '@tabler/icons-vue';
+import { formatNumber } from '@/utils/convert';
 
 const { locale } = useI18n();
 
 const unitOptions = [
-  { value: 'mg', zh: '毫克', en: 'Milligram', baseRate: 0.001 },
-  { value: 'g', zh: '克', en: 'Gram', baseRate: 1 },
-  { value: 'kg', zh: '千克', en: 'Kilogram', baseRate: 1000 },
-  { value: 't', zh: '吨', en: 'Metric Ton', baseRate: 1000000 },
-  { value: 'lb', zh: '(英)磅', en: 'Pound', baseRate: 453.5924 },
-  { value: 'oz', zh: '盎司', en: 'Ounce', baseRate: 28.3495 },
-  { value: 'ct', zh: '克拉', en: 'Carat', baseRate: 0.2 },
-  { value: 'st', zh: '英石', en: 'Stone', baseRate: 6350.2932 },
-  { value: 'long_ton', zh: '长吨', en: 'Long Ton(UK)', baseRate: 1016046.9088 },
-  { value: 'short_ton', zh: '短吨', en: 'Short Ton(US)', baseRate: 907184.74 },
-  { value: 'grain', zh: '格令', en: 'Grain', baseRate: 0.06479891 },
-  { value: 'dram', zh: '打兰', en: 'Dram', baseRate: 1.771845195 },
-  { value: 'cwt', zh: '英担', en: 'Hundredweight(UK)', baseRate: 50802.34544 },
-  { value: 'cwt/sh.cwt', zh: '美担', en: 'Hundredweight(US)', baseRate: 45359.237 },
-  { value: 'q', zh: '公担', en: 'Quintal', baseRate: 100000 },
-  { value: 'carat', zh: '克拉', en: 'Carat', baseRate: 0.2 },
-  { value: 'mace', zh: '钱', en: 'Mace(China)', baseRate: 5 },
-  { value: 'tael', zh: '两', en: 'Tael(China)', baseRate: 50 },
-  { value: 'jin', zh: '斤', en: 'Jin(China)', baseRate: 500 },
-  { value: 'dan', zh: '担', en: 'Dan(China)', baseRate: 50000 },
+  { value: 'mm', zh: '毫米', en: 'Millimeter', baseRate: 0.001 },
+  { value: 'cm', zh: '厘米', en: 'Centimeter', baseRate: 0.01 },
+  { value: 'm', zh: '米', en: 'Meter', baseRate: 1 },
+  { value: 'km', zh: '千米', en: 'Kilometer', baseRate: 1000 },
+  { value: 'in', zh: '英寸', en: 'Inch', baseRate: 0.0254 },
+  { value: 'ft', zh: '英尺', en: 'Foot', baseRate: 0.3048 },
+  { value: 'yd', zh: '码', en: 'Yard', baseRate: 0.9144 },
+  { value: 'mi', zh: '英里(迈)', en: 'Mile', baseRate: 1609.344 },
+  { value: 'nmi', zh: '海里', en: 'Nautical Mile', baseRate: 1852 },
+  { value: 'ly', zh: '光年', en: 'Light Year', baseRate: 9.4607e15 },
+  { value: 'li', zh: '里', en: 'Li(China)', baseRate: 500 },
+  { value: 'zhang', zh: '丈', en: 'Zhang(China)', baseRate: 3.3333333333 },
+  { value: 'chi', zh: '尺', en: 'Chi(China)', baseRate: 0.3333333333 },
+  { value: 'cun', zh: '寸', en: 'Cun(China)', baseRate: 0.0333333333 },
 ];
 
-const fromUnit = ref('kg');
-const toUnit = ref('lb');
+const fromUnit = ref('m');
+const toUnit = ref('ft');
 const amount = ref(1);
 
 const unitRates = ref([]);
@@ -56,7 +51,7 @@ const convertedAmount = computed(() => {
   const toRate = baseRates.value[toUnit.value] || 1;
 
   const result = (amount.value * fromRate) / toRate;
-  return result.toFixed(4);
+  return formatNumber(result);
 });
 
 const getUnitLabel = (unitValue: string) => {
@@ -80,7 +75,7 @@ const updateUnitRates = () => {
     return {
       from: getUnitLabel(fromUnit.value),
       to: getUnitLabel(unit),
-      rate: calculatedRate.toFixed(4),
+      rate: formatNumber(calculatedRate),
     };
   });
 };

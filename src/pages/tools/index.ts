@@ -4,8 +4,11 @@ import { tool as drawfree } from './drawfree';
 import { tool as excalidraw } from './excalidraw';
 import { tool as exchangerates } from './exchangerates';
 import { tool as globalWeather } from './global-weather';
+import { tool as integerBaseConverter } from './integer-base-converter';
 import { tool as jsonEditor } from './json-editor';
+import { tool as lengthConverter } from './length-converter';
 import { tool as QRCodeGenerator } from './qrcode-generator';
+import { tool as speedConverter } from './speed-converter';
 import { tool as temperatureConverter } from './temperature-converter';
 import { tool as textDiff } from './text-diff';
 import { tool as tuiEditor } from './tui-editor';
@@ -26,7 +29,7 @@ export const toolsByCategory: ToolCategory[] = [
   },
   {
     categoryId: 'data-conversion-tools',
-    components: [temperatureConverter, weightConverter],
+    components: [integerBaseConverter, lengthConverter, speedConverter, temperatureConverter, weightConverter],
   },
   {
     categoryId: 'tech-development-tools',

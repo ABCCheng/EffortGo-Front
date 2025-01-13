@@ -47,7 +47,7 @@ export const useToolStore = defineStore('toolStore', () => {
     newTools,
     updateTools,
 
-    findToolByPath({ path }: { path: string }) {
+    findToolByPath(path: string): ToolWithCategory | undefined {
       return tools.value.find(tool => tool.path === path);
     },
 

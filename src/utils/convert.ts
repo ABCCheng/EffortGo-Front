@@ -9,3 +9,11 @@ export function formatBytes(bytes: number, decimals = 2) {
 
   return `${Number.parseFloat((bytes / k ** i).toFixed(decimals))} ${sizes[i]}`;
 }
+
+export function formatNumber(result: number) {
+  if (Math.abs(result) >= 10000000 || Math.abs(result) < 0.0001) {
+    return result.toExponential(4);
+  } else {
+    return result.toFixed(4);
+  }
+}

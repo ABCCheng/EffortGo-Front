@@ -13,7 +13,6 @@ home:
   home: Home
   support: 
     supportMe: 'Support me'
-    supportTip: 'Buy me a coffee'
     dialogTitle: 'Buy me a coffee'
     
   follow:
@@ -23,6 +22,7 @@ home:
     xiaohongshu: 'Xiaohongshu'
     thankYou: '. Thank you! ❥(^_-) '
     learnMore: ' Click to learn more...'
+  
   nav:
     github: 'GitHub repository'
     githubRepository: 'EffortGo GitHub repository'
@@ -64,6 +64,7 @@ about:
     <a href="mailto:effortgo2024{'@'}gmail.com" style="text-decoration: underline; color: #FF7F50"><strong>effortgo2024{'@'}gmail.com</strong></a> .
     In the future, EffortGo will include a feedback feature—stay tuned!  
     
+    
     Thank you for your attention; your support will shape EffortGo's future.
 
 404:
@@ -97,6 +98,9 @@ tools:
     settings: 'Settings'
     external: 'External'
     pages: 'Pages'
+
+  tool-detail:
+    title: 'About'
 
   random-tool:
     title: Random Tool
@@ -165,14 +169,26 @@ tools:
     innerDescription: Check out the real-time and future weather for cities around the world, powered by OpenWeather.
     searchPlaceHolder: Search cities (e.g. 'new york')...
   
+  integer-base-converter:
+    title: Base Converter
+    description: Convert a number between different bases (binary, octal, hexadecimal, base64, etc).
+
   json-editor:
     title: Json Editor
     description: A web-based tool to view, validate, edit, format, and compress JSON.
     innerDescription: A web-based tool to validate, view, edit, format, and compress JSON, powered by vue3-ts-jsoneditor.
+
+  length-converter:
+    title: Length Converter
+    description: Length unit conversions, including meter, foot, and other common units.
   
   qrcode-generator:
-    title: QRCode Generator
+    title: QR Generator
     description: Generate a QR code with a logo for texts, links and WiFi networks.
+
+  speed-converter:
+    title: Speed Converter
+    description: Speed unit conversions, including kph, mph, and other common units.
   
   temperature-converter:
     title: Temp Converter
