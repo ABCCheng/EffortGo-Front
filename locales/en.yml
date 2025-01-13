@@ -13,7 +13,6 @@ home:
   home: Home
   support: 
     supportMe: 'Support me'
-    supportTip: 'Buy me a coffee'
     dialogTitle: 'Buy me a coffee'
     
   follow:
@@ -23,6 +22,7 @@ home:
     xiaohongshu: 'Xiaohongshu'
     thankYou: '. Thank you! ❥(^_-) '
     learnMore: ' Click to learn more...'
+  
   nav:
     github: 'GitHub repository'
     githubRepository: 'EffortGo GitHub repository'
@@ -46,7 +46,6 @@ about:
     or share it with your friends.  
     
     EffortGo will remain free and open-source. 
-    However, funding is required for server operation and domain renewal. 
     In the future, ads may be introduced to sustain operations. 
     If you would like to support my work and encourage me to add more tools, 
     you are welcome to contribute through the <span style="color: #FF7F50; font-weight: bold;">Support Me</span> button.
@@ -64,6 +63,7 @@ about:
     Feel free to follow my social media accounts and leave a message. You can also contact me via email at 
     <a href="mailto:effortgo2024{'@'}gmail.com" style="text-decoration: underline; color: #FF7F50"><strong>effortgo2024{'@'}gmail.com</strong></a> .
     In the future, EffortGo will include a feedback feature—stay tuned!  
+    
     
     Thank you for your attention; your support will shape EffortGo's future.
 
@@ -89,12 +89,18 @@ message:
 tools:
   categories:
     favorite-tools: 'Your favorite tools'
-    all-tools: 'All tools'
+    image-color-tools: 'Image & Color'
+    daily-utilities-tools: 'Daily Utilities'
+    data-conversion-tools: 'Data Conversion'
+    tech-development-tools: 'Tech Development'
     tools: 'Tools'
     search-engines: 'Search Engines'
     settings: 'Settings'
     external: 'External'
     pages: 'Pages'
+
+  tool-detail:
+    title: 'About'
 
   random-tool:
     title: Random Tool
@@ -142,8 +148,13 @@ tools:
   
   drawfree:
     title: Draw Free
-    description: A powerful whiteboard tool featuring mind mapping and flowchart capabilities. 
-    innerDescription: "A powerful whiteboard tool featuring mind mapping and flowchart capabilities. Designed according to the <a href='https://github.com/plait-board/drawnix' target='_blank' style='text-decoration: underline; color: #FF7F50'><strong>drawnix</strong></a> project source code. Best on wide-screen PCs." 
+    description: A powerful whiteboard tool featuring mind mapping and flowchart. 
+    innerDescription: "A powerful whiteboard tool featuring mind mapping and flowchart. Designed according to the <a href='https://github.com/plait-board/drawnix' target='_blank' style='text-decoration: underline; color: #FF7F50'><strong>Drawnix</strong></a>. Best on wide-screen PCs." 
+
+  excalidraw:
+    title: Excalidraw
+    description: A virtual hand-drawn style whiteboard.
+    innerDescription: "A virtual hand-drawn style whiteboard. Designed according to <a href='https://github.com/excalidraw/excalidraw' target='_blank' style='text-decoration: underline; color: #FF7F50'><strong>Excalidraw</strong></a>. " 
 
   exchangerates:
     title: Exchange Rates
@@ -152,12 +163,32 @@ tools:
     dataUpdateTime: "Data update time:"
     dataUpdateFailed: "Data update failed, click to refresh!"
 
-
   global-weather:
     title: Global Weather
     description: Check out the real-time and future weather for cities around the world.
     innerDescription: Check out the real-time and future weather for cities around the world, powered by OpenWeather.
     searchPlaceHolder: Search cities (e.g. 'new york')...
+  
+  integer-base-converter:
+    title: Base Converter
+    description: Convert a number between different bases (binary, octal, hexadecimal, base64, etc).
+
+  json-editor:
+    title: Json Editor
+    description: A web-based tool to view, validate, edit, format, and compress JSON.
+    innerDescription: A web-based tool to validate, view, edit, format, and compress JSON, powered by vue3-ts-jsoneditor.
+
+  length-converter:
+    title: Length Converter
+    description: Length unit conversions, including meter, foot, and other common units.
+  
+  qrcode-generator:
+    title: QR Generator
+    description: Generate a QR code with a logo for texts, links and WiFi networks.
+
+  speed-converter:
+    title: Speed Converter
+    description: Speed unit conversions, including kph, mph, and other common units.
   
   temperature-converter:
     title: Temp Converter
@@ -181,4 +212,8 @@ tools:
     title: WebVM
     description: WebVM is a virtual Linux environment running in the browser.
     innerDescription: WebVM is a virtual Linux environment running in the browser. Powered by the CheerpX. Best on wide-screen PCs.
+
+  weight-converter:
+    title: Weight Converter
+    description: Weight unit conversions, including kilograms, pounds, and other common units.
 

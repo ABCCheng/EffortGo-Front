@@ -116,7 +116,6 @@ function activateOption(option: PaletteOption) {
   <div flex-1>
     <n-button w-full important:justify-start @click="isModalOpen = true">
       <span flex items-center gap-1 op-40>
-
         <icon-mdi-search />
         {{ $t('search.label') }}
 

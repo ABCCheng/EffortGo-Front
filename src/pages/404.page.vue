@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { useHead } from '@vueuse/head';
 import { IconError404Off } from '@tabler/icons-vue';
+import { useParamStore } from '@/stores/param.store';
+
+const paramStore = useParamStore();
+paramStore.setPageTitle('EffortGo');
 
 useHead({ title: 'EffortGo - Page not found' });
 </script>

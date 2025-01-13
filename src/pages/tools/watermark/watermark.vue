@@ -80,7 +80,7 @@ function toggleConfig() {
   position: relative;
   width: 100%;
   max-width: 800px;
-  height: calc(var(--vheight) - 240px);
+  height: calc(var(--vheight) - 130px);
 }
 
 .preview {

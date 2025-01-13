@@ -6,6 +6,8 @@
 
 <style lang="less" scoped>
 .c-card {
-  height: calc(var(--vheight) - 210px) !important;
+  height: calc(var(--vheight) - 130px) !important;
+  border: 2px solid transparent;
+  border-color: #FF7F50;
 }
 </style>

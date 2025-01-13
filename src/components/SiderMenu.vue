@@ -63,7 +63,7 @@ const siderMenuToolsByCategoty = computed<ToolCategory[]>(() => [
         <FooterButtons />
       </div>
       <div>EffortGo v{{ version }}</div>
-      <div>Since 2024 ABCCheng</div>
+      <div>© 2024-2025 ABCCheng</div>
     </div>
   </n-layout>
 </template>

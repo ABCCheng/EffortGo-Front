@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from 'vue';
+import { ref, computed, watch, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
 import { IconRefresh, IconArrowsRightLeft } from '@tabler/icons-vue';
 
@@ -149,7 +149,7 @@ onMounted(fetchExchangeRates);
         class="currency-item" />
       <n-input-number v-model:value="amount" type="number" placeholder="" style="width: 130px;" class="currency-item" />
       <n-icon size="25" :component="IconArrowsRightLeft" @click="swapCurrencies" style="cursor: pointer" class="currency-icon" />
-      <n-select v-model:value="toCurrency" :options="currencySelectOptions" style="width: 270px;"
+      <n-select data-track-label="DropSelect_ExchangeRatesToCurrency" v-model:value="toCurrency" :options="currencySelectOptions" style="width: 270px;"
         class="currency-item" />
       <n-input :value="convertedAmount" readonly style="width: 130px;" class="currency-item" />
     </div>

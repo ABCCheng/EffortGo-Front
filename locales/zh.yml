@@ -13,7 +13,6 @@ home:
   home: '主页'
   support: 
     supportMe: '打赏'
-    supportTip: '支持作者'
     dialogTitle: '请作者喝奶茶'
     
   follow:
@@ -43,7 +42,7 @@ about:
     EffortGo 由 ABCCheng 个人基于Github开源项目倾力开发，汇集了生活工作中各行各业常用的工具。
     如果您也觉得有帮助，您可以添加到收藏夹中，或者通过浏览器导出为桌面应用，并将其分享给您的朋友。  
 
-    EffortGo 将持续免费且开源，但需要资金用于服务器运营和续订域名，未来可能会接入广告维持运营。
+    EffortGo 将持续免费且开源，未来可能会接入广告维持运营。
     如果您想支持我的工作，并鼓励我添加更多工具，欢迎通过 <span style="color: #FF7F50; font-weight: bold;">打赏</span> 按钮进行支持。
 
     ## 技术
@@ -59,6 +58,7 @@ about:
     <a href="mailto:effortgo2024{'@'}gmail.com" style="text-decoration: underline; color: #FF7F50"><strong>effortgo2024{'@'}gmail.com</strong></a> 
     和我联系，未来EffortGo也将会加入留言反馈功能，敬请期待。  
     
+
     感谢您的关注，您的支持将决定EffortGo的未来。
 
 404:
@@ -83,12 +83,18 @@ message:
 tools:
   categories:
     favorite-tools: '我的收藏'
-    all-tools: '全部工具'
+    image-color-tools: '图片色彩'
+    daily-utilities-tools: '实用生活'
+    data-conversion-tools: '数据转换'
+    tech-development-tools: '技术开发'
     tools: '工具'
     search-engines: '搜索引擎'
     settings: '设置'
     external: '外部关联'
     pages: '页面'
+  
+  tool-detail:
+    title: '关于'
 
   random-tool:
     title: 随机工具
@@ -139,6 +145,11 @@ tools:
     description: 一款强大的白板工具，集成思维导图、流程图等功能。
     innerDescription: "一款强大的白板工具，集成思维导图、流程图等功能。参考 <a href='https://github.com/plait-board/drawnix' target='_blank' style='text-decoration: underline; color: #FF7F50'><strong>drawnix</strong></a> 项目源码设计，PC宽屏效果更佳。" 
 
+  excalidraw:
+    title: Excalidraw
+    description: 虚拟手绘风格的白板绘图工具。
+    innerDescription: "虚拟手绘风格的白板绘图工具。 参考 <a href='https://github.com/excalidraw/excalidraw' target='_blank' style='text-decoration: underline; color: #FF7F50'><strong>Excalidraw</strong></a> 设计。" 
+
   exchangerates:
     title: 实时汇率
     description: 货币实时汇率查询. 
@@ -151,6 +162,27 @@ tools:
     description: 查询全球城市的实时天气、未来天气。
     innerDescription: 查询全球城市的实时天气、未来天气，由OpenWeather提供数据支持。
     searchPlaceHolder: 输入城市名称 (如'beijing')...
+  
+  integer-base-converter:
+    title: 进制转换器
+    description: 支持二进制、八进制、十六进制、base64及自定义进制之间的数字转换。
+  
+  json-editor:
+    title: Json 编辑器
+    description: 在线查看、验证、编辑、格式化和压缩JSON代码。
+    innerDescription: 在线查看、验证、编辑、格式化和压缩JSON代码，基于vue3-ts-jsoneditor实现.
+  
+  length-converter:
+    title: 长度转换器
+    description: 米、英尺等常用长度单位转换。
+  
+  qrcode-generator:
+    title: 二维码生成器
+    description: 生成带有logo的文本、链接和WiFi联网的二维码。
+
+  speed-converter:
+    title: 速度转换器
+    description: 米/秒、千米/小时、迈等常用速度单位转换。
   
   temperature-converter:
     title: 温度转换器
@@ -175,3 +207,7 @@ tools:
     description: Web 虚拟机是运行在浏览器中的虚拟Linux环境，免安装学习Linux环境。
     innerDescription: Web 虚拟机是运行在浏览器中的虚拟Linux环境，免安装学习Linux环境。由CheerpX支持，PC宽屏使用效果更佳。
 
+  weight-converter:
+    title: 重量转换器
+    description: 千克、磅等常用重量单位转换。
+  

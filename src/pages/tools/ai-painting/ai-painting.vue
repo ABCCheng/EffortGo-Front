@@ -150,8 +150,8 @@ const clearImage = async () => {
                 <div>{{$t('tools.ai-painting.consistency')}}</div>
             </div>
             <div flex flex-row items-center gap-0.5>
-                <n-button data-track-label="Button_AIPaintingGenerate" :disabled="loading" @click="fetchAIImage">{{$t('tools.ai-painting.generate')}}</n-button>
-                <n-button data-track-label="Button_AIPaintingClear" :disabled="loading" @click="clearImage">{{$t('tools.ai-painting.clear')}}</n-button>
+                <n-button type="primary" data-track-label="Button_AIPaintingGenerate" :disabled="loading" @click="fetchAIImage">{{$t('tools.ai-painting.generate')}}</n-button>
+                <n-button type="primary" data-track-label="Button_AIPaintingClear" :disabled="loading" @click="clearImage">{{$t('tools.ai-painting.clear')}}</n-button>
             </div>
         </div>
     </div>

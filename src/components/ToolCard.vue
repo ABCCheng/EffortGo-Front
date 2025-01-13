@@ -14,8 +14,6 @@ const theme = useThemeVars();
   <router-link data-track-label="ToolCard_Card" :to="tool.path" class="decoration-none">
     <c-card class="tool-card h-full transition transition-duration-0.5s !border-2px !hover:border-primary" >
       <div :class="['badge', tool.badge]" style="user-select: none;"></div>
-      
-      
       <div flex items-center gap-1>
         <n-icon size="30" :component="tool.icon" :color='theme.primaryColor' />
 

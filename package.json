@@ -1,6 +1,6 @@
 {
   "name": "effortgo",
-  "version": "2024.12.23-2.5.0",
+  "version": "2025.01.12-3.0.0",
   "description": "Focusing on developing minimal and convenient online tools to ease work and life, combining efficiency with simplicity.",
   "author": "ABCCheng",
   "license": "GPL-3.0",
@@ -32,6 +32,7 @@
     "lint": "eslint src --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --ignore-path .gitignore"
   },
   "dependencies": {
+    "@excalidraw/excalidraw": "^0.17.6",
     "@regexper/render": "^1.0.0",
     "@sindresorhus/slugify": "^2.2.1",
     "@tabler/icons-vue": "^3.23.0",
@@ -60,6 +61,7 @@
     "emojilib": "^3.0.10",
     "figlet": "^1.7.0",
     "figue": "^1.2.0",
+    "file-saver": "^2.0.5",
     "fuse.js": "^6.6.2",
     "highlight.js": "^11.7.0",
     "iarna-toml-esm": "^3.0.5",
@@ -80,8 +82,10 @@
     "oui-data": "^1.0.10",
     "pdf-signature-reader": "^1.4.2",
     "pinia": "^2.2.7",
-    "qrcode": "^1.5.4",
+    "qrcode-svg": "^1.1.0",
     "randexp": "^0.5.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "sql-formatter": "^15.4.6",
     "tui-color-picker": "^2.2.8",
     "tui-image-editor": "^3.15.3",
@@ -95,6 +99,7 @@
     "vue-router": "^4.5.0",
     "vue-shadow-dom": "^4.2.0",
     "vue-tsc": "^1.8.1",
+    "vue3-ts-jsoneditor": "^2.11.3",
     "vuedraggable": "^4.1.0",
     "xml-formatter": "^3.6.3",
     "xml-js": "^1.6.11",
