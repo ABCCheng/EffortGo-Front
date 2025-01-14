@@ -1,3 +1,11 @@
+pwa: 
+  install-prompt:
+    title: 'Add EffortGo to your Home Screen?'
+    disable-reminder: 'No reminder'
+    cancel: 'Cancel'
+    confirm: 'Confirm'
+    addButtonTip: 'Add to Home Screen' 
+
 home:
   browser-title: 'EffortGo - Your efficiency assistant'
   prop-title: 'EffortGo - Simplify Your Day, Your Way'
@@ -78,6 +86,9 @@ favoriteButton:
   add: 'Add to favorites'
   removeSuccess: 'Remove from favorites successfully'
   addSuccess: 'Add to favorites successfully'
+
+shareButton: 
+  buttonTip: 'Share' 
 
 search:
   label: Search

@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { useThemeVars } from 'naive-ui';
-import { IconCirclePlus } from '@tabler/icons-vue';
+import { IconCirclePlus, IconShare2 } from '@tabler/icons-vue';
 import { useRoute } from 'vue-router';
 import { useHead } from '@vueuse/head';
 import type { HeadObject } from '@vueuse/head';
@@ -10,9 +10,14 @@ import { useToolStore } from '@/pages/tools/tools.store';
 import BaseLayout from './base.layout.vue';
 import FavoriteButton from '@/components/FavoriteButton.vue';
 import type { Tool } from '@/pages/tools/tools.types';
-import { h, ref } from 'vue';
+import { h, ref, onMounted } from 'vue';
 
 const theme = useThemeVars();
+
+const isShareSupported = ref(false);
+onMounted(() => {
+  isShareSupported.value = !!navigator.share;
+});
 
 const trackLabel = ref('Button_ToolFavorite');
 
@@ -70,6 +75,18 @@ const openToolDetailDialog = () => {
   toolDetailVisible.value = true;
 };
 
+
+const handleShare = async () => {
+  try {
+    const shareData = {
+      title: `EffortGo - ${toolTitle.value}`,
+      url: window.location.href,
+    };
+    await navigator.share(shareData);
+  } catch (error) {
+  }
+};
+
 </script>
 
 <template>
@@ -84,11 +101,20 @@ const openToolDetailDialog = () => {
     </div>
   </BaseLayout>
 
-  <n-modal v-model:show="toolDetailVisible" preset="dialog" :icon="() => h(currentTool?.icon)" :title="$t('tools.tool-detail.title') + ' - ' + toolTitle">
-    <div v-html="toolInnerDescription"/>
+  <n-modal v-model:show="toolDetailVisible" preset="dialog" :icon="() => h(currentTool?.icon)"
+    :title="$t('tools.tool-detail.title') + ' - ' + toolTitle">
+    <div v-html="toolInnerDescription" />
+    
     <div style="display: flex; flex-direction: row-reverse; gap: 10px;">
-        <FavoriteButton :data-track-label="trackLabel" :tool="{ name: route.meta.name, path: route.path } as Tool" />
+      <c-tooltip v-if="isShareSupported" position="bottom" :tooltip="$t('shareButton.buttonTip')">
+        <n-button data-track-label="Button_toolShare" variant="text" text :bordered="false" type="primary" @click="handleShare">
+          <n-icon size="25" :component="IconShare2" py-5px />
+        </n-button>
+      </c-tooltip>
+
+      <FavoriteButton :data-track-label="trackLabel" :tool="{ name: route.meta.name, path: route.path } as Tool" />
     </div>
+
   </n-modal>
 </template>
 

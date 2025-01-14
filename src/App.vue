@@ -85,6 +85,7 @@ watch(isDarkTheme, updateStatusBarStyle, { immediate: true });
         <n-spin size="large" v-if="isLoading" class="fixed inset-0 flex items-center justify-center bg-white/80 z-50"/>
         <component v-else :is="layout">
           <RouterView />
+          <PWAInstallPrompt />
         </component>
       </NNotificationProvider>
     </NMessageProvider>

@@ -1,3 +1,11 @@
+pwa: 
+  install-prompt:
+    title: '添加EffortGo到桌面以便离线使用？'
+    disable-reminder: '不再提醒'
+    cancel: '取消'
+    confirm: '确定'
+    addButtonTip: '添加到桌面' 
+
 home:
   browser-title: 'EffortGo - 您的效率助手'
   prop-title: 'EffortGo - 极简生活，如你所愿'
@@ -35,6 +43,7 @@ home:
     darkMode: '深色'
     lightMode: '浅色'
     mode: '颜色模式'
+
 about:
   content: >
     # 关于 EffortGo
@@ -72,6 +81,9 @@ favoriteButton:
   add: '加入收藏'
   removeSuccess: '取消收藏成功'
   addSuccess: '添加收藏成功'
+
+shareButton: 
+  buttonTip: '分享' 
 
 search:
   label: '搜索'

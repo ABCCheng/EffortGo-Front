@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { IconDragDrop, IconHeart, IconStar, IconNewSection, IconRefresh, IconSelectAll} from '@tabler/icons-vue';
 import { useHead } from '@vueuse/head';
-import { ref, toRefs, computed } from 'vue';
+import { ref, toRefs, computed, onMounted } from 'vue';
 import Draggable from 'vuedraggable';
 import ColoredCard from '../components/ColoredCard.vue';
 import ToolCard from '../components/ToolCard.vue';
@@ -57,13 +57,11 @@ paramStore.setPageTitle('EffortGo');
 function onUpdateFavoriteTools() {
   toolStore.updateFavoriteTools(favoriteTools.value); // Update the store with the new order
 }
-
 </script>
 
 <template>
   <div class="grid-wrapper">
     <div class="grid grid-cols-1 gap-12px lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 xl:grid-cols-4">
-
       <ColoredCard v-if="config.showBanner" :title="$t('home.follow.title')" :icon="IconStar">
         {{ $t('home.follow.p1') }}
         <a data-track-label="Link_ShowBarGithub" href="https://github.com/ABCCheng/EffortGo-Front" rel="noopener"
@@ -71,8 +69,8 @@ function onUpdateFavoriteTools() {
         {{ $t('home.follow.p2') }}
         <a data-track-label="Link_ShowBarX" href="https://x.com/EffortGo2024" rel="noopener" target="_blank">X</a>,
         <a data-track-label="Link_ShowBarXiaohongshu"
-          href="https://www.xiaohongshu.com/user/profile/5fa36065000000000101ffa5" rel="noopener"
-          target="_blank">{{ $t('home.follow.xiaohongshu') }}</a>
+          href="https://www.xiaohongshu.com/user/profile/5fa36065000000000101ffa5" rel="noopener" target="_blank">{{
+          $t('home.follow.xiaohongshu') }}</a>
         {{ $t('home.follow.thankYou') }}
         <br v-show="isSmallScreen" />
         <router-link to="/about">
@@ -139,13 +137,6 @@ function onUpdateFavoriteTools() {
 </template>
 
 <style scoped lang="less">
-a {
-  color: #FF7F50 !important;
-}
-a:hover {
-  color: var(--n-primary-color-hover) !important;
-}
-
 .height-enter-active,
 .height-leave-active {
   transition: all 0.5s ease-in-out;
