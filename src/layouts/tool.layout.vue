@@ -91,9 +91,9 @@ const handleShare = async () => {
 
 <template>
   <BaseLayout>
-    <n-button class="tool-operate" data-track-label="Button_ToolDetailFloat" @click="openToolDetailDialog" circle
+    <n-button size="small" class="tool-operate" data-track-label="Button_ToolDetailFloat" @click="openToolDetailDialog" circle
       variant="text">
-      <n-icon size="25" :component="IconCirclePlus" :color='theme.primaryColor' />
+      <n-icon size="20" :component="IconCirclePlus" :color='theme.primaryColor' />
     </n-button>
 
     <div class="tool-content">
@@ -107,7 +107,7 @@ const handleShare = async () => {
     
     <div style="display: flex; flex-direction: row-reverse; gap: 10px;">
       <c-tooltip v-if="isShareSupported" position="bottom" :tooltip="$t('shareButton.buttonTip')">
-        <n-button data-track-label="Button_toolShare" variant="text" text :bordered="false" type="primary" @click="handleShare">
+        <n-button data-track-label="Button_ShareTool" variant="text" text :bordered="false" type="primary" @click="handleShare">
           <n-icon size="25" :component="IconShare2" py-5px />
         </n-button>
       </c-tooltip>

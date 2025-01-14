@@ -58,13 +58,13 @@ const triggerInstallPrompt = () => {
 <template>
   <c-card class="colored-card" style="position: relative;">
     <c-tooltip v-if="deferredPrompt" position="left" :tooltip="$t('pwa.install-prompt.addButtonTip')" style="position: absolute; top: 5px; right: 30px;">
-        <n-button class="share-button" data-track-label="Button_addToHomeScreen" text :bordered="false" @click="triggerInstallPrompt">
+        <n-button class="share-button" data-track-label="Button_HomeScreenAdd" text :bordered="false" @click="triggerInstallPrompt">
           <n-icon size="25" :component="IconSquarePlus"/>
         </n-button>
     </c-tooltip>
 
     <c-tooltip v-if="isShareSupported" position="left" :tooltip="$t('shareButton.buttonTip')" style="position: absolute; top: 5px; right: 5px;">
-        <n-button class="share-button" data-track-label="Button_websiteShare" text :bordered="false" @click="handleShare">
+        <n-button class="share-button" data-track-label="Button_ShareWebsite" text :bordered="false" @click="handleShare">
           <n-icon size="25" :component="IconShare2"/>
         </n-button>
     </c-tooltip>
