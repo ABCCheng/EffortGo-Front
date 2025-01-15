@@ -13,9 +13,6 @@ EffortGo will remain free and open-source. If you would like to support my work 
 ## Technologies
 EffortGo’s front-end is developed using Vue3, TypeScript and the Naive UI component library. 
 
-Follow me on <a href="https://x.com/EffortGo2024" target='_blank' style="text-decoration: underline; color: #FF7F50"><strong>X</strong></a> 
-and <a href="https://www.xiaohongshu.com/user/profile/5fa36065000000000101ffa5" target='_blank' style="text-decoration: underline; color: #FF7F50"><strong>Xiaohongshu</strong></a> for the latest updates.
-
 ### Project Setup
 
 ```bash
