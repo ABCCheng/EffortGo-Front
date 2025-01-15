@@ -294,7 +294,7 @@ onMounted(() => {
   color: #fff !important;
   transition: all ease 0.2s !important;
   opacity: 50%;
-  z-index: 9999;
+  z-index: 1;
 
   &:hover {
     color: #fff;
@@ -312,7 +312,7 @@ onMounted(() => {
   color: #fff !important;
   transition: all ease 0.2s !important;
   opacity: 50%;
-  z-index: 9999;
+  z-index: 1;
 
   &:hover {
     color: #fff;
@@ -330,7 +330,7 @@ onMounted(() => {
   color: #fff !important;
   transition: all ease 0.2s !important;
   opacity: 50%;
-  z-index: 9999;
+  z-index: 1;
 
   &:hover {
     color: #fff;

@@ -57,17 +57,19 @@ const triggerInstallPrompt = () => {
 
 <template>
   <c-card class="colored-card" style="position: relative;">
-    <c-tooltip v-if="deferredPrompt" position="left" :tooltip="$t('pwa.install-prompt.addButtonTip')" style="position: absolute; top: 5px; right: 30px;">
-        <n-button class="share-button" data-track-label="Button_HomeScreenAdd" text :bordered="false" @click="triggerInstallPrompt">
-          <n-icon size="25" :component="IconSquarePlus"/>
+    <div style="position: absolute; top: 5px; right: 5px; display: flex;">
+      <c-tooltip v-if="deferredPrompt" position="left" :tooltip="$t('pwa.install-prompt.addButtonTip')">
+        <n-button class="share-button" @click="triggerInstallPrompt" data-track-label="Button_HomeScreenAdd" text :bordered="false">
+          <n-icon size="25" :component="IconSquarePlus" />
         </n-button>
-    </c-tooltip>
+      </c-tooltip>
 
-    <c-tooltip v-if="isShareSupported" position="left" :tooltip="$t('shareButton.buttonTip')" style="position: absolute; top: 5px; right: 5px;">
-        <n-button class="share-button" data-track-label="Button_ShareWebsite" text :bordered="false" @click="handleShare">
-          <n-icon size="25" :component="IconShare2"/>
+      <c-tooltip v-if="isShareSupported" position="left" :tooltip="$t('shareButton.buttonTip')">
+        <n-button class="share-button" @click="handleShare" data-track-label="Button_ShareWebsite" text :bordered="false">
+          <n-icon size="25" :component="IconShare2" />
         </n-button>
-    </c-tooltip>
+      </c-tooltip>
+    </div>
 
     <div flex flex-row items-center gap-2>
       <n-icon size="25" :component="icon" />
