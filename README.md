@@ -1,4 +1,4 @@
-# ![favicon-30x30](https://github.com/user-attachments/assets/d6132fa3-80a2-4b46-9702-d31252e5664d) EffortGo 
+# ![favicon-30x30](https://github.com/user-attachments/assets/d6132fa3-80a2-4b46-9702-d31252e5664d) EffortGo ![Node.js Version](https://img.shields.io/badge/node.js-v22.11.0-green) ![Npm.js Version](https://img.shields.io/badge/npm-v10.9.0-blue)
 [[README in 中文]](README-zh.md)
 
 ## Welcome to my website: https://www.effortgo.com
