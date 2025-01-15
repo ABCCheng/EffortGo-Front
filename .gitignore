@@ -26,6 +26,9 @@ coverage
 *.njsproj
 *.sln
 *.sw?
+*.d.ts
+.eslintrc*
+
 
 .env
 /test-results/
@@ -34,4 +37,3 @@ coverage
 # Webkit with playwright creates a salt file
 salt
 /yarn.lock
-/public/baidu_verify_codeva-KH0nUU2Pmr.html
