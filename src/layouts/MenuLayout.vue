@@ -1,12 +1,22 @@
 <script setup lang="ts">
+import { ref, toRefs, onMounted, onUnmounted } from 'vue';
+import { useThemeVars } from 'naive-ui';
 import { useStyleStore } from '@/stores/style.store';
-import { IconCircleArrowUp } from '@tabler/icons-vue';
+import { IconHome, IconCircleArrowUp } from '@tabler/icons-vue';
+import { useRouter, useRoute } from 'vue-router';
+
+const theme = useThemeVars();
+
+const router = useRouter();
+const route = useRoute();
+const isHomePage = route.path === '/';
+const goToHome = () => {
+  router.push('/');
+};
 
 const styleStore = useStyleStore();
-const { isMenuCollapsed } = toRefs(styleStore);
+const { isMenuCollapsed, isSmallScreen } = toRefs(styleStore);
 
-
-import { ref, onMounted, onUnmounted } from 'vue';
 
 const isButtonVisible = ref(false);
 
@@ -41,10 +51,19 @@ onUnmounted(() => {
     <div v-show="!isMenuCollapsed" class="overlay" @click="isMenuCollapsed = true" />
 
     <n-layout>
-      <n-layout class="header">
+      <n-layout>
+        <n-button v-show="!isHomePage" size="small" class="back-to-home" data-track-label="Button_BackToHome" @click="goToHome" circle variant="text" :style="{ top: isSmallScreen ? '12px' : '20px' }">
+          <n-icon size="20" :component="IconHome" :color='theme.primaryColor' />
+        </n-button>
+      </n-layout>
+
+      <n-layout v-if="isButtonVisible" class="header-title" :style="{ height: isSmallScreen ? '45px' : '60px' }">
+        <HeaderTitle/>
+      </n-layout>
+      <n-layout v-else class="header-navbar" :style="{ height: isSmallScreen ? '85px' : '100px' }">
         <Navbar />
       </n-layout>
-      <n-layout-content class="content-wrapper">
+      <n-layout-content class="content-wrapper" :style="{ marginTop: isSmallScreen ? '95px' : '110px', minHeight: isSmallScreen ? 'calc(var(--vheight) - 105px)' : 'calc(var(--vheight) - 120px)' }">
         <n-button class="back-to-top" data-track-label="Button_BackToTop" v-if="isButtonVisible" @click="scrollToTop"
           circle variant="text" :bordered="false">
           <n-icon size="25" :component="IconCircleArrowUp" />
@@ -73,11 +92,19 @@ onUnmounted(() => {
   cursor: pointer;
 }
 
-.header {
+.header-title {
   position: fixed;
   width: 100%;
   max-width: var(--max-width);
-  height: 100px;
+  padding: 0px 20px;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.header-navbar {
+  position: fixed;
+  width: 100%;
+  max-width: var(--max-width);
   padding: 0px 20px;
   z-index: 10;
   overflow: hidden;
@@ -85,15 +112,19 @@ onUnmounted(() => {
 
 .content-wrapper {
   position:relative;
-  margin-top: 110px;
   margin-bottom: 10px;
   padding: 0px 20px;
   width: 100%;
-  min-height: calc(var(--vheight) - 120px);
   overflow-x: hidden;
   display: flex;
   flex-direction: column;
   overflow-y: auto
+}
+
+.back-to-home {
+  position: fixed;
+  left: calc(var(--bodyleft) + 23px);
+  z-index: 20;
 }
 
 .back-to-top {

@@ -1,45 +1,21 @@
 <script setup lang="ts">
-import { ref, onMounted, onBeforeUnmount} from 'vue';
+import { ref, toRefs } from 'vue';
 import { IconArrowsMaximize, IconArrowsMinimize } from '@tabler/icons-vue';
+import { useStyleStore } from '@/stores/style.store';
 
-const fullscreenElementRef = ref<HTMLDivElement | null>(null);
+const styleStore = useStyleStore();
+const { isSmallScreen } = toRefs(styleStore);
+
 const isFullscreen = ref(false);
-
-const enterFullscreen = () => {
-  const container = fullscreenElementRef.value;
-  if (container) {
-    if (!isFullscreen.value) {
-      isFullscreen.value = true;
-      if (container.requestFullscreen) {
-        container.requestFullscreen();
-      } else if ((container as any).webkitRequestFullscreen) {
-        (container as any).webkitRequestFullscreen();
-      } else if ((container as any).msRequestFullscreen) {
-        (container as any).msRequestFullscreen();
-      }
-    } else {
-      document.exitFullscreen?.();
-      isFullscreen.value = false;
-    }
-  }
+const toggleFullscreen = () => {
+  isFullscreen.value = !isFullscreen.value;
 };
-
-const handleFullscreenChange = () => {
-  isFullscreen.value = document.fullscreenElement === fullscreenElementRef.value;
-};
-onMounted(() => {
-  document.addEventListener('fullscreenchange', handleFullscreenChange);
-});
-
-onBeforeUnmount(() => {
-  document.removeEventListener('fullscreenchange', handleFullscreenChange);
-});
 
 </script>
 
 <template>
-    <div ref="fullscreenElementRef" class="drawfree-container" :class="{ fullscreen: isFullscreen }">
-        <n-button class="fullscreen_button" data-track-label="Button_ToggleFullScreen" @click="enterFullscreen" size="small" circle
+    <div ref="fullscreenElementRef" class="drawfree-container" :class="{ fullscreen: isFullscreen }" :style="{ height: isSmallScreen ? 'calc(var(--vheight) - 120px)' : 'calc(var(--vheight) - 130px)' }">
+        <n-button class="fullscreen_button" data-track-label="Button_ToggleFullScreen" @click="toggleFullscreen" size="small" circle
             variant="text" :bordered="false">
             <n-icon v-if="!isFullscreen" size="20" :component="IconArrowsMaximize" />
             <n-icon v-else size="20" :component="IconArrowsMinimize" />
@@ -52,7 +28,6 @@ onBeforeUnmount(() => {
 .drawfree-container {
   position: relative;
   width: 100%;
-  height: calc(var(--vheight) - 130px) !important;
   border: 2px solid transparent;
   border-color: #FF7F50;
   padding-top: 0px;
@@ -65,7 +40,7 @@ onBeforeUnmount(() => {
     width: 100vw;
     height: var(--vheight) !important;
     z-index: 9999;
-    border: 2px solid transparent;
+    border: 0;
   }
 }
 

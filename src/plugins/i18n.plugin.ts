@@ -3,9 +3,15 @@ import { get } from '@vueuse/core';
 import type { Plugin } from 'vue';
 import { createI18n } from 'vue-i18n';
 
+const getBrowserLocale = () => {
+  const lang = navigator.language;
+  return lang.startsWith('zh') ? 'zh' : 'en';
+};
+
 const i18n = createI18n({
   legacy: false,
-  locale: 'en',
+  locale: getBrowserLocale(), // 设置默认语言
+  fallbackLocale: 'en', // 兜底语言
   messages,
 });
 

@@ -66,8 +66,8 @@ update('kelvin');
 </script>
 
 <template>
-  <div>
-    <n-input-group v-for="[key, { title, unit }] in Object.entries(units)" :key="key" mb-3 w-full>
+  <div w-full max-w-860px justify-center items-center>
+    <n-input-group v-for="[key, { title, unit }] in Object.entries(units)" :key="key" mb-3>
       <n-input-group-label w-75px style="display: flex; justify-content: center; align-items: center;">
         {{ title() }}
       </n-input-group-label>

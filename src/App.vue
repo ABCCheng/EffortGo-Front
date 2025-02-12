@@ -1,10 +1,13 @@
 <script setup lang="ts">
-import { ref, onMounted, watch, computed, toRefs } from 'vue';
+import { ref, onMounted, watch, computed, toRefs, onUnmounted } from 'vue';
 import { RouterView, useRoute, useRouter } from 'vue-router';
 import { NGlobalStyle, NMessageProvider, NNotificationProvider, darkTheme, lightTheme } from 'naive-ui';
 import { darkThemeOverrides, lightThemeOverrides } from './themes';
 import { layouts } from './layouts';
 import { useStyleStore } from './stores/style.store';
+import { useI18n } from 'vue-i18n';
+import { syncRef, useStorage } from '@vueuse/core';
+
 
 const route = useRoute();
 const router = useRouter();
@@ -39,19 +42,37 @@ onMounted(() => {
     document.documentElement.style.setProperty('--vh', `${vh}px`);
     document.documentElement.style.setProperty('--vheight', `calc(var(--vh) * 100)`);
 
-    // bodyleft to leftside
+     // scrollbar width
+     const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+
+    // bodyleft
     const bodyleft = document.body.getBoundingClientRect().left;
-    // bodyright to rightside
-    const bodyright = window.innerWidth - document.body.getBoundingClientRect().right;
+
+    // bodyright
+    const bodyright = window.innerWidth - document.body.getBoundingClientRect().right - scrollbarWidth;
+
+    // set css variable
     document.documentElement.style.setProperty('--bodyleft', `${bodyleft}px`);
     document.documentElement.style.setProperty('--bodyright', `${bodyright}px`);
   }
   // max-width
   document.documentElement.style.setProperty('--max-width', `1200px`);
   
-
   window.addEventListener('resize', handleResize);
+  
+  // observer scrollbar width
+  const observer = new MutationObserver(handleResize);
+  observer.observe(document.documentElement, { attributes: true, subtree: true, 
+    childList: true, 
+    attributeFilter: ['style', 'class'],
+  });
+
   handleResize();
+
+  onUnmounted(() => {
+    window.removeEventListener('resize', handleResize);
+    observer.disconnect();
+  });
 });
 
 // update the statusbar

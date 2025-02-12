@@ -64,7 +64,7 @@ const triggerInstallPrompt = () => {
         </n-button>
       </c-tooltip>
 
-      <c-tooltip v-if="isShareSupported" position="left" :tooltip="$t('shareButton.buttonTip')">
+      <c-tooltip v-if="isShareSupported" position="left" :tooltip="$t('toolDetail.share')">
         <n-button class="share-button" @click="handleShare" data-track-label="Button_ShareWebsite" text :bordered="false">
           <n-icon size="25" :component="IconShare2" />
         </n-button>

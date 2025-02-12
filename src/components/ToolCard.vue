@@ -5,9 +5,12 @@ import type { Tool } from '@/pages/tools/tools.types'; // 导入 Tool 类型
 
 const trackLabel = ref('Button_CardFavorite');
 
-const props = defineProps<{ tool: Tool & { category: string } }>();
+const props = defineProps<{ 
+  tool: Tool & { category: string };
+}>();
 const { tool } = toRefs(props);
 const theme = useThemeVars();
+
 </script>
 
 <template>
@@ -30,7 +33,9 @@ const theme = useThemeVars();
             :style="{'background-color': theme.primaryColor, 'user-select': 'none'}"
           >Update</div>
 
-          <FavoriteButton :data-track-label="trackLabel" :tool="tool"/>
+          <div style="margin-top: -10px;">
+            <FavoriteButton :data-track-label="trackLabel" :tool="tool"/>
+          </div>
         </div>
       </div>
 

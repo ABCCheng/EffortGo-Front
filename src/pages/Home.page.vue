@@ -1,22 +1,17 @@
 <script setup lang="ts">
 import { IconDragDrop, IconHeart, IconStar, IconNewSection, IconRefresh, IconSelectAll} from '@tabler/icons-vue';
 import { useHead } from '@vueuse/head';
-import { ref, toRefs, computed, onMounted } from 'vue';
+import { computed, onMounted } from 'vue';
+import { onBeforeRouteUpdate } from 'vue-router';
 import Draggable from 'vuedraggable';
-import ColoredCard from '../components/ColoredCard.vue';
-import ToolCard from '../components/ToolCard.vue';
 import { useToolStore } from '@/pages/tools/tools.store';
 import { config } from '@/config';
-import { useStyleStore } from '@/stores/style.store';
-import { useParamStore } from '@/stores/param.store';
+import { useParamStore, useToolStaticsStore } from '@/stores/param.store';
 
 const paramStore = useParamStore();
+const toolStaticsStore = useToolStaticsStore();
 
 const { t, locale } = useI18n();
-
-const styleStore = useStyleStore();
-const { isSmallScreen } = toRefs(styleStore);
-
 
 const toolStore = useToolStore();
 
@@ -57,22 +52,31 @@ paramStore.setPageTitle('EffortGo');
 function onUpdateFavoriteTools() {
   toolStore.updateFavoriteTools(favoriteTools.value); // Update the store with the new order
 }
+
+onMounted(() => {
+  toolStaticsStore.fetchAllToolStatics(locale.value);
+});
+
+onBeforeRouteUpdate(() => {
+  toolStaticsStore.fetchAllToolStatics(locale.value);
+});
 </script>
 
 <template>
   <div class="grid-wrapper">
-    <div class="grid grid-cols-1 gap-12px lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 xl:grid-cols-4">
+    <div class="grid grid-cols-1 gap-12px lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 xl:grid-cols-4">
       <ColoredCard v-if="config.showBanner" :title="$t('home.follow.title')" :icon="IconStar">
         {{ $t('home.follow.p1') }}
         <a data-track-label="Link_ShowBarGithub" href="https://github.com/ABCCheng/EffortGo-Front" rel="noopener"
           target="_blank">Github</a>
         {{ $t('home.follow.p2') }}
-        <a data-track-label="Link_ShowBarX" href="https://x.com/EffortGo2024" rel="noopener" target="_blank">X</a>,
+        <a data-track-label="Link_ShowBarX" href="https://x.com/EffortGo2024" rel="noopener" target="_blank">X</a>
+        {{ $t('home.follow.seperator') }}
         <a data-track-label="Link_ShowBarXiaohongshu"
           href="https://www.xiaohongshu.com/user/profile/5fa36065000000000101ffa5" rel="noopener" target="_blank">{{
           $t('home.follow.xiaohongshu') }}</a>
         {{ $t('home.follow.thankYou') }}
-        <br v-show="isSmallScreen" />
+        <br/>
         <router-link to="/about">
           <a data-track-label="Link_ShowBarAbout">{{ $t('home.follow.learnMore') }}</a>
         </router-link>
@@ -91,10 +95,10 @@ function onUpdateFavoriteTools() {
           </c-tooltip>
         </div>
         <Draggable :list="favoriteTools"
-          class="grid grid-cols-1 gap-12px lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 xl:grid-cols-4"
-          ghost-class="ghost-favorites-draggable" item-key="name" @end="onUpdateFavoriteTools">
+          class="grid grid-cols-1 gap-12px lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 xl:grid-cols-4"
+          ghost-class="ghost-favorites-draggable" item-key="path" @end="onUpdateFavoriteTools">
           <template #item="{ element: tool }">
-            <ToolCard :tool="tool" />
+            <ToolCard :key="tool.path" :tool="tool" />
           </template>
         </Draggable>
       </div>
@@ -107,8 +111,8 @@ function onUpdateFavoriteTools() {
           {{ t('home.categories.newestTools') + ` [${toolStore.newTools.length}]` }}
         </h3>
       </div>
-      <div class="grid grid-cols-1 gap-12px lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 xl:grid-cols-4">
-        <ToolCard v-for="tool in toolStore.newTools" :key="tool.name" :tool="tool" />
+      <div class="grid grid-cols-1 gap-12px lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 xl:grid-cols-4">
+        <ToolCard v-for="tool in toolStore.newTools" :key="tool.path" :tool="tool"/>
       </div>
     </div>
 
@@ -119,8 +123,8 @@ function onUpdateFavoriteTools() {
           {{ t('home.categories.updateTools') + ` [${toolStore.updateTools.length}]` }}
         </h3>
       </div>
-      <div class="grid grid-cols-1 gap-12px lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 xl:grid-cols-4">
-        <ToolCard v-for="tool in toolStore.updateTools" :key="tool.name" :tool="tool" />
+      <div class="grid grid-cols-1 gap-12px lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 xl:grid-cols-4">
+        <ToolCard v-for="tool in toolStore.updateTools" :key="tool.path" :tool="tool"/>
       </div>
     </div>
 
@@ -130,8 +134,8 @@ function onUpdateFavoriteTools() {
         {{ t('home.categories.allTools') + ` [${allTools.length}]` }}
       </h3>
     </div>
-    <div class="grid grid-cols-1 gap-12px lg:grid-cols-3 md:grid-cols-3 sm:grid-cols-2 xl:grid-cols-4">
-      <ToolCard v-for="tool in allTools" :key="tool.name" :tool="tool" />
+    <div class="grid grid-cols-1 gap-12px lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 xl:grid-cols-4">
+      <ToolCard v-for="tool in allTools" :key="tool.path" :tool="tool"/>
     </div>
   </div>
 </template>

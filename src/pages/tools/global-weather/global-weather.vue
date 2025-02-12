@@ -2,26 +2,47 @@
 import { ref, computed } from "vue";
 import { useI18n } from 'vue-i18n';
 import { debounce } from "lodash";
+import { IconStar, IconStarFilled,
+  IconSunrise, IconSunset,
+  IconSun, IconSunFilled, IconCloud, IconCloudFilled, IconCloudRain, IconCloudStorm, IconSnowflake, IconMist
+ } from '@tabler/icons-vue';
+import { useThemeVars, useMessage } from 'naive-ui';
+
+const theme = useThemeVars();
+const message = useMessage();
 
 const { locale } = useI18n();
 
 interface CitySuggestion {
     name: string;
+    tagname: string;
     fullname: string;
+    showname: string;
     lat: number;
     lon: number;
 }
 
+const CACHE_KEY = 'global-weather-cache';
+const storedFavorites = ref<CitySuggestion[]>(JSON.parse(localStorage.getItem(CACHE_KEY) || '[]'));
+
 const city = ref("");
 const citySuggestions = ref<CitySuggestion[]>([]);
+const selectedCity = ref<CitySuggestion | null>(null);
 const weatherData = ref<any>(null);
 
 const forecastData = ref<any[]>([]);
 const currentPage = ref(1);
 const itemsPerPage = 8;
 
+const tagTypes = ['primary', 'info', 'success', 'warning', 'error'];
+
+const getRandomTagType = (index: number) => {
+  return tagTypes[index % tagTypes.length];
+};
+
+
 const onInputChange = (newValue: string) => {
-    if (newValue.includes("-")) {
+    if (!newValue || newValue.includes("-")) {
         return;
     }
     city.value = newValue;
@@ -29,12 +50,52 @@ const onInputChange = (newValue: string) => {
 };
 
 const onCitySelect = (selectedCityName: string) => {
-    const selectedCity = citySuggestions.value.find((city) => city.fullname === selectedCityName);
-    if (selectedCity) {
-        fetchWeather(selectedCity);
-        fetchForecast(selectedCity);
-        city.value = selectedCity.name;
+  const foundCity = citySuggestions.value.find((city) => city.showname === selectedCityName);
+  selectedCity.value = foundCity || null; 
+
+  if (selectedCity.value) { 
+      fetchWeather(selectedCity.value);
+      fetchForecast(selectedCity.value);
+      city.value = selectedCity.value.name;
+  }
+};
+
+const onTagClick = (tagCity: CitySuggestion) => {
+  if (tagCity) {
+      selectedCity.value = tagCity;
+      fetchWeather(selectedCity.value);
+      fetchForecast(selectedCity.value);
+  }
+};
+
+const isFavorite = computed(() => {
+  if (!selectedCity.value) {
+    return false;
+  }
+  return storedFavorites.value.some(city => city.fullname === selectedCity.value?.fullname);
+})
+
+const toggleFavorite = () => {
+  if (!selectedCity.value) {
+    return;
+  }
+  const exist = storedFavorites.value.some(city => city.fullname === selectedCity.value?.fullname);
+  if (!exist) {
+    if (storedFavorites.value.length >= 10) {
+      message.warning((locale.value==='en' ? "You've reached the favorite limit!" : "收藏超过上限啦！"));
+      return;
     }
+    storedFavorites.value.push(selectedCity.value);
+    localStorage.setItem(CACHE_KEY, JSON.stringify(storedFavorites.value));
+  } else {
+    removeFavorite(selectedCity.value.fullname);
+  }
+}
+
+const removeFavorite = (fullname: string) => {
+  const updatedFavorites = storedFavorites.value.filter(city => city.fullname !== fullname);
+  storedFavorites.value = updatedFavorites;
+  localStorage.setItem(CACHE_KEY, JSON.stringify(storedFavorites.value));
 };
 
 const paginatedForecast = computed(() => {
@@ -53,6 +114,8 @@ const fetchCities = debounce(async () => {
     if (Array.isArray(data)) {
         citySuggestions.value = data.map((city: any) => ({
             fullname: fullname(city),
+            showname: showname(city),
+            tagname: tagname(city),
             name: city.name,
             lat: city.lat,
             lon: city.lon,
@@ -68,17 +131,19 @@ const fetchWeather = async (selectedCity: CitySuggestion) => {
   const data = await response.json();
   if (data) {
     weatherData.value = {
-      cityname: `${selectedCity.fullname}`,
+      cityname: `${selectedCity.showname}`,
       timezone: `UTC${data.timezone / 3600 >= 0 ? "+" : ""}${
         data.timezone / 3600
       }`,
       currentTime: formatFullTime(data.dt + data.timezone),
-      sunrise: (locale.value==='en' ? 'Sunrise: ' : '日出: ') + formatHHMMSSTime(data.sys.sunrise + data.timezone),
-      sunset: (locale.value==='en' ? 'Sunset: ' : '日落: ') + formatHHMMSSTime(data.sys.sunset + data.timezone),
+      sunrise: formatHHMMSSTime(data.sys.sunrise + data.timezone),
+      sunset: formatHHMMSSTime(data.sys.sunset + data.timezone),
       description: locale.value==='en' ? data.weather[0].main : data.weather[0].description,
       weather: data.weather,
       main: data.main,
       wind: data.wind,
+      feels_like: (locale.value==='en' ? 'Feels: ' : '体感: ') + `${ Math.round(data.main.feels_like) }°C`,
+      humidity: (locale.value==='en' ? 'Humidity: ' : '湿度: ') + `${ Math.round(data.main.humidity) }%`
     };
   }
 };
@@ -107,7 +172,38 @@ const fullname = (city: any) => {
   if (city.name.includes('Diaoyu Island')) {
     city.country = 'CN';
   }
+
   return `${city.name}${city.local_names?.zh ? ` ${city.local_names.zh}` : ""} - ${city.country}${city.state ? `, ${city.state}` : ""}`;
+};
+
+const showname = (city: any) => {
+  if (city.country === 'TW') {
+    city.country = 'CN';
+    city.state = 'Taiwan'
+  }
+  if (city.name.includes('Diaoyu Island')) {
+    city.country = 'CN';
+  }
+
+  if (locale.value==='en') {
+    return `${city.name} - ${city.country}${city.state ? `, ${city.state}` : ""}`;
+  }
+  return `${city.name}${city.local_names?.zh ? ` ${city.local_names.zh}` : ""} - ${city.country}${city.state ? `, ${city.state}` : ""}`;
+};
+
+const tagname = (city: any) => {
+  if (city.country === 'TW') {
+    city.country = 'CN';
+    city.state = 'Taiwan'
+  }
+  if (city.name.includes('Diaoyu Island')) {
+    city.country = 'CN';
+  }
+
+  if (locale.value==='en') {
+    return city.name;
+  }
+  return city.local_names?.zh ? city.local_names.zh : city.name;
 };
 
 const formatFullTime = (timestamp: number) => {
@@ -155,12 +251,32 @@ const formatForecastTime = (timestamp: number) => {
   const week = locale.value==='en' ? weekDays[date.getUTCDay()] : weekDays_zh[date.getUTCDay()];
 
   // mm-dd(week) HH:MM:SS week
-  return `${month}-${day}(${week}) ${hours}h`;
+  return locale.value==='en' ? `${month}-${day}(${week}) ${hours}h` : `${month}-${day}(${week}) ${hours}点`;
 };
 
+const weatherIconMap: Record<string, any> = {
+  "01d": IconSun,
+  "01n": IconSunFilled,
+  "02d": IconCloud,
+  "03d": IconCloud,
+  "04d": IconCloud,
+  "02n": IconCloudFilled,
+  "03n": IconCloudFilled,
+  "04n": IconCloudFilled,
+  "09d": IconCloudRain,
+  "09n": IconCloudRain,
+  "10d": IconCloudRain,
+  "10n": IconCloudRain,
+  "11d": IconCloudStorm,
+  "11n": IconCloudStorm,
+  "13d": IconSnowflake,
+  "13n": IconSnowflake,
+  "50d": IconMist,
+  "50n": IconMist,
+};
 
+const weatherIcon = (icon: string) => weatherIconMap[icon] || IconCloudFilled;
 
-const weatherIconUrl = (icon: string) =>`/local-global-weather/icons/${icon}@2x.png`;
 </script>
 
 <style scoped>
@@ -170,50 +286,68 @@ const weatherIconUrl = (icon: string) =>`/local-global-weather/icons/${icon}@2x.
 </style>
 
 <template>
-    <div mx-auto max-w-600px important:flex-1>
-        <div flex items-center gap-3 mb-3>
-            <n-auto-complete v-model:value="city" clearable
-                :options="citySuggestions.map((suggestion) => ({label: `${suggestion.fullname}`,value: `${suggestion.fullname}`}))"
-                blur-after-select
-                @update:value="onInputChange" @select="onCitySelect" :placeholder="$t('tools.global-weather.searchPlaceHolder')" mx-auto max-w-600px>
-                <template #prefix>
-                    <icon-mdi-search mr-6px color-black op-70 dark:color-white />
-                </template>
-            </n-auto-complete>
-        </div>
-        
-        <c-card v-if="weatherData" style="margin: 0; padding: 5px 15px;">
-            <div flex flex-row items-center justify-center gap-5>
-                <div flex flex-col items-center justify-center>
-                    <img :src="weatherIconUrl(weatherData.weather[0].icon)" alt="Weather Icon" class="weather-icon"
-                        style="width: 100px; height: 100px; margin: -25px; padding: 0;" />
-                    <p style="margin: 0; padding: 0;">{{ weatherData.description}}</p>
-                    <p style="margin: 0; padding: 0;">{{ Math.round(weatherData.wind.speed) }}m/s {{ Math.round(weatherData.main.temp) }}°C</p>
-                </div>
-                <div flex-1 flex-col>
-                    <h3 style="margin: 0; padding: 0;">{{ weatherData.cityname }}</h3>
-                    <p style="margin: 0; padding: 0;">{{ weatherData.timezone }}: {{ weatherData.currentTime }}</p>
-                    <p style="margin: 0; padding: 0;">{{ weatherData.sunrise }} </p>
-                    <p style="margin: 0; padding: 0;">{{ weatherData.sunset }} </p>
-                </div>
-            </div>
-        </c-card>
+  <div mx-auto max-w-600px important:flex-1>
+    <div flex flex-col items-center gap-2 mb-2>
+      <n-auto-complete v-model:value="city" clearable
+        :options="citySuggestions.map((suggestion) => ({label: `${suggestion.showname}`,value: `${suggestion.showname}`}))"
+        blur-after-select @update:value="onInputChange" @select="onCitySelect"
+        :placeholder="$t('tools.global-weather.searchPlaceHolder')" mx-auto max-w-600px>
+        <template #prefix>
+          <icon-mdi-search mr-6px color-black op-70 dark:color-white />
+        </template>
+      </n-auto-complete>
 
-        <c-card v-if="forecastData.length" style="margin: 0; padding: 5px;">
-            <div flex flex-col items-center justify-center>
-                <ul class="w-full" style="margin: 0; padding: 0;">
-                    <li v-for="(forecast, index) in paginatedForecast" :key="index" class="w-full flex items-center p-1">
-                        <span class="flex-1 text-left">{{ forecast.datetime }}</span>
-                        <img :src="weatherIconUrl(forecast.icon)" alt="Weather Icon" class="w-40px h-40px" />
-                        <span class="flex-0 text-left">{{ forecast.description }}</span>
-                        <span class="flex-1 text-right">{{ forecast.temp_min }}°C / {{ forecast.temp_max }}°C</span>
-                    </li>
-                </ul>
-                <n-pagination v-model:page="currentPage" :page-size="itemsPerPage"
-                    :page-count="Math.ceil(forecastData.length / itemsPerPage)" :show-size-picker="false"
-                    style="margin-top: 16px; text-align: center;" />
-            </div>
-        </c-card>
-
+      <n-space>
+        <n-tag size="small" round v-for="(favorite, index) in storedFavorites" :key="favorite.fullname" :type="getRandomTagType(index)" @click="onTagClick(favorite)">
+          {{ favorite.tagname }}
+        </n-tag>
+      </n-space>
     </div>
+
+    <c-card v-if="weatherData" style="position: relative; margin: 0; padding: 5px 15px;">
+      <div flex flex-row items-center justify-center gap-5>
+        <div flex flex-col items-center justify-center>
+          <n-icon size="50" :component="weatherIcon(weatherData.weather[0].icon)" :color="theme.primaryColor" />
+          <p style="margin: 0; padding: 0;">{{ weatherData.description}}</p>
+          <p style="margin: 0; padding: 0;">{{ Math.round(weatherData.wind.speed) }}m/s {{
+            Math.round(weatherData.main.temp) }}°C</p>
+        </div>
+        <div flex-1 flex-col>
+          <h3 style="margin: 0; padding: 0;">{{ weatherData.cityname }}</h3>
+          <p style="margin: 0; padding: 0;">{{ weatherData.timezone }}: {{ weatherData.currentTime }}</p>
+          <div flex items-center gap-1>
+            <n-icon size="18" :component="IconSunrise" :color="theme.primaryColor" />
+            <p style="margin: 0; padding: 0;">{{ weatherData.sunrise }} </p>
+            <n-icon ml-2 size="18" :component="IconSunset" :color="theme.primaryColor" />
+            <p style="margin: 0; padding: 0;">{{ weatherData.sunset }} </p>
+          </div>
+          <div flex items-center gap-3>
+            <p style="margin: 0; padding: 0;">{{ weatherData.feels_like }}</p>
+            <p style="margin: 0; padding: 0;">{{ weatherData.humidity }}</p>
+          </div>
+        </div>
+      </div>
+      <n-button style="position: absolute; top: 5px; right: 5px;" size="small" data-track-label="Button_GlobalWeatherFavorite" @click="toggleFavorite" text variant="text">
+        <n-icon size="20" :component="isFavorite ? IconStarFilled : IconStar" :color="theme.primaryColor" />
+      </n-button>
+    </c-card>
+
+    <c-card v-if="forecastData.length" style="margin: 0; padding: 5px;">
+      <div flex flex-col items-center justify-center>
+        <ul class="w-full" style="margin: 0; padding: 0;">
+          <li v-for="(forecast, index) in paginatedForecast" :key="index" class="items-center grid grid-cols-3 p-1">
+            <span  class="text-left w-30">{{ forecast.datetime }}</span>
+            <div flex items-center justify-start mx-auto w-full ml-5>
+              <n-icon size="30" :component="weatherIcon(forecast.icon)" :color="theme.primaryColor" />
+              <span class="text-left ml-1">{{ forecast.description }}</span>
+            </div>
+            <span class="text-right">{{ forecast.temp_min }}°C</span>
+          </li>
+        </ul>
+        <n-pagination v-model:page="currentPage" :page-size="itemsPerPage"
+          :page-count="Math.ceil(forecastData.length / itemsPerPage)" :show-size-picker="false"
+          style="margin-top: 16px; text-align: center;" />
+      </div>
+    </c-card>
+  </div>
 </template>

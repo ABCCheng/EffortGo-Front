@@ -4,7 +4,7 @@ import QRCode from 'qrcode-svg';
 import { saveAs } from 'file-saver';
 
 const message = ref('https://www.effortgo.com');
-const logoScale = ref(0.3);
+const logoScale = ref(0.25);
 const size = ref(300);
 const color = ref('#000000FF');
 const backgroundColor = ref('#FFFFFFFF');
@@ -50,7 +50,7 @@ const loadLogoImage = async (event: Event) => {
 };
 
 const clearLogo = () => {
-  logoPreview.value = "";
+  logoPreview.value = null;
 };
 
 const preview = computed(() => {
@@ -85,7 +85,7 @@ const preview = computed(() => {
     const circleElement = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
     circleElement.setAttribute('cx', `${size.value / 2}`);
     circleElement.setAttribute('cy', `${size.value / 2}`);
-    circleElement.setAttribute('r', `${logoSize / 2 + 6}`);
+    circleElement.setAttribute('r', `${logoSize / 2 + 4}`);
     circleElement.setAttribute('fill', 'white');
     qrElement.appendChild(circleElement);
 
@@ -154,7 +154,7 @@ function exportImage() {
 
 onMounted(async () => {
   try {
-    const response = await fetch(`${import.meta.env.BASE_URL}logo.png`);
+    const response = await fetch("/logo.png");
     if (response.ok) {
       const blob = await response.blob();
       const reader = new FileReader();
@@ -172,14 +172,15 @@ onMounted(async () => {
 </script>
 
 <template>
-  <c-card style="padding: 10px;" flex items-center justify-center>
-    <n-form label-width="auto" label-placement="left" style="min-width: 320px;">
+  <div style="width: 100%; max-width: 600px;" flex items-center justify-center>
+    <n-form label-width="85px" label-placement="left" style="width: 100%;">
       <!-- QR Type Selection -->
-      <n-form-item label="QR Type:">
+      <n-form-item flex label="QR Type:">
         <n-radio-group v-model:value="qrType">
-          <n-radio value="Text">Text</n-radio>
+          <n-radio value="Text" mr-2>Text</n-radio>
           <n-radio value="WiFi">WiFi</n-radio>
         </n-radio-group>
+        <n-checkbox ml-5 v-model:checked="padding" size="large" label="Padding" />
       </n-form-item>
 
       <!-- Text for QR -->
@@ -192,15 +193,15 @@ onMounted(async () => {
         <n-select size="small" v-model:value="wifi.encryption" :options="wifiEncryptionOptions" />
       </n-form-item>
       <n-form-item v-show="qrType === 'WiFi'" label="SSID:">
-        <n-input size="small" v-model:value="wifi.ssid" placeholder=""/>
+        <n-input size="small" v-model:value="wifi.ssid" placeholder="" />
         <n-checkbox pl-1 v-model:checked="wifi.hidessid" size="large"></n-checkbox>
         <div>Hide</div>
       </n-form-item>
       <n-form-item v-show="qrType === 'WiFi'" label="Password:">
-        <c-input-text size="small" v-model:value="wifi.password" type="password" placeholder=""/>
+        <c-input-text size="small" v-model:value="wifi.password" type="password" placeholder="" />
       </n-form-item>
 
-      <n-divider style="padding: 0; margin: 10px;"/>
+      <n-divider style="padding: 0; margin: 5px auto" />
 
       <!-- Colors -->
       <n-form-item label="Colors:">
@@ -209,33 +210,31 @@ onMounted(async () => {
         <n-color-picker size="small" v-model:value="backgroundColor" />
       </n-form-item>
 
-      <!-- Center logo -->
-      <n-form-item label="Center logo:">
-        <n-button size="small" @click="loadFileInput">Upload ···</n-button>
+      <!-- Logo Controls -->
+      <n-form-item label="Logo:">
+        <n-button size="small" @click="loadFileInput">Upload...</n-button>
         <input ref="fileInput" type="file" accept="image/*" style="display: none" @change="loadLogoImage" />
-        <n-divider vertical />
-        <n-button size="small" @click="clearLogo">Clear</n-button>
+
+        <template v-if="logoPreview">
+          <n-divider vertical />
+          <n-button size="small" @click="clearLogo">Clear</n-button>
+          <n-slider style="padding-left: 10px; margin: 0;" v-model:value="logoScale" :min="0.1" :max="0.5" :step="0.05" />
+        </template>
       </n-form-item>
 
-      <!-- Options -->
-      <n-form-item label="Padding:">
-        <n-checkbox v-model:checked="padding" size="large" />
-      </n-form-item>
+      <n-divider style="padding: 0; margin: 5px auto" />
 
-      <n-form-item label="Export size:">
-        <n-input-number size="small" v-model:value="exportSize" :min="100" :max="10000" :step="16" />
-      </n-form-item>
-      <n-form-item label="Export as:">
-        <n-select v-model:value="exportType" size="small"
-          :options="[{ label: 'SVG', value: 'SVG' }, { label: 'PNG', value: 'PNG' }, { label: 'JPG', value: 'JPG' }, { label: 'WEBP', value: 'WEBP' }]" />
+      <n-form-item label="Save size: ">
+        <n-input-number style="width: 100%;" size="small" v-model:value="exportSize" :min="100" :max="10000" :step="16" />
+        <n-select v-model:value="exportType" style="width: 85px; min-width: 85px;" size="small" :options="[{ label: 'SVG', value: 'SVG' }, { label: 'PNG', value: 'PNG' }, { label: 'JPG', value: 'JPG' }, { label: 'WEBP', value: 'WEBP' }]" />
         <n-button ml-1 size="small" type="primary" data-track-label="Button_QRCodeGeneratorSave" :saving="saving"
-          @click="saveToFile">Export</n-button>
+          @click="saveToFile">Save</n-button>
       </n-form-item>
     </n-form>
-  </c-card>
+  </div>
 
   <!-- Preview Section -->
-  <c-card style="min-width: 350px; background: repeating-linear-gradient(-45deg, #eee, #eee 10px, #ccc 10px, #ccc 20px);">
+  <c-card style="background: repeating-linear-gradient(-45deg, #eee, #eee 10px, #ccc 10px, #ccc 20px);">
     <svg :width="size" :height="size" xmlns="http://www.w3.org/2000/svg" v-html="preview" ref="svgContainer"></svg>
   </c-card>
 </template>
@@ -243,9 +242,5 @@ onMounted(async () => {
 <style lang="less" scoped>
 ::v-deep(.n-form-item-feedback-wrapper) {
   display: none !important;
-}
-
-.n-form-item label {
-  padding-bottom: 4px; /* 控制标签和输入框之间的间距 */
 }
 </style>

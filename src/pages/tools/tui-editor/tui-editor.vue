@@ -1,50 +1,26 @@
 <script lang="ts" setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue';
+import { ref, toRefs, onMounted, onBeforeUnmount } from 'vue';
 import ImageEditor from 'tui-image-editor';
 import 'tui-image-editor/dist/tui-image-editor.css';
 import 'tui-color-picker/dist/tui-color-picker.css';
+import { useStyleStore } from '@/stores/style.store';
+
+const styleStore = useStyleStore();
+const { isSmallScreen } = toRefs(styleStore);
 
 import { IconArrowsMaximize, IconArrowsMinimize, IconDownload, IconFileDots } from '@tabler/icons-vue';
 
 const { locale } = useI18n();
 
-const fullscreenElementRef = ref<HTMLDivElement | null>(null);
 const isFullscreen = ref(false);
 
 const editorRef = ref<HTMLDivElement | null>(null);
 let editorInstance: ImageEditor | null = null;
 const fileInput = ref<HTMLInputElement | null>(null);
 
-const enterFullscreen = () => {
-  const container = fullscreenElementRef.value;
-  if (container) {
-    if (!isFullscreen.value) {
-      isFullscreen.value = true;
-      if (container.requestFullscreen) {
-        container.requestFullscreen();
-      } else if ((container as any).webkitRequestFullscreen) {
-        (container as any).webkitRequestFullscreen();
-      } else if ((container as any).msRequestFullscreen) {
-        (container as any).msRequestFullscreen();
-      }
-    } else {
-      document.exitFullscreen?.();
-      isFullscreen.value = false;
-    }
-  }
+const toggleFullscreen = () => {
+  isFullscreen.value = !isFullscreen.value;
 };
-
-const handleFullscreenChange = () => {
-  isFullscreen.value = document.fullscreenElement === fullscreenElementRef.value;
-};
-
-onMounted(() => {
-  document.addEventListener('fullscreenchange', handleFullscreenChange);
-});
-
-onBeforeUnmount(() => {
-  document.removeEventListener('fullscreenchange', handleFullscreenChange);
-});
 
 const locale_zh = {
     ZoomIn: '放大',
@@ -215,21 +191,20 @@ onMounted(() => {
     editorRef.value.addEventListener('contextmenu', (event) => {
       event.preventDefault();
     });
-
     initializeEditor('/local-tui-editor/assets/sample.png', 'SampleImage');
-
     window.addEventListener('resize', resizeEditor);
-
-    onBeforeUnmount(() => {
-      window.removeEventListener('resize', resizeEditor);
-    });
   }
 });
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', resizeEditor);
+});
+
 </script>
 
 <template>
-  <div w-full ref="fullscreenElementRef" class="editor-container" :class="{ fullscreen: isFullscreen }">
-    <n-button class="fullscreen_button" data-track-label="Button_ToggleFullScreen" @click="enterFullscreen" circle variant="text" size="small" :bordered="false">
+  <div w-full ref="fullscreenElementRef" class="editor-container" :class="{ fullscreen: isFullscreen }" :style="{ height: isSmallScreen ? 'calc(var(--vheight) - 120px)' : 'calc(var(--vheight) - 130px)' }">
+    <n-button class="fullscreen_button" data-track-label="Button_ToggleFullScreen" @click="toggleFullscreen" circle variant="text" size="small" :bordered="false">
       <n-icon v-if="!isFullscreen" size="25" :component="IconArrowsMaximize" />
       <n-icon v-else size="25" :component="IconArrowsMinimize" />
     </n-button>
@@ -251,7 +226,6 @@ onMounted(() => {
 .editor-container {
   position: relative;
   width: 100%;
-  height: calc(var(--vheight) - 130px) !important;
   border: 2px solid transparent;
   border-color: #FF7F50;
   padding-top: 0px;
@@ -263,7 +237,7 @@ onMounted(() => {
       left: 0;
       width: 100vw;
       height: var(--vheight) !important;
-      border: 2px solid transparent;
+      border: 0;
       z-index: 9999;
     }
 }
@@ -294,7 +268,7 @@ onMounted(() => {
   color: #fff !important;
   transition: all ease 0.2s !important;
   opacity: 50%;
-  z-index: 1;
+  z-index: 5;
 
   &:hover {
     color: #fff;
@@ -312,7 +286,7 @@ onMounted(() => {
   color: #fff !important;
   transition: all ease 0.2s !important;
   opacity: 50%;
-  z-index: 1;
+  z-index: 5;
 
   &:hover {
     color: #fff;
@@ -330,7 +304,7 @@ onMounted(() => {
   color: #fff !important;
   transition: all ease 0.2s !important;
   opacity: 50%;
-  z-index: 1;
+  z-index: 5;
 
   &:hover {
     color: #fff;

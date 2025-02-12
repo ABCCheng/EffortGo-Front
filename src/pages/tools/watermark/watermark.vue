@@ -44,7 +44,7 @@ function toggleConfig() {
 </script>
 
 <template>
-  <div class="container">
+  <div class="container" :style="{ height: isSmallScreen ? 'calc(var(--vheight) - 120px)' : 'calc(var(--vheight) - 130px)' }">
     <!-- 预览区 -->
     <n-card class="preview">
       <c-file-upload important:justify-start :width="'100%'" py-2 title="Drag and drop, or click to select a image file" accept="*.*" @file-upload="onVerifyClicked" />
@@ -80,7 +80,6 @@ function toggleConfig() {
   position: relative;
   width: 100%;
   max-width: 800px;
-  height: calc(var(--vheight) - 130px);
 }
 
 .preview {

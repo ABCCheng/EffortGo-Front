@@ -31,6 +31,7 @@ const props = withDefaults(
     autosize?: boolean
     autofocus?: boolean
     monospace?: boolean
+    resizeNone?: boolean
   }>(),
   {
     value: '',
@@ -58,13 +59,14 @@ const props = withDefaults(
     autosize: false,
     autofocus: false,
     monospace: false,
+    resizeNone: false,
   },
 );
 const emit = defineEmits(['update:value']);
 const value = useVModel(props, 'value', emit);
 const showPassword = ref(false);
 
-const { id, placeholder, label, validationRules, labelPosition, labelWidth, labelAlign, autosize, readonly, disabled, clearable, type, multiline, rows, rawText, autofocus, monospace } = toRefs(props);
+const { id, placeholder, label, validationRules, labelPosition, labelWidth, labelAlign, autosize, readonly, disabled, clearable, type, multiline, rows, rawText, autofocus, monospace, resizeNone } = toRefs(props);
 
 const validation
   = props.validation
@@ -143,7 +145,7 @@ defineExpose({
 </script>
 
 <template>
-  <div
+  <div relative
     class="c-input-text"
     :class="{ disabled, 'error': !validation.isValid, 'label-left': labelPosition === 'left', multiline }"
   >
@@ -171,6 +173,7 @@ defineExpose({
           :autocorrect="autocorrect ?? (rawText ? 'off' : undefined)"
           :spellcheck="spellcheck ?? (rawText ? false : undefined)"
           :rows="rows"
+          :resize-none="resizeNone"
         />
 
         <input
@@ -194,9 +197,11 @@ defineExpose({
           :spellcheck="spellcheck ?? (rawText ? false : undefined)"
         >
 
-        <n-button v-if="clearable && value" variant="text" circle size="small" @click="value = ''">
-          <icon-mdi-close />
-        </n-button>
+        <div absolute right-5px top-5px>
+          <n-button v-if="clearable && value" variant="text" circle size="small" @click="value = ''">
+            <icon-mdi-close />
+          </n-button>
+        </div>
 
         <n-button v-if="type === 'password'" variant="text" circle size="small" @click="showPassword = !showPassword">
           <icon-mdi-eye v-if="!showPassword" />

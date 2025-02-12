@@ -11,5 +11,6 @@ export const tool = defineTool({
   component: () => import('./global-weather.vue'),
   icon: IconHaze,
   createdAt: new Date('2024-12-05'),
+  updatedAt: new Date('2025-02-10'),
   badge: 'default',
 });

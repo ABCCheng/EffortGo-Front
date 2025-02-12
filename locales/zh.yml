@@ -25,8 +25,9 @@ home:
     
   follow:
     title: '关注我'
-    p1: '如果您也觉得不错，可以'
-    p2: '给我一个Star，关注我的'
+    p1: '如果您也喜欢，可以'
+    p2: '星我，关注我的'
+    seperator: '、'
     xiaohongshu: '小红书'
     thankYou: '。感谢支持！❥(^_-) '
     learnMore: '点击了解更多...'
@@ -34,7 +35,7 @@ home:
   nav:
     github: 'GitHub 仓库'
     githubRepository: 'GitHub 仓库'
-    twitterX: 'Twitter 账号'
+    twitterX: 'X 账号'
     twitterXAccount: 'EffortGo X 账号'
     xiaohongshu: '小红书 账号'
     xiaohongshuAccount: 'EffortGo 小红书 账号'
@@ -46,29 +47,29 @@ home:
 
 about:
   content: >
-    # 关于 EffortGo
+    ## 关于 EffortGo
 
-    EffortGo 由 ABCCheng 个人基于Github开源项目倾力开发，汇集了生活工作中各行各业常用的工具。
+    EffortGo 由 ABCCheng 个人基于 Github 开源项目倾力开发，汇集了生活工作中各行各业常用的工具。
     如果您也觉得有帮助，您可以添加到收藏夹中，或者通过浏览器导出为桌面应用，并将其分享给您的朋友。  
 
-    EffortGo 将持续免费且开源，未来可能会接入广告维持运营。
-    如果您想支持我的工作，并鼓励我添加更多工具，欢迎通过 <span style="color: #FF7F50; font-weight: bold;">打赏</span> 按钮进行支持。
+    EffortGo 将持续免费且开源，如果您想支持我的工作，并鼓励我添加更多工具，欢迎通过 <span style="color: #FF7F50; font-weight: bold;">“打赏”</span> 按钮进行支持。
 
-    ## 技术
+    ### 技术
 
-    EffortGo 前端采用 Vue 3 和 Naive UI 组件库开发，后端技术仍在逐步进行中。  
+    EffortGo 前端采用 Vue 3 和 Naive UI 组件库开发。  
     
     欢迎关注我的 <a href="https://x.com/EffortGo2024" target='_blank' style="text-decoration: underline; color: #FF7F50"><strong>X</strong></a> 
     和 <a href="https://www.xiaohongshu.com/user/profile/5fa36065000000000101ffa5" target='_blank' style="text-decoration: underline; color: #FF7F50"><strong>小红书</strong></a> ，了解最新进展。
 
-    ## 交流
+    ### 交流
 
     欢迎关注我的社交账号并留言，也可以通过我的邮箱 
     <a href="mailto:effortgo2024{'@'}gmail.com" style="text-decoration: underline; color: #FF7F50"><strong>effortgo2024{'@'}gmail.com</strong></a> 
-    和我联系，未来EffortGo也将会加入留言反馈功能，敬请期待。  
+    和我联系，或者直接在网页评论中留言反馈，共同探讨。  
     
 
-    感谢您的关注，您的支持将决定EffortGo的未来。
+    感谢您的关注，您的支持将决定 EffortGo 的未来。
+
 
 404:
   notFound: '404 页面不存在'
@@ -76,14 +77,31 @@ about:
   maybe: '也许缓存出现了一些问题，试试强制刷新页面？'
   backHome: '返回主页'
 
+comment:
+  comments: '评论'
+  total-prefix: '共 '
+  total-suffix: ' 条评论'
+  rule: '文明发言，共建和谐社会'
+  word-limit-prefix: '剩余 '
+  word-limit-suffix: ' 个字'
+  change-name: '换个名字:'
+  default-name: '无名游客'
+  add-comment: '发布'
+  report-confirm: '确认举报？'
+  end-comment: '没有更多了'
+  replyleft-prefix: '查看剩余 '
+  replyleft-suffix: ' 条回复'
+
 favoriteButton:
   remove: '取消收藏'
   add: '加入收藏'
   removeSuccess: '取消收藏成功'
   addSuccess: '添加收藏成功'
 
-shareButton: 
-  buttonTip: '分享' 
+toolDetail: 
+  share: '分享' 
+  reportError: 'Bug上报'
+  reportErrorConfirm: '确认Bug？'
 
 search:
   label: '搜索'
@@ -91,6 +109,8 @@ search:
 
 message:
   copy: '已复制到剪贴板'
+  calculateError: '计算错误'
+  operateError: '操作异常，请检查网络后重试'
 
 tools:
   categories:
@@ -140,22 +160,35 @@ tools:
     title: AI 绘画
     description: 输入文字描述实时生成图片。
     innerDescription: 输入文字描述实时生成图片，AI模型由Together AI支持。缓存最新的10张图片，点击"清空"可清空缓存。
-    inputPlaceHolder: 描述图片（仅支持英文，如'A running dog'）...
+    inputPlaceHolder: 描述图片（如“一只奔跑的狗”）...
     inputEmpty: 请先输入描述内容
-    consistency: Consistency
+    selectStyle: 选择风格：
+    consistency: 连续
     generate: 生成
     generateError: '生成失败，请稍后重试 '
     clear: 清空
+    clearConfirm: '确认清空？'
+    deleteConfirm: '确认删除？'
     
   chinese-color-picker:
     title: 中国色彩
     description: 展示最全中国传统色彩名称及色值列表。
     searchPlaceHolder: 搜索颜色 (例如 '海棠红')...
 
+  daily-top:
+    title: 今日热点
+    description: 实时展示主流社交媒体新闻热搜、头条热榜。
+    innerDescription: 实时展示主流社交媒体新闻热搜、头条热榜。暂只支持中国大陆地区。
+
+  drawdb:
+    title: Draw DB
+    description: 一个简单直观的数据库在线设计编辑器、数据建模器和 SQL 生成器。
+    innerDescription: "一个简单直观的数据库在线设计编辑器、数据建模器和 SQL 生成器。参考 <a href='https://www.drawdb.app/' target='_blank' style='text-decoration: underline; color: #FF7F50'><strong>drawDB</strong></a> 项目源码设计，PC宽屏效果更佳。" 
+
   drawfree:
     title: Draw Free
     description: 一款强大的白板工具，集成思维导图、流程图等功能。
-    innerDescription: "一款强大的白板工具，集成思维导图、流程图等功能。参考 <a href='https://github.com/plait-board/drawnix' target='_blank' style='text-decoration: underline; color: #FF7F50'><strong>drawnix</strong></a> 项目源码设计，PC宽屏效果更佳。" 
+    innerDescription: "一款强大的白板工具，集成思维导图、流程图等功能。参考 <a href='https://github.com/plait-board/drawnix' target='_blank' style='text-decoration: underline; color: #FF7F50'><strong>Drawnix</strong></a> 项目源码设计，PC宽屏效果更佳。" 
 
   excalidraw:
     title: Excalidraw
@@ -178,6 +211,13 @@ tools:
   integer-base-converter:
     title: 进制转换器
     description: 支持二进制、八进制、十六进制、base64及自定义进制之间的数字转换。
+
+  ip-location:
+    title: IP 归属地
+    description: 查询 IP 地址或域名的归属地。
+    innerDescription: 查询 IP 地址或域名的归属地，由 ip-api.com 提供数据支持。
+    inputPlaceHolder: IPv4/IPv6 地址或域名...
+    queryIP: 查询
   
   json-editor:
     title: Json 编辑器
@@ -187,6 +227,16 @@ tools:
   length-converter:
     title: 长度转换器
     description: 米、英尺等常用长度单位转换。
+
+  md-html-converter:
+    title: MD-HTML 转换器
+    description: 将Markdown转换为HTML，或将HTML转换为Markdown。
+
+  note-ease:
+    title: 易笔记
+    description: 简洁高效的便签工具，支持markdown语法，实时编辑、自动保存和流畅预览。
+    inputPlaceHolder: "请输入 (如'# 标题\\n 内容')..."
+    limit: 笔记太多了，试着精简一下！
   
   qrcode-generator:
     title: 二维码生成器
@@ -208,6 +258,14 @@ tools:
     title: 文本比较
     description: 比较两个文本并查看它们之间的差异。
     innerDescription: 比较两个文本并查看它们之间的差异，PC宽屏效果更佳。
+
+  todo-list:
+    title: 待办列表
+    description: 一个简单高效的待办列表管理工具。
+    innerDescription: 一个简单高效的待办列表管理工具。最多15条待办项，支持增加、删除、标记完成、调整顺序。
+    inputPlaceHolder: 输入待办内容...
+    add: 添加
+    limit: 待办太多了，注意休息哦！😊
   
   tui-editor:
     title: 图片编辑

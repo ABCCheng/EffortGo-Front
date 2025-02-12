@@ -11,9 +11,7 @@ import { NaiveUiResolver } from 'unplugin-vue-components/resolvers';
 import Components from 'unplugin-vue-components/vite';
 import { defineConfig } from 'vite';
 import { VitePWA } from 'vite-plugin-pwa';
-import markdown from 'vite-plugin-vue-markdown';
 import svgLoader from 'vite-svg-loader';
-import { configDefaults } from 'vitest/config';
 import Sitemap from 'vite-plugin-sitemap';
 import { sitemappages } from './src/sitemappages.js';
 
@@ -21,7 +19,7 @@ const hostname = 'https://www.effortgo.com/';
 const baseUrl = process.env.BASE_URL ?? '/';
 const dynamicRoutes = sitemappages.map(page => `/${page}`);
 const exclude = ['/local-webvm', '/local-webvm/alpine', '/local-webvm/login',
-   '/baidu_verify_codeva-KH0nUU2Pmr', '/local-drawfree'];
+   '/baidu_verify_codeva-KH0nUU2Pmr', '/local-drawfree', '/local-drawdb'];
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -34,24 +32,6 @@ export default defineConfig({
       'Cross-Origin-Resource-Policy': 'cross-origin'
     },
     proxy: {
-      '/togetherai-api': {
-        target: '',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/togetherai-api/, '/api'),
-      },
-      '/openweathermap-api': {
-        target: 'https://api.openweathermap.org',
-        changeOrigin: true,
-        rewrite: (path) => {
-          const newPath = path.replace(/^\/openweathermap-api/, '/');
-          return `${newPath}&appid=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`;
-        },
-      },
-      '/europa-xml': {
-        target: 'https://www.ecb.europa.eu',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/europa-xml/, '/'),
-      },
     },
   },
   plugins: [
@@ -89,7 +69,6 @@ export default defineConfig({
       include: [/\.vue$/, /\.md$/],
     }),
     vueJsx(),
-    markdown(),
     svgLoader(),
     VitePWA({
       registerType: 'autoUpdate',
@@ -154,9 +133,6 @@ export default defineConfig({
   define: {
     'import.meta.env.PACKAGE_VERSION': JSON.stringify(process.env.npm_package_version),
     'process.env': process.env,
-  },
-  test: {
-    exclude: [...configDefaults.exclude, '**/*.e2e.spec.ts'],
   },
   build: {
     target: 'esnext',

@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import { useThemeVars } from 'naive-ui';
 import { useRouter, useRoute } from 'vue-router';
 import { useStyleStore } from '@/stores/style.store';
 import { useParamStore } from '@/stores/param.store';
 import {IconHome, IconMenu2, IconCoffee} from '@tabler/icons-vue';
-import { ref, onMounted } from 'vue';
+import { ref, toRefs } from 'vue';
 
-const theme = useThemeVars();
 
 const router = useRouter();
 const route = useRoute();
@@ -14,6 +12,7 @@ const styleStore = useStyleStore();
 const paramStore = useParamStore();
 
 const { t } = useI18n();
+const { isSmallScreen } = toRefs(styleStore);
 
 const isHomePage = route.path === '/';
 
@@ -29,8 +28,7 @@ const openSupportMeDialog = () => {
 
 <template>
   <div class="navbar">
-    <n-h1 class="header-title flex items-center justify-center gap-1" style="user-select: none;" font-bold>
-      <n-icon class="title-icon" size="30" :component="IconHome" v-show="!isHomePage" @click="goToHome" />
+    <n-h1 class="header-title flex items-center justify-center" :style="{ userSelect: 'none', fontSize: isSmallScreen ? '22px' : '28px' }">
       <span class="title-text" @click="goToHome">{{ paramStore.pageTitle }}</span>
     </n-h1>
 
@@ -123,8 +121,6 @@ const openSupportMeDialog = () => {
 }
 
 .navbar {
-  box-sizing: border-box;
-
   .header-title {
     margin-bottom: -10px;
     margin-top: 10px;

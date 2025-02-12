@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { ref, computed, watch, onMounted } from 'vue';
 import { useI18n } from 'vue-i18n';
+import { useThemeVars } from 'naive-ui';
 import { IconRefresh, IconArrowsRightLeft } from '@tabler/icons-vue';
 
 const { t, locale } = useI18n();
+const theme = useThemeVars();
 
 const currencyOptions = [
   { value: 'USD', zh: '美元', en: 'US Dollar', flag: '🇺🇸' },
@@ -140,8 +142,10 @@ onMounted(fetchExchangeRates);
       <h4 class="text-lg m-0 p-0">
         {{ dataGetTime ? t('tools.exchangerates.dataUpdateTime') + ' ' + dataGetTime : t('tools.exchangerates.dataUpdateFailed') }}
       </h4>
-      <n-icon data-track-label="Button_ExchangeRatesRefresh" v-if="!dataGetTime" size="25" :component="IconRefresh" @click="fetchExchangeRates"
-        style="cursor: pointer; padding: 0; margin: 0" />
+      
+      <n-button v-if="!dataGetTime" size="small" data-track-label="Button_ExchangeRatesRefresh" @click="fetchExchangeRates" circle variant="text">
+        <n-icon size="20" :component="IconRefresh" :color="theme.primaryColor" />
+      </n-button>
     </div>
 
     <div class="flex items-center justify-center mb-2 gap-2 flex-wrap">

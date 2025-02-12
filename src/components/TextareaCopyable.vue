@@ -52,10 +52,10 @@ const tooltipText = computed(() => isJustCopied.value ? 'Copied!' : copyMessage.
           <n-code :code="value" :language="language" :trim="false" data-test-id="area-content" />
         </n-config-provider>
       </n-scrollbar>
-      <div absolute right-10px top-10px>
+      <div absolute right-5px top-5px>
         <c-tooltip v-if="value" :tooltip="tooltipText" position="left">
-          <n-button circle important:h-10 important:w-10 @click="copy()">
-            <n-icon size="22" :component="IconCopy" />
+          <n-button circle important:h-7 important:w-7 @click="copy()">
+            <n-icon size="15" :component="IconCopy" />
           </n-button>
         </c-tooltip>
       </div>

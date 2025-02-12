@@ -25,19 +25,20 @@ home:
     
   follow:
     title: 'You like EffortGo?'
-    p1: 'Give me a star on'
+    p1: 'Star me on'
     p2: 'or follow me on'
-    xiaohongshu: 'Xiaohongshu'
+    seperator: ', '
+    xiaohongshu: 'Rednote'
     thankYou: '. Thank you! ❥(^_-) '
-    learnMore: ' Click to learn more...'
+    learnMore: 'Click to learn more...'
   
   nav:
     github: 'GitHub repository'
     githubRepository: 'EffortGo GitHub repository'
     twitterX: 'X account'
     twitterXAccount: 'EffortGo X account'
-    xiaohongshu: 'Xiaohongshu account'
-    xiaohongshuAccount: 'EffortGo Xiaohongshu account'
+    xiaohongshu: 'Rednote account'
+    xiaohongshuAccount: 'EffortGo Rednote account'
     about: 'About EffortGo'
     aboutLabel: 'About'
     darkMode: 'Dark'
@@ -46,34 +47,32 @@ home:
 
 about:
   content: >
-    # About EffortGo
+    ## About EffortGo
 
     EffortGo is a personal project developed by ABCCheng, based on open-source projects from Github. 
     It brings together tools commonly used across various industries in daily life and work. 
     If you find EffortGo helpful, you can add it to your favorites, export it as a desktop application through your browser, 
     or share it with your friends.  
     
-    EffortGo will remain free and open-source. 
-    In the future, ads may be introduced to sustain operations. 
-    If you would like to support my work and encourage me to add more tools, 
-    you are welcome to contribute through the <span style="color: #FF7F50; font-weight: bold;">Support Me</span> button.
+    EffortGo will keep being free and open-source. If you would like to support my work and encourage me to add more tools, 
+    you are welcome to contribute through the <span style="color: #FF7F50; font-weight: bold;">"Support Me"</span> button.
 
-    ## Technologies
+    ### Technologies
 
-    EffortGo’s front-end is developed using Vue 3 and the Naive UI component library. Backend development is still underway.  
+    EffortGo’s front-end is developed using Vue 3 and the Naive UI component library.  
     
     Follow me on <a href="https://x.com/EffortGo2024" target='_blank' style="text-decoration: underline; color: #FF7F50"><strong>X</strong></a> 
-    and <a href="https://www.xiaohongshu.com/user/profile/5fa36065000000000101ffa5" target='_blank' style="text-decoration: underline; color: #FF7F50"><strong>Xiaohongshu</strong></a>  
+    and <a href="https://www.xiaohongshu.com/user/profile/5fa36065000000000101ffa5" target='_blank' style="text-decoration: underline; color: #FF7F50"><strong>Rednote</strong></a>  
     for the latest updates.
 
-    ## Communication
+    ### Communication
 
-    Feel free to follow my social media accounts and leave a message. You can also contact me via email at 
-    <a href="mailto:effortgo2024{'@'}gmail.com" style="text-decoration: underline; color: #FF7F50"><strong>effortgo2024{'@'}gmail.com</strong></a> .
-    In the future, EffortGo will include a feedback feature—stay tuned!  
+    Feel free to follow my social media accounts and leave a message. You can contact me via email at 
+    <a href="mailto:effortgo2024{'@'}gmail.com" style="text-decoration: underline; color: #FF7F50"><strong>effortgo2024{'@'}gmail.com</strong></a> 
+    or leave comments on the webpage for discussion.  
     
-    
-    Thank you for your attention; your support will shape EffortGo's future.
+
+    Thank you for your attention! Your support will shape the future of EffortGo!
 
 404:
   notFound: '404 Not Found'
@@ -81,21 +80,40 @@ about:
   maybe: 'Maybe the cache is doing tricky things, try force-refreshing?'
   backHome: 'Back home'
 
+comment:
+  comments: 'Comments'
+  total-prefix: 'Total '
+  total-suffix: ''
+  rule: 'Be civil, stay harmonious'
+  word-limit-prefix: ''
+  word-limit-suffix: ' left'
+  change-name: 'Change name:'
+  default-name: 'Anonymous Guest'
+  add-comment: 'Publish'
+  report-confirm: 'Confirm Report?'
+  end-comment: 'The end'
+  replyleft-prefix: 'View left'
+  replyleft-suffix: ' replies'
+
 favoriteButton:
   remove: 'Remove from favorites'
   add: 'Add to favorites'
   removeSuccess: 'Remove from favorites successfully'
   addSuccess: 'Add to favorites successfully'
 
-shareButton: 
-  buttonTip: 'Share' 
+toolDetail: 
+  share: 'Share' 
+  reportError: 'Report Bug'
+  reportErrorConfirm: 'Confirm Bug?'
 
 search:
   label: Search
   placeholder: Type to search a tool or a command...
 
 message:
-  copy: 'copied to the clipboard'
+  copy: 'Copied to the clipboard'
+  calculateError: 'Calculation error'
+  operateError: 'Operation error, please check the network and retry'
 
 tools:
   categories:
@@ -145,18 +163,31 @@ tools:
     title: AI Painting
     description: Enter a prompt and generate images in real-time.
     innerDescription: Enter a prompt and generate images in real-time. Powered by Together AI. The latest 10 images will be cached. Click "Clear" to clear the cache.
-    inputPlaceHolder: Describe your image（Only English, e.g. 'A running dog'）...
+    inputPlaceHolder: Describe your image（e.g. 'A running dog'）...
     inputEmpty: Please enter a prompt
+    selectStyle: "Select Style: "
     consistency: Consistency
     generate: Generate
     generateError: 'Failed to generate, please try again later. '
     clear: Clear
+    clearConfirm: 'Confirm Clear?'
+    deleteConfirm: 'Confirm Delete?'
   
   chinese-color-picker:
     title: Chinese Colors
     description: Display the most complete list of traditional Chinese color names and color values.
     searchPlaceHolder: Search colors (e.g. 'haitanghong')...
+
+  daily-top:
+    title: Daily Top10
+    description: Real-time display of trending news and top headlines from major social media platforms.
+    innerDescription: Real-time display of trending news and top headlines from major social media platforms. Currently supports Mainland China only.
   
+  drawdb:
+    title: Draw DB
+    description: A simple and intuitive database design editor, data-modeler, and SQL generator.
+    innerDescription: "A simple and intuitive database design editor, data-modeler, and SQL generator. Designed according to the <a href='https://www.drawdb.app/' target='_blank' style='text-decoration: underline; color: #FF7F50'><strong>drawDB</strong></a>. Best on wide-screen PCs." 
+
   drawfree:
     title: Draw Free
     description: A powerful whiteboard tool featuring mind mapping and flowchart. 
@@ -184,6 +215,13 @@ tools:
     title: Base Converter
     description: Convert a number between different bases (binary, octal, hexadecimal, base64, etc).
 
+  ip-location:
+    title: IP Location
+    description: Query the location of an IP address or a domain name.
+    innerDescription: Query the location of an IP address or a domain name. Powered by ip-api.com.
+    inputPlaceHolder: An IPv4/IPv6 address or a domain name...
+    queryIP: Query
+
   json-editor:
     title: Json Editor
     description: A web-based tool to view, validate, edit, format, and compress JSON.
@@ -192,6 +230,16 @@ tools:
   length-converter:
     title: Length Converter
     description: Length unit conversions, including meter, foot, and other common units.
+
+  md-html-converter:
+    title: MD-html Converter
+    description: Convert data between Markdown and HTML
+
+  note-ease:
+    title: NoteEase
+    description: A simple and efficient note-taking tool that supports Markdown syntax, real-time editing, auto-save, and smooth preview.
+    inputPlaceHolder: "Input (e.g. '# title\\n content')..."
+    limit: Too many notes, try simplifying!
   
   qrcode-generator:
     title: QR Generator
@@ -213,6 +261,14 @@ tools:
     title: Text Diff
     description: Compare two texts and see the differences between them.
     innerDescription: Compare two texts and see the differences between them. Best on wide-screen PCs.
+
+  todo-list:
+    title: To-Do List
+    description: A simple and efficient tool for managing your to-do tasks.
+    innerDescription: A simple and efficient tool for managing your to-do tasks. Supports up to 15 tasks with add, delete, mark as complete, and reorder functions.
+    inputPlaceHolder: Enter a task...
+    add: Add
+    limit: Too many tasks! Take a break! 😊
   
   tui-editor:
     title: Image Editor

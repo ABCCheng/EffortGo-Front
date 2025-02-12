@@ -33,7 +33,7 @@ yarn build
 
 ## Communication
 Follow me on <a href="https://x.com/EffortGo2024" target='_blank' style="text-decoration: underline; color: #FF7F50"><strong>X</strong></a> 
-and <a href="https://www.xiaohongshu.com/user/profile/5fa36065000000000101ffa5" target='_blank' style="text-decoration: underline; color: #FF7F50"><strong>Xiaohongshu</strong></a> for the latest updates.
+and <a href="https://www.xiaohongshu.com/user/profile/5fa36065000000000101ffa5" target='_blank' style="text-decoration: underline; color: #FF7F50"><strong>Rednote</strong></a> for the latest updates.
 You can also contact me via email at effortgo2024@gmail.com. 
 
 Thank you for your attention. Your support will shape EffortGo's future.
