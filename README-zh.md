@@ -2,7 +2,7 @@
 [[README in English]](README.md)
 
 ## 欢迎在线体验: https://www.effortgo.com
-<img width="1201" alt="image" src="https://github.com/user-attachments/assets/20c7572b-f419-409e-9e84-2e4442af2ee2" />
+![image](https://github.com/user-attachments/assets/c985003a-dcf2-47d4-84ca-6a8b6e05a3a3)
 
 ## 关于
 EffortGo 由 ABCCheng 个人基于Github开源项目倾力开发，汇集了生活工作中各行各业常用的工具。 如果您也觉得有帮助，您可以添加到收藏夹中，或者通过浏览器导出为桌面应用，并将其分享给您的朋友。
