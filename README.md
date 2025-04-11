@@ -2,8 +2,7 @@
 [[README in 中文]](README-zh.md)
 
 ## Welcome to my website: https://www.effortgo.com
-<img width="1202" alt="image" src="https://github.com/user-attachments/assets/049c53b0-15d2-42e8-b4f7-1a0af695a6d5" />
-
+![image](https://github.com/user-attachments/assets/8070ade0-90c6-486e-81ce-3febac0e4037)
 
 ## About
 EffortGo is a personal project, based on open-source projects from Github. It brings together tools commonly used across various industries in daily life and work. If you find EffortGo helpful, you can add it to your favorites, export it as a desktop application through your browser, or share it with your friends.
