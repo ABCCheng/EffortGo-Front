@@ -1,16 +1,16 @@
-# ![favicon-30x30](https://github.com/user-attachments/assets/d6132fa3-80a2-4b46-9702-d31252e5664d) EffortGo ![Node.js Version](https://img.shields.io/badge/node.js-v22.11.0-green) ![Npm.js Version](https://img.shields.io/badge/npm-v10.9.0-blue)
+# ![favicon-30x30](https://github.com/user-attachments/assets/d6132fa3-80a2-4b46-9702-d31252e5664d) EffortGo Tools ![Node.js Version](https://img.shields.io/badge/node.js-v22.11.0-green) ![Npm.js Version](https://img.shields.io/badge/npm-v10.9.0-blue)
 [[README in 中文]](README-zh.md)
 
-## Welcome to my website: https://www.effortgo.com
+## Welcome to my website: https://tools.effortgo.com
 ![image](https://github.com/user-attachments/assets/8070ade0-90c6-486e-81ce-3febac0e4037)
 
 ## About
-EffortGo is a personal project, based on open-source projects from Github. It brings together tools commonly used across various industries in daily life and work. If you find EffortGo helpful, you can add it to your favorites, export it as a desktop application through your browser, or share it with your friends.
+EffortGo Tools is a personal project, based on open-source projects from Github. It brings together tools commonly used across various industries in daily life and work. If you find EffortGo Tools helpful, you can add it to your favorites, export it as a desktop application through your browser, or share it with your friends.
 
-EffortGo will remain free and open-source. If you would like to support my work and encourage me to add more tools, you are welcome to contribute through the "Support Me" button.
+EffortGo Tools will remain free and open-source. If you would like to support my work and encourage me to add more tools, you are welcome to contribute through the "Support Me" button.
 
 ## Technologies
-EffortGo’s front-end is developed using Vue3, TypeScript and the Naive UI component library. 
+EffortGo Tools’s front-end is developed using Vue3, TypeScript and the Naive UI component library. 
 
 ### Project Setup
 
@@ -33,9 +33,9 @@ yarn build
 ## Communication
 Follow me on <a href="https://x.com/EffortGo2024" target='_blank' style="text-decoration: underline; color: #FF7F50"><strong>X</strong></a> 
 and <a href="https://www.xiaohongshu.com/user/profile/5fa36065000000000101ffa5" target='_blank' style="text-decoration: underline; color: #FF7F50"><strong>Rednote</strong></a> for the latest updates.
-You can also contact me via email at effortgo2024@gmail.com. 
+You can also contact me via email at tools@effortgo.xyz. 
 
-Thank you for your attention. Your support will shape EffortGo's future.
+Thank you for your attention. Your support will shape EffortGo Tools's future.
 
 ## Contributors
 Big thanks to all the pioneers who have contributed open source code, especially Corentin Thomasset's IT-Tools project, where I learned a lot of front-end development techniques.
