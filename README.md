@@ -1,7 +1,7 @@
 # ![favicon-30x30](https://github.com/user-attachments/assets/d6132fa3-80a2-4b46-9702-d31252e5664d) EffortGo Tools ![Node.js Version](https://img.shields.io/badge/node.js-v22.11.0-green) ![Npm.js Version](https://img.shields.io/badge/npm-v10.9.0-blue)
 [[README in 中文]](README-zh.md)
 
-## Welcome to my website: https://tools.effortgo.com
+## Welcome to my website: https://tools.effortgo.xyz
 ![image](https://github.com/user-attachments/assets/8070ade0-90c6-486e-81ce-3febac0e4037)
 
 ## About
